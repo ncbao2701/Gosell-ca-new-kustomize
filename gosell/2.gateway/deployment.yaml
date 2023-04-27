@@ -2,22 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: beecowgateway-app
-  name: beecowgateway-app
+    app: gateway
+  name: gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: beecowgateway-app
-  strategy: {}
+      app: gateway
   template:
     metadata:
       labels:
-        app: beecowgateway-app
+        app: gateway
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/gateway-dev:V.1.0.1
-        name: beecowgateway
+      - image: gateway:V.1.0.1
+        name: gateway
         ports:
         - containerPort: 8080
         - containerPort: 8859
@@ -62,15 +61,13 @@ spec:
             value: "-Xmx2048m -Xms256m"
       imagePullSecrets:
         - name: fpt-cloud-registry
-status: {}
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: beecowgateway-app
-  name: beecowgateway-app
+    app: gateway
+  name: gateway
 spec:
   ports:
   - name: tcp-9090
@@ -86,6 +83,6 @@ spec:
     protocol: TCP
     targetPort: 8849
   selector:
-    app: beecowgateway-app
+    app: gateway
 status:
   loadBalancer: {}
