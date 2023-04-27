@@ -1,0 +1,4 @@
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://10.10.0.18:6379

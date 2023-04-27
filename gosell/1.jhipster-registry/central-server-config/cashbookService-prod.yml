@@ -1,0 +1,27 @@
+spring:
+    data:
+        jest:
+            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
+            read-timeout: 180000
+
+    datasource:
+        hikari:
+            maximum-pool-size: 1000
+
+    jpa:
+        show-sql: true
+        properties:
+            hibernate.show_sql: true
+            hibernate.format_sql: true
+            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_query_cache: false
+
+    redis:
+        host: 10.10.0.18
+        port: 6379
+
+logging:
+    level:
+        ROOT: DEBUG
+        io.github.jhipster: DEBUG
+        com.mediastep.gosell.cashbook: DEBUG

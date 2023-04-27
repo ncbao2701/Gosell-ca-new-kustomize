@@ -1,0 +1,34 @@
+application:
+    webGsDashboardDomain: https://gosell.mediastep.com
+    webGsDashboardCallBackUrl: /payment/callback
+    webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
+
+spring:
+    data:
+        jest:
+            uri: http://10.10.0.104:9022
+            read-timeout: 180000
+
+logging:
+    level:
+        com.mediastep.beecow.store: DEBUG
+        
+jpa:
+    show-sql: true
+    properties:
+        hibernate.show_sql: true
+        hibernate.format_sql: true
+        hibernate.cache.use_second_level_cache: true
+        hibernate.cache.use_query_cache: false
+
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://10.10.0.18:6379

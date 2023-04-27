@@ -1,0 +1,102 @@
+spring:
+    data:
+        jest:
+            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
+            maxTotalConnection: 50
+            read-timeout: 180000
+
+    datasource:
+        hikari:
+            maximum-pool-size: 1000
+
+    jpa:
+        show-sql: true
+        properties:
+            hibernate.show_sql: true
+            hibernate.format_sql: true
+            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_query_cache: false
+
+hystrix:
+    command:
+        createItemByAdmin:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+                        interruptOnTimeout: false
+            fallback:
+                enabled: false
+        RestControllerCommand:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 60000
+                        interruptOnTimeout: false
+            fallback:
+                enabled: false
+        suggestProductModelByName:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 20000
+                        interruptOnTimeout: true
+            fallback:
+                enabled: false
+        getBhItem:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 15000
+                        interruptOnTimeout: true
+            fallback:
+                enabled: false
+        findByBranchIdsAndItemIdsMultiple:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 8000
+                        interruptOnTimeout: true
+            fallback:
+                enabled: false
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
+                        interruptOnTimeout: false
+# ===================================================================
+# Item Services specific properties
+# ===================================================================
+# application:
+#     useSearchRepo: true
+# ===================================================================
+# Business specific properties
+# ===================================================================
+business:
+    deal:
+        main:
+            fetchSize: 50
+    product:
+        main:
+            fetchSize: 50
+
+logging:
+    level:
+        com.mediastep.beecow.item: DEBUG
+
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://10.10.0.18:6379
+application:
+    itemProgressHandlingTimeoutInMinutes: 5
+    # key from https://freecurrencyapi.net
+    currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
+management:
+    metrics:
+        export:
+            prometheus:
+                enabled: false
+            jmx:
+                enabled: true

@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: tiktok-service
+  name: tiktok-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tiktok-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: tiktok-service
+    spec:
+      containers:
+      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/tiktok-services-dev:V.1.0.1
+        name: tiktok-services-dev
+        ports:
+        - name: service
+          containerPort: 8083
+          protocol: TCP
+        resources:
+          limits:
+            memory: 2Gi
+          requests:
+            memory: 1Gi
+        livenessProbe:
+          httpGet:
+            path: /management/health
+            port: 8083
+            scheme: HTTP
+          initialDelaySeconds: 120
+          timeoutSeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /management/health
+            port: 8083
+            scheme: HTTP
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "prod,swagger"
+          - name: SPRING_CLOUD_CONFIG_URI
+            value: "http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/config"
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=tiktok-services"
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "postgres"
+          - name: JHIPSTER_SLEEP
+            value: "10"
+          - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
+            value: "172.16.111.8:9300"
+          - name: SHOPEE_ID
+            value: "101224"
+          - name: SHOPEE_KEY
+            value: "6a4a97c2710c43ced62ed58ecce8823fdcef8975f627aa08ef80f7eb0bb9d9fd"
+          - name: SHOPEE_URL
+            value: "https://partner.uat.shopeemobile.com/api/v1"
+          - name: DASHBOARD_URL
+            value: "https://gosell.mediastep.com/channel/shopee/account"
+          - name: JAVA_OPTS
+            value: "-Xms256M -Xmx1G"
+      imagePullSecrets:
+        - name: fpt-cloud-registry
+---

@@ -1,0 +1,27 @@
+logging:
+    level:
+        com.mediastep.gosell.callcenter: DEBUG
+
+spring:
+    data:
+        jest:
+            uri: http://es5.mediastep.com:9202
+
+kafka:
+    bootstrap-servers: kafka.mediastep.com:9092
+
+application:
+    webGsDashboardDomain: https://gosell.mediastep.com
+    webGsDashboardCallBackUrl: /payment/callback
+    webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
+    vht:
+        apiKey: SKoSwiyFPDK9T8qgMuvad6urSgBRLuLhr9
+        apiSecret: TEozUFBtNmZzU0p4TG1JT2RkdXVra3pHN2ZmZEsyRQ==
+        baseUrl: https://acd-api.vht.com.vn/rest
+    email:
+        gosellSupportEmail: dai.mai@mediastep.com
+
+management:
+    health:
+        elasticsearch:
+            enabled: false

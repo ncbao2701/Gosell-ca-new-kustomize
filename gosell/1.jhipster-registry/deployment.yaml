@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jhipster-registry
+  name: jhipster-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jhipster-registry
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: jhipster-registry
+    spec:
+      containers:
+      - image: jhipster/jhipster-registry:v3.1.2
+        name: jhipster-registry
+        ports:
+        - containerPort: 8761
+        resources:
+          limits:
+            cpu: '1'
+            memory: '2G'
+          requests:
+            cpu: '0.25'
+            memory: '512M'
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "dev,native"
+          - name: SECURITY_USER_PASSWORD
+            value: "admin"
+          - name: JHIPSTER_LOGGING_LOGSTASH_ENABLED
+            value: "true"
+          - name: JHIPSTER_LOGGING_LOGSTASH_HOST
+            value: "172.16.111.8"
+          - name: JHIPSTER_METRICS_LOGS_ENABLED
+            value: "true"
+          - name: JHIPSTER_METRICS_LOGS_REPORTFREQUENCY
+            value: "60"
+        volumeMounts:
+          - name: jhipster-registry
+            mountPath: "/central-config"
+      volumes:
+        - name: jhipster-registry
+          configMap:
+            name: jhipster-registry
+      # imagePullSecrets:
+      #   - name: fpt-cloud-registry
+status: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: jhipster-registry
+  name: jhipster-registry
+spec:
+  ports:
+  - port: 8761
+    protocol: TCP
+    targetPort: 8761
+  selector:
+    app: jhipster-registry
+status:
+  loadBalancer: {}

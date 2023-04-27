@@ -1,0 +1,28 @@
+beecow:
+    debugMode: true
+    voucher:
+        voucherService:
+            code:
+                generationRetryTimes: 5
+            voucherGettingExpiredTime: 3
+            voucherGettingExpiredTimeUnit: DAYS
+            voucherGettingExpiredDateCheckTime: 86400000 # Check every day
+            voucherCheckPageSize: 100
+        voucherHardCopyService:
+            outputFromat: HTML
+            outputFolder: /vouchers
+            htmlToPDFCommandTimeout: 30000
+            htmlToPDFCommand: /wkhtmltox/wkhtmltopdf
+            awsBucketName: beecow-voucher-development
+            awsLocation: new
+            useThymeLeaf: true
+
+cloud:
+    aws:
+        region:
+            static: ap-southeast-1
+        stack:
+            auto: false
+        credentials:
+            accessKey: AKIAJ2GQ7ZJQ43ICWXJA
+            secretKey: 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

@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cell-center-services
+  name: cell-center-services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cell-center-services
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cell-center-services
+    spec:
+      containers:
+      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/call-center-services-dev:V.1.0.1
+        name: call-center-services-dev
+        ports:
+          - name: service
+            containerPort: 8083
+            protocol: TCP
+          - name: hazale
+            containerPort: 5701
+            protocol: UDP
+        resources: {}
+        livenessProbe:
+          httpGet:
+            path: /management/health
+            port: 8083
+            scheme: HTTP
+          initialDelaySeconds: 600
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /management/health
+            port: 8083
+            scheme: HTTP
+          initialDelaySeconds: 120
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "prod,swagger"
+          - name: SPRING_CLOUD_CONFIG_URI
+            value: "http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/config"
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=call-center-services"
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "postgres"
+          - name: JHIPSTER_SLEEP
+            value: "10"
+          - name: JAVA_OPTS
+            value: "-Xms256M -Xmx1G"
+      imagePullSecrets:
+        - name: fpt-cloud-registry
+status: {}
+---

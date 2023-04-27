@@ -1,0 +1,28 @@
+mediafile:
+  amazon:
+    bucketName:
+      billingInfo: beecow-billinginfo-development
+    cdn: true
+    cdnEndpoint:
+      status: https://dhsfy2j3z9bm3.cloudfront.net
+      item: https://d3a0f2zusjbf7r.cloudfront.net
+      cupid: https://d1gx7yxn0p91c9.cloudfront.net
+      general: https://dm4fv4ltmsvz0.cloudfront.net
+      doc: https://d2wimnuwlet7ii.cloudfront.net
+      banner: https://d8qbqtt58lzda.cloudfront.net
+      job: https://d3sla10qaze016.cloudfront.net
+      accessory: https://d36knys0k45mi9.cloudfront.net
+      liveStream: http://d3cah8h6fn1rc6.cloudfront.net/
+      storeLogo: https://d8qbqtt58lzda.cloudfront.net
+      appIcon: https://d8qbqtt58lzda.cloudfront.net
+
+jhipster:
+  cache: # Cache configuration
+    redis: # Redis configuration
+      server: redis://10.10.0.18:6379
+
+spring:
+  jpa:
+    properties:
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false

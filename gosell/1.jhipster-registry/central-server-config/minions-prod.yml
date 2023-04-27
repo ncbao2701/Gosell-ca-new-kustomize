@@ -1,0 +1,10 @@
+beecow:
+    debug-mode: true
+    feign.client.logger.level: BASIC
+    order:
+        orderService:
+            orderExpireCheckTime: 60000 # Check every 1m
+            orderAbandonCheckTime: 1800000 # Check every 30m
+    voucher:
+        voucherService:
+            voucherGettingExpiredDateCheckTime: 86400000 # Check every day
