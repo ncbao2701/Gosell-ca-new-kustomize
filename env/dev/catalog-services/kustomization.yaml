@@ -8,10 +8,10 @@ namespace: dev
 images:
 - name: catalog-services
 newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-catalog-services
-newTag: 2023.04.29.1
+newTag: 2023.04.29.2
 
 resources:
-- ../../../gosell/3.catalogservice
+- ../../../gosell/3.catalog-services
 labels:
 - includeSelectors: true
 pairs:
