@@ -8,7 +8,7 @@ namespace: dev
 images:
 - name: gateway
 newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-gateway
-newTag: 2023.04.29.14
+newTag: 2023.04.29.15
 
 resources:
 - ../../../gosell/2.gateway
