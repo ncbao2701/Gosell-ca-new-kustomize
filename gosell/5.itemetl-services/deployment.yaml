@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: item-etl-service
-  name: item-etl-service
+    app: itemetl-services
+  name: itemetl-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: item-etl-service
+      app: itemetl-services
   strategy: {}
   template:
     metadata:
       labels:
-        app: item-etl-service
+        app: itemetl-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/itemetlservice:V.1.0.1
-        name: item-etl-service
+      - image: itemetl-services
+        name: itemetl-services
         ports:
         - containerPort: 8086
         resources: {}

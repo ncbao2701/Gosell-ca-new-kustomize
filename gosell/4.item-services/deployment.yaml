@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: itemservice-app
-  name: itemservice-app
+    app: item-services
+  name: item-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: itemservice-app
+      app: item-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: itemservice-app
+        app: item-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/itemservies-dev:V.1.0.1
-        name: itemservice-app
+      - image: item-services
+        name: item-services
         ports:
         - containerPort: 8889
         resources: {}
@@ -68,14 +66,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: itemservice-app
-  name: itemservice-app
+    app: item-services
+  name: item-services
 spec:
   ports:
   - port: 8889
     protocol: TCP
     targetPort: 8889
   selector:
-    app: itemservice-app
+    app: item-services
 status:
   loadBalancer: {}

@@ -1,31 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: catalog-service
-  name: catalog-service
+    app: media-services
+  name: media-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: catalog-service
+      app: media-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: catalog-service
+        app: media-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/catalog-services-qa:V.1.0.1
-        name: catalog-services-qa
+      - image: media-services
+        name: media-services
         ports:
-        - containerPort: 9000
+        - name: service
+          containerPort: 8990
+          protocol: TCP
+        - name: hazale
+          containerPort: 5701
+          protocol: UDP
         resources: {}
         livenessProbe:
           tcpSocket:
-            port: 9000
+            port: 8990
           initialDelaySeconds: 600
           timeoutSeconds: 1
           periodSeconds: 10
@@ -33,7 +36,7 @@ spec:
           failureThreshold: 3
         readinessProbe:
           tcpSocket:
-            port: 9000
+            port: 8990
           initialDelaySeconds: 120
           timeoutSeconds: 1
           periodSeconds: 10
@@ -45,34 +48,17 @@ spec:
           - name: SPRING_CLOUD_CONFIG_URI
             value: "http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=catalog-services"
+            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=media-services"
+          - name: POSTGRES_USER
+            value: "postgres"
           - name: POSTGRES_PASSWORD
-            value: "dbacatalog"
-          - name: POSTGRES_PASSWORD
-            value: "dbacatalog"
+            value: "postgres"
           - name: JHIPSTER_SLEEP
             value: "3"
-          - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
-            value: "jhipster-elasticsearch.logs.svc.cluster.local:9300"
           - name: JAVA_OPTS
             value: "-Xms256M -Xmx1G"
       imagePullSecrets:
         - name: fpt-cloud-registry
 status: {}
+
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  creationTimestamp: null
-  labels:
-    app: catalog-service
-  name: catalog-service
-spec:
-  ports:
-  - port: 9000
-    protocol: TCP
-    targetPort: 9000
-  selector:
-    app: catalog-service
-status:
-  loadBalancer: {}
