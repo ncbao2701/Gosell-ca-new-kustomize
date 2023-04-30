@@ -1,59 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: facebook-services
-  name: facebook-services
+    app: job-services
+  name: job-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: facebook-services
+      app: job-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: facebook-services
+        app: job-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/facebook-services-dev:V.1.0.1
-        name: facebook-services-dev
+      - image: job-services
+        name: job-services
         ports:
         - name: service
-          containerPort: 8890
+          containerPort: 9003
           protocol: TCP
         - name: hazale
           containerPort: 5701
           protocol: UDP
         resources: {}
-        livenessProbe:
-          tcpSocket:
-            port: 8890
-          initialDelaySeconds: 600
-          timeoutSeconds: 1
-          periodSeconds: 10
-          successThreshold: 1
-          failureThreshold: 3
-        readinessProbe:
-          tcpSocket:
-            port: 8890
-        env: 
+        env:
           - name: SPRING_PROFILES_ACTIVE
             value: "prod,swagger"
           - name: SPRING_CLOUD_CONFIG_URI
             value: "http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=facebook-services"
+            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=job-services"
+          - name: JHIPSTER_SLEEP
+            value: "3"
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD
             value: "postgres"
-          - name: JHIPSTER_SLEEP
-            value: "10"
           - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
-            value: "172.16.111.8:9300"
+            value: "192.16.111.8:9300"
           - name: JAVA_OPTS
             value: "-Xms256M -Xmx1G"
       imagePullSecrets:
