@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: user-services
   name: user-services
@@ -10,16 +9,14 @@ spec:
   selector:
     matchLabels:
       app: user-services
-  strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: user-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/user-services-dev:V.1.0.1
-        name: user-services-dev
+      - image: user-services
+        name: user-services
         ports:
         - name: service
           containerPort: 8200
