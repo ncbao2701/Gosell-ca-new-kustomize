@@ -16,8 +16,8 @@ spec:
         app: store-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/store-service-dev:V.1.0.1
-        name: store-service-dev
+      - image: store-services
+        name: store-services
         ports:
         - name: service
           containerPort: 8586
