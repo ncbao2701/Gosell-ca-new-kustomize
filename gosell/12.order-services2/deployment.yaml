@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: order-services-2
-  name: order-services-2
+    app: order-service2
+  name: order-service2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: order-services-2
+      app: order-service2
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: order-services-2
+        app: order-service2
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/orderservices2-dev:V.1.0.1
-        name: orderservices2-dev
+      - image: order-service2
+        name: order-service2
         ports:
         - name: service
           containerPort: 8404
