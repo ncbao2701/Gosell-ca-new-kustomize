@@ -2,22 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: review-service
-  name: review-service
+    app: review-services
+  name: review-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: review-service
-  strategy: {}
+      app: review-services
   template:
     metadata:
       labels:
-        app: review-service
+        app: review-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/review-services-dev:V.1.0.1
-        name: review-services-dev
+      - image: review-services
+        name: review-services
         ports:
         - name: service
           containerPort: 8879
