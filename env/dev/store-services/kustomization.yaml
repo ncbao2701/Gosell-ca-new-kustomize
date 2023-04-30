@@ -6,17 +6,17 @@ namespace: dev
 
 images:
 - name: store-services
-newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-store-services
-newTag: 2023.04.29.4
+  newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-store-services
+  newTag: 2023.04.29.4
 
 resources:
 - ../../../gosell/6.store-services
 labels:
 - includeSelectors: true
-pairs:
+  pairs:
     env: dev
 
 replicas:
 - name: store-services
-    count: 10
+  count: 10
 
