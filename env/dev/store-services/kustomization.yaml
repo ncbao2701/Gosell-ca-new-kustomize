@@ -10,7 +10,7 @@ images:
   newTag: 2023.04.29.4
 
 resources:
-- ../../../gosell/6.store-services
+- ../../../gosell/8.store-services
 labels:
 - includeSelectors: true
   pairs:
