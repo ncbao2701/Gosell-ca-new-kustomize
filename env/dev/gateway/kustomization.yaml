@@ -14,7 +14,7 @@ resources:
 
 labels:
 - includeSelectors: true
-pairs:
+  pairs:
     env: dev
 
 replicas:
