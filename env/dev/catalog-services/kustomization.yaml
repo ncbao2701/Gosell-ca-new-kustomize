@@ -13,7 +13,7 @@ resources:
 - ../../../gosell/3.catalog-services
 labels:
 - includeSelectors: true
-pairs:
+  pairs:
     env: dev
 
 replicas:
