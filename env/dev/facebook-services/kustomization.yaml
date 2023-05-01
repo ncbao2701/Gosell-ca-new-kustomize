@@ -8,7 +8,7 @@ namespace: dev
 images:
 - name: facebook-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-facebook-services
-  newTag:     2023.04.30.26
+  newTag:      2023.05.01.1
 
 resources:
 - ../../../gosell/26.facebook-services
