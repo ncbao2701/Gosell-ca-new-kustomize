@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: dev-
+namespace: dev
+
+images:
+- name: facebook-services
+  newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-facebook-services
+  newTag:     2023.04.30.26
+
+resources:
+- ../../../gosell/26.facebook-services
+
+labels:
+- includeSelectors: true
+  pairs:
+    env: dev
+
+replicas:
+- name: facebook-services
+  count: 10
+
