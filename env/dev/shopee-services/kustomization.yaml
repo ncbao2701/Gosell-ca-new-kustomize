@@ -5,12 +5,12 @@ namePrefix: dev-
 namespace: dev
 
 images:
-- name: gateway
-  newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-gateway
+- name: shopee-services
+  newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-shopee-services
   newTag:     2023.04.30.26
 
 resources:
-- ../../../gosell/2.gateway
+- ../../../gosell/23.shopee-services
 
 labels:
 - includeSelectors: true
@@ -18,7 +18,7 @@ labels:
     env: dev
 
 replicas:
-- name: gateway
+- name: shopee-services
   count: 10
 
 
