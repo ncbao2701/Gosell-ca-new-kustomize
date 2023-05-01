@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: billinginfo
-  name: billinginfo
+    app: billing-info-services
+  name: billing-info-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: billinginfo
+      app: billing-info-services
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: billinginfo
+        app: billing-info-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/billinginfo-dev:V.1.0.1
-        name: billinginfo-dev
+      - image: billing-info-services
+        name: billing-info-services
         ports:
         - name: service
           containerPort: 8405
