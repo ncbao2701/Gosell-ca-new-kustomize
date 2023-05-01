@@ -10,7 +10,7 @@ images:
   newTag: 2023.04.30.26
 
 resources:
-- ../../../gosell/2.message-services
+- ../../../gosell/15.message-services
 
 labels:
 - includeSelectors: true
