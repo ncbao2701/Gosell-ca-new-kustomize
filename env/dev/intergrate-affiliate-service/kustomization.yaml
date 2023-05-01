@@ -10,7 +10,7 @@ images:
   newTag:      2023.05.01.12
 
 resources:
-- ../../../gosell/13.intergrate-affiliate-service
+- ../../../gosell/14.intergrate-affiliate-service
 
 labels:
 - includeSelectors: true
