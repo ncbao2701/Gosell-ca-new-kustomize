@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: tiktok-service
-  name: tiktok-service
+    app: tiktok-services
+  name: tiktok-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tiktok-service
+      app: tiktok-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: tiktok-service
+        app: tiktok-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/tiktok-services-dev:V.1.0.1
-        name: tiktok-services-dev
+      - image: tiktok-services
+        name: tiktok-services
         ports:
         - name: service
           containerPort: 8083
