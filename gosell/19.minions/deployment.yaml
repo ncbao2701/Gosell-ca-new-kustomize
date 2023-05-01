@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: minions
-  name: minions
+    app: minions-services
+  name: minions-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: minions
+      app: minions-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: minions
+        app: minions-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/minions-dev:V.1.0.1
-        name: minions-dev
+      - image: minions-services
+        name: minions-services
         ports:
         - name: service
           containerPort: 8403
