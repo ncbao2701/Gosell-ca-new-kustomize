@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: mail-services
   name: mail-services
@@ -13,13 +12,12 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: mail-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/mail-services-dev:V.1.0.1
-        name: mail-services-dev
+      - image: mail-services
+        name: mail-services
         ports:
         - name: service
           containerPort: 8180
