@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: cash-book-service
-  name: cash-book-service
+    app: cashbook-services
+  name: cashbook-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cash-book-service
+      app: cashbook-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: cash-book-service
+        app: cashbook-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/cash-book-service:V.1.0.1
-        name: cash-book-service
+      - image: cashbook-services
+        name: cashbook-services
         ports:
         - name: service
           containerPort: 8284
