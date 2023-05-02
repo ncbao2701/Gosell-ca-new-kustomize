@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: theme-services
   name: theme-services
@@ -13,13 +12,12 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: theme-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/theme-services-dev:V.1.0.1
-        name: theme-services-dev
+      - image: theme-services
+        name: theme-services
         ports:
           - name: service
             containerPort: 8282
