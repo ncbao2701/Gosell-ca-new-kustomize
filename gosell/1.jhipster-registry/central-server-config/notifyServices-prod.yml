@@ -1,8 +1,0 @@
-application:
-    #ios-app-arn: arn:aws:sns:ap-southeast-1:620662496508:app/APNS/beecow-ios-prod
-    ios-app-arn: arn:aws:sns:ap-southeast-1:620662496508:app/APNS_SANDBOX/beecow-ios-sandbox
-    android-app-arn: arn:aws:sns:ap-southeast-1:620662496508:app/GCM/beecow-android-dev
-    push-notify-profile: dev
-    firebase:
-        key: AAAAhlu00qM:APA91bFoSdySr1H4aPELv43XjCFXa76MOUJg_11RWKu4JAsQ93jt5TXlaoOAc7Z2MXzexngOMXSaJ0IzFcElEa75rPUIH_ToieUR9CDw0bONDm67SnsLja72P-vwI8_YqY6L62TfZ09J
-        url: https://fcm.googleapis.com/fcm/send
