@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: cell-center-services
-  name: cell-center-services
+    app: callcenter-services
+  name: callcenter-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cell-center-services
+      app: callcenter-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: cell-center-services
+        app: callcenter-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/call-center-services-dev:V.1.0.1
-        name: call-center-services-dev
+      - image: callcenter-services
+        name: callcenter-services
         ports:
           - name: service
             containerPort: 8083
