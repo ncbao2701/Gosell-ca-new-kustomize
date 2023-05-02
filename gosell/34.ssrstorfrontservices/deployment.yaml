@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: ssr-store-front
-  name: ssr-store-front
+    app: ssrstorefront-services
+  name: ssrstorefront-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ssr-store-front
+      app: ssrstorefront-services
   strategy: {}
   template:
     metadata:
       labels:
-        app: ssr-store-front
+        app: ssrstorefront-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ssr-store-front-dev:V.1.0.1
-        name: ssr-store-front-dev
+      - image: ssrstorefront-services
+        name: ssrstorefront-services
         ports:
           - name: service
             containerPort: 8286
