@@ -1,25 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: affiliate-service
-  name: affiliate-service
+    app: affiliate-services
+  name: affiliate-services
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: affiliate-service
+      app: affiliate-services
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
-        app: affiliate-service
+        app: affiliate-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/affiliate-service-dev:V.1.0.1
-        name: affiliate-service-dev
+      - image: affiliate-services
+        name: affiliate-services
         ports:
           - name: service
             containerPort: 8087
