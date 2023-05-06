@@ -18,4 +18,4 @@ labels:
 
 replicas:
 - name: itemetl-services
-  count: 10
+  count: 2
