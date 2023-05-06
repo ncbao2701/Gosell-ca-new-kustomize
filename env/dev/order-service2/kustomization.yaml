@@ -19,5 +19,5 @@ labels:
 
 replicas:
 - name: order-service2
-  count: 10
+  count: 2
 
