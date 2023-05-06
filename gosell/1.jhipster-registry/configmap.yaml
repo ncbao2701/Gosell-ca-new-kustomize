@@ -2626,5 +2626,5 @@ data:
     \    \n    redirectUri: https://gosell.mediastep.com/live-chat/zalo/resolve-token "
 kind: ConfigMap
 metadata:
-  creationTimestamp: null
   name: jhipster-registry
+  namespace: dev

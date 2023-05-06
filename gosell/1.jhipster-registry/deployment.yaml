@@ -58,7 +58,7 @@ spec:
           - name: JHIPSTER_METRICS_LOGS_REPORTFREQUENCY
             value: "60"
         volumeMounts:
-          - name: gateway
+          - name: jhipster-registry
             mountPath: "/central-config"
       volumes:
         - name: jhipster-registry
