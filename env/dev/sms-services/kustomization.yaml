@@ -19,6 +19,6 @@ labels:
 
 replicas:
 - name: sms-services
-  count: 10
+  count: 2
 
 
