@@ -19,4 +19,4 @@ labels:
 
 replicas:
 - name: lazada-services
-  count: 10
+  count: 2
