@@ -63,7 +63,7 @@ spec:
           - name: SHOPEE_URL
             value: "https://partner.uat.shopeemobile.com/api/v1"
           - name: DASHBOARD_URL
-            value: "https://gosell.mediastep.com/channel/shopee/account"
+            value: "https://dev-gosell.mediastep.com/channel/shopee/account"
           - name: JAVA_OPTS
             value: "-Xms256M -Xmx1G"
       imagePullSecrets:
