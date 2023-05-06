@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: intergrate-affiliate-services
-  name: intergrate-affiliate-services
+    app: intergrate-affiliate-service
+  name: intergrate-affiliate-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: intergrate-affiliate-services
+      app: intergrate-affiliate-service
   strategy: {}
   template:
     metadata:
       labels:
-        app: intergrate-affiliate-services
+        app: intergrate-affiliate-service
     spec:
       containers:
       - image: intergrate-affiliate-service
