@@ -19,4 +19,4 @@ labels:
 
 replicas:
 - name: integrate-order-service
-  count: 10
+  count: 2
