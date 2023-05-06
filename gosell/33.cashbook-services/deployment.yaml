@@ -43,9 +43,9 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: "prod,swagger"
           - name: SPRING_CLOUD_CONFIG_URI
-            value: "http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/config"
+            value: "http://admin:admin@dev-registry.dev.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=cashbook-services"
+            value: "jdbc:postgresql://172.16.10.8:5432/postgres?currentSchema=cashbook-services"
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD
