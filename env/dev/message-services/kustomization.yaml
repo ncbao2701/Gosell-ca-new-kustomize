@@ -7,7 +7,7 @@ namespace: dev
 images:
 - name: message-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-message-services
-  newTag:   2023.05.01.2
+  newTag:    2023.05.06.3
 
 resources:
 - ../../../gosell/15.message-services
