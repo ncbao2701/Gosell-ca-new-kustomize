@@ -18,5 +18,5 @@ labels:
 
 replicas:
 - name: catalog-services
-  count: 10
+  count: 2
 
