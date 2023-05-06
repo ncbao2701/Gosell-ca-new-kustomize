@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
     app: billing-info-services
   name: billing-info-services
@@ -13,7 +12,6 @@ spec:
   strategy: {}
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: billing-info-services
     spec:
@@ -56,9 +54,9 @@ spec:
           - name: SPRING_PROFILES_ACTIVE
             value: "prod,swagger"
           - name: SPRING_CLOUD_CONFIG_URI
-            value: "http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/config"
+            value: "http://admin:admin@dev-registry.dev.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=billing-services"
+            value: "jdbc:postgresql://172.16.10.85:5432/postgres?currentSchema=billing-services"
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD
