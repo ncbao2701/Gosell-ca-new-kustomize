@@ -15,7 +15,7 @@ spec:
         app: main-services
     spec:
       containers:
-      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/main-servcies-dev:V.1.0.1
+      - image: main-services
         name: main-services
         ports:
         - name: service
