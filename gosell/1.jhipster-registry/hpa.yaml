@@ -1,27 +1,15 @@
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: registry
 spec:
-  maxReplicas: 3
-  minReplicas: 1
+  maxReplicas: 5
+  minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: registry
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: AverageValue
-          averageUtilization: 80
-    - type: Resource
-      resource:
-        name: memory
-        target:
-          type: Utilization
-          averageUtilization: 80
-  behavior:
-    scaleDown:
-      stabilizationWindowSeconds: 300
+  targetCPUUtilizationPercentage: 75
+status:
+  currentReplicas: 0
+  desiredReplicas: 0
