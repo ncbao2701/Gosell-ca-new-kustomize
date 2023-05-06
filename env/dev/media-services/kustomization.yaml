@@ -18,5 +18,5 @@ labels:
 
 replicas:
 - name: media-services
-  count: 10
+  count: 2
 
