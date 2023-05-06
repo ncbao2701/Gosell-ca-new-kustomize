@@ -48,7 +48,7 @@ spec:
           - name: SPRING_CLOUD_CONFIG_URI
             value: "http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql://172.16.111.46:5432/postgres?currentSchema=gateway-services"
+            value: "jdbc:postgresql://172.16.111.85:5432/postgres?currentSchema=gateway-services"
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD 
