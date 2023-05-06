@@ -19,6 +19,6 @@ labels:
 
 replicas:
 - name: payment-services
-  count: 10
+  count: 2
 
 
