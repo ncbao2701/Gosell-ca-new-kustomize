@@ -3,6 +3,6 @@ kind: Kustomization
 resources:
 - configmap.yaml
 - deployment.yaml
-- hpa.yaml
+#- hpa.yaml
 commonLabels:
   owner: ncb
