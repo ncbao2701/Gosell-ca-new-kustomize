@@ -188,7 +188,7 @@ data:
     eureka:
       client:
         serviceUrl:
-          defaultZone: http://admin:admin@jhipster-registry.default.svc.cluster.local:8761/eureka/
+          defaultZone: http://admin:admin@dev-registry.dev.svc.cluster.local:8761/eureka/
       instance:
         lease-renewal-interval-in-seconds: 2
         registry-fetch-interval-seconds: 2
@@ -200,8 +200,8 @@ data:
         stream:
           kafka:
             binder:
-              brokers: kafka.kafka.svc.cluster.local:9092
-              zk-nodes: kafka-zookeeper.kafka.svc.cluster.local:2181
+              brokers: 172.16.111.8:9092
+              zk-nodes: 172.16.111.8:2181
       zipkin:
         enabled: true
         baseUrl: http://172.16.111.8:9411
@@ -1718,7 +1718,7 @@ data:
                 uri: http://172.16.111.8:9200
 
     kafka:
-        bootstrap-servers: kafka.kafka.svc.cluster.local:9092
+        bootstrap-servers: 172.16.111.8:9092
 
     application:
         webGsDashboardDomain: https://gosell.mediastep.com
@@ -1855,7 +1855,7 @@ data:
             redis: # Redis configuration
                 server: redis://redis-0.redis.redis.svc.cluster.local:6379
     kafka:
-        bootstrapServers: kafka.kafka.svc.cluster.local:9092
+        bootstrapServers: 172.16.111.8:9092
   intergrateaffiliateservice-prod.yml: |-
     spring:
 
@@ -1876,7 +1876,7 @@ data:
                 server: redis://redis-0.redis.redis.svc.cluster.local:6379
 
     kafka:
-        bootstrapServers: kafka.kafka.svc.cluster.local:9092
+        bootstrapServers: 172.16.111.8:9092
   inventoryservices-prod.yml: |
     jhipster:
       cache:
@@ -1889,7 +1889,7 @@ data:
             auto-sync-stock-topic: syncStock
             auto-sync-stock-group: inventoryServices
             auto-sync-stock-auto-startup: true
-        bootstrap-servers: 'kafka.kafka.svc.cluster.local:9092'
+        bootstrap-servers: '172.16.111.8:9092'
       jpa:
         show-sql: true
         properties:
@@ -2043,7 +2043,7 @@ data:
     eureka:
         client:
             serviceUrl:
-                defaultZone: http://admin:admin@localhost:8761/eureka/
+                defaultZone: http://admin:admin@dev-registry.dev.svc.cluster.local:8761/eureka/
   jobServices-prod.yml: |
     beecow:
         debug-mode: true
@@ -2185,7 +2185,7 @@ data:
                 uri: http://172.16.111.8:9411
 
     kafka:
-        bootstrap-servers: kafka.kafka.svc.cluster.local:9092
+        bootstrap-servers: 172.16.111.8:9092
 
     application:
         gosellDomain: gosell.vn
