@@ -18,5 +18,5 @@ labels:
 
 replicas:
 - name: store-services
-  count: 10
+  count: 2
 
