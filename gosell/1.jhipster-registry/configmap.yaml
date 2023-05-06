@@ -20,7 +20,7 @@ data:
                 hibernate.cache.use_query_cache: false
 
         redis:
-            host: redis.caching.svc.cluster.local
+            host: redis-0.redis.redis.svc.cluster.local
             port: 6379
 
     #    cloud:
@@ -78,7 +78,7 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: 'redis://redis.caching.svc.cluster.local:6379'
+                server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
     application:
         itemProgressHandlingTimeoutInMinutes: 5
         webGsDashboardDomain: https://admin.gosell.vn
@@ -1628,7 +1628,7 @@ data:
                     tokenValidityInSecondsForRememberMe: 86400 #86400 #seconds
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
     gosell:
         security:
             authentication:
@@ -1685,7 +1685,7 @@ data:
       jpa:
         show-sql: true
       redis:
-        host: redis.caching.svc.cluster.local
+        host: redis-0.redis.redis.svc.cluster.local
         port: 6379
         database: 0
       data:
@@ -1695,12 +1695,12 @@ data:
     jhipster:
       cache: # Cache configuration
         redis: # Redis configuration
-          server: 'redis://redis.caching.svc.cluster.local:6379'
+          server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
   billingInfoServices-prod.yml: |-
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
     logging:
         level:
             com.mediastep.beecow.billing: DEBUG
@@ -1755,7 +1755,7 @@ data:
                 hibernate.cache.use_query_cache: false
 
         redis:
-            host: redis.caching.svc.cluster.local
+            host: redis-0.redis.redis.svc.cluster.local
             port: 6379
 
     logging:
@@ -1766,7 +1766,7 @@ data:
   catalogServices-prod.yml: |-
     spring:
       redis:
-        host: redis.caching.svc.cluster.local
+        host: redis-0.redis.redis.svc.cluster.local
         port: 6379
         database: 0
       jpa:
@@ -1788,13 +1788,13 @@ data:
                 uri: http://172.16.111.8:9200
                 read-timeout: 180000
         redis:
-            host: redis.caching.svc.cluster.local
+            host: redis-0.redis.redis.svc.cluster.local
             port: 6379
             database: 0
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
     facebook:
         adAppSecret: 7df3ae5409b0c926197c15f65507f5dc
         # accessTokenBusiness:
@@ -1853,14 +1853,14 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
     kafka:
         bootstrapServers: kafka.kafka.svc.cluster.local:9092
   intergrateaffiliateservice-prod.yml: |-
     spring:
 
         redis:
-            host: redis.caching.svc.cluster.local
+            host: redis-0.redis.redis.svc.cluster.local
             port: 6379
 
     #    cloud:
@@ -1873,7 +1873,7 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
 
     kafka:
         bootstrapServers: kafka.kafka.svc.cluster.local:9092
@@ -1881,7 +1881,7 @@ data:
     jhipster:
       cache:
         redis:
-          server: 'redis://redis.caching.svc.cluster.local:6379'
+          server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
     spring:
       kafka:
         consumer:
@@ -1988,7 +1988,7 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
     application:
         itemProgressHandlingTimeoutInMinutes: 5
         # key from https://freecurrencyapi.net
@@ -2022,7 +2022,7 @@ data:
       jhipster:
           cache: # Cache configuration
               redis: # Redis configuration
-                  server: redis://redis.caching.svc.cluster.local:6379
+                  server: redis://redis-0.redis.redis.svc.cluster.local:6379
       application:
           inventorySummaryBranchCdc:
               pluginName: pgoutput
@@ -2072,10 +2072,10 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local
+                server: redis://redis-0.redis.redis.svc.cluster.local
     spring:
         redis:
-            host: redis.caching.svc.cluster.local
+            host: redis-0.redis.redis.svc.cluster.local
             port: 6379
             database: 1
         data:
@@ -2197,7 +2197,7 @@ data:
   mainService-prod.yml: |-
     spring:
       redis:
-        host: redis.caching.svc.cluster.local
+        host: redis-0.redis.redis.svc.cluster.local
         port: 6379
         database: 0
     logging:
@@ -2225,7 +2225,7 @@ data:
     jhipster:
       cache: # Cache configuration
         redis: # Redis configuration
-          server: redis://redis.caching.svc.cluster.local:6379
+          server: redis://redis-0.redis.redis.svc.cluster.local:6379
 
     spring:
       jpa:
@@ -2380,7 +2380,7 @@ data:
     \                   # See https://github.com/spring-cloud/spring-cloud-netflix/issues/1330\n
     \                   thread:\n                        timeoutInMilliseconds: 10000\n
     \                       \njhipster:\n    cache: # Cache configuration\n        redis:
-    # Redis configuration\n            server: redis://redis.caching.svc.cluster.local:6379\n\nlogging:\n
+    # Redis configuration\n            server: redis://redis-0.redis.redis.svc.cluster.local:6379\n\nlogging:\n
     \   level:\n        ROOT: DEBUG\n        com.mediastep.beecow.order2: DEBUG"
   paymentServices-prod.yml: |-
     beecow:
@@ -2428,7 +2428,7 @@ data:
     jhipster:
         cache:
             redis:
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
 
     logging:
         level:
@@ -2474,7 +2474,7 @@ data:
     \"https://gosell.mediastep.com/channel/shopee/account\"\n    authorizationUrl:
     \"${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}\"\n
     \   dashboardAuthRedirectPath: \"/channel/shopee/account\"\n\nspring:\n  jpa:\n
-    \   show-sql: true\n  redis:\n    host: redis.caching.svc.cluster.local\n    port: 6379\n    database:
+    \   show-sql: true\n  redis:\n    host: redis-0.redis.redis.svc.cluster.local\n    port: 6379\n    database:
     0\n\nlogging:\n  level:\n    ROOT: INFO\n    com.mediastep.beecow.shopee: DEBUG\n\nhystrix:\n
     \ command:\n    default:\n      execution:\n        isolation:\n          thread:\n
     \           timeoutInMilliseconds: 10000\n    RestControllerCommand:\n      execution:\n
@@ -2515,7 +2515,7 @@ data:
     #    mongodb:
     #      uri: mongodb://10.10.0.18:27017/ssr
       redis:
-        host: redis.caching.svc.cluster.local
+        host: redis-0.redis.redis.svc.cluster.local
         port: 6379
 
     jhipster:
@@ -2556,7 +2556,7 @@ data:
     false\n\nhystrix:\n    command:\n        default:\n            execution:\n                isolation:\n
     \                   thread:\n                        timeoutInMilliseconds: 10000\njhipster:\n
     \   cache: # Cache configuration\n        redis: # Redis configuration\n            server:
-    redis://redis.caching.svc.cluster.local:6379"
+    redis://redis-0.redis.redis.svc.cluster.local:6379"
   test.yml: tes
   themeServices-prod.yml: |-
     logging:
@@ -2588,7 +2588,7 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis.caching.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
   voucherServices-prod.yml: |
     beecow:
         debugMode: true
