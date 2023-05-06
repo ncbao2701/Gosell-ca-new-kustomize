@@ -18,6 +18,6 @@ labels:
     env: dev
 
 replicas:
-- name: intergrate-affiliate-services
+- name: intergrate-affiliate-service
   count: 2
 
