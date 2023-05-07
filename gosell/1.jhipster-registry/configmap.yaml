@@ -4,13 +4,11 @@ data:
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
+                uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
                 read-timeout: 180000
-
         datasource:
             hikari:
                 maximum-pool-size: 1000
-
         jpa:
             show-sql: true
             properties:
@@ -18,11 +16,9 @@ data:
                 hibernate.format_sql: true
                 hibernate.cache.use_second_level_cache: true
                 hibernate.cache.use_query_cache: false
-
         redis:
             host: redis-0.redis.redis.svc.cluster.local
             port: 6379
-
     #    cloud:
     #        stream:
     #            kafka:
@@ -68,17 +64,15 @@ data:
         product:
             main:
                 fetchSize: 50
-
     logging:
         level:
             ROOT: DEBUG
             io.github.jhipster: DEBUG
             com.mediastep.gosell.affiliate: DEBUG
-
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
     application:
         itemProgressHandlingTimeoutInMinutes: 5
         webGsDashboardDomain: https://admin.gosell.vn
@@ -1838,7 +1832,7 @@ data:
       jpa:
         show-sql: true
       redis:
-        host: 10.10.0.18
+        host: redis-0.redis.redis.svc.cluster.local
         port: 6379
         database: 0
       data:
@@ -2521,7 +2515,7 @@ data:
         enabled: true
     #  data:
     #    mongodb:
-    #      uri: mongodb://10.10.0.18:27017/ssr
+    #      uri: mongodb://redis-0.redis.redis.svc.cluster.local:27017/ssr
       redis:
         host: redis-0.redis.redis.svc.cluster.local
         port: 6379
