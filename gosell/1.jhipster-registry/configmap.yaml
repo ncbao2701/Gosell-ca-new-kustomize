@@ -2234,6 +2234,10 @@ data:
           hibernate.cache.use_query_cache: false
   messageServices-prod.yml: |-
     #common configuration shared between all applications
+    jhipster:
+      cache: # Cache configuration
+          redis: # Redis configuration
+              server: redis://redis-0.redis.redis.svc.cluster.local:6379
     beecow:
         debugMode: true
         messageServices:
@@ -2252,6 +2256,10 @@ data:
         data:
             jest:
                 uri: http://172.16.111.8:9200
+        redis:
+          host: redis-0.redis.redis.svc.cluster.local
+          port: 6379
+          database: 0
   minions-prod.yml: |
     beecow:
         debug-mode: true
