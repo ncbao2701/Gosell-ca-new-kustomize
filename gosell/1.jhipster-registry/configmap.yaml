@@ -2080,11 +2080,11 @@ data:
             database: 0
         data:
             jest:
-                uri: http://172.16.111.8:9022
+                uri: http://172.16.111.8:9200
                 read-timeout: 180000
         elasticsearch:
             rest:
-                uris: http://172.16.111.8:9022
+                uris: http://172.16.111.8:9200
   livestreamServices-prod.yml: |-
     beecow:
         livestreamServices:
