@@ -1,4 +1,8 @@
 #common configuration shared between all applications
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://10.10.0.18:6379
 beecow:
     debugMode: true
     messageServices:
@@ -16,4 +20,8 @@ beecow:
 spring:
     data:
         jest:
-            uri: http://es5.mediastep.com:9202
+            uri: http://10.10.0.104:9022
+    redis:
+        host: 10.10.0.18
+        port: 6379
+        database: 0
