@@ -2549,7 +2549,7 @@ data:
   storeService-prod.yml: "application:\n    webGsDashboardDomain: https://dev-gosell.mediastep.com\n
     \   webGsDashboardCallBackUrl: /payment/callback\n    webGsDashboardVNPTCallBackUrl:
     /payment/epay-callback?description={0}\n\nspring:\n    data:\n        jest:\n
-    \           uri: http://172.16.111.8:9200\n            read-timeout: 180000\n\nlogging:\n
+    \           uri: http://172.16.111.8:9022\n            read-timeout: 180000\n\nlogging:\n
     \   level:\n        com.mediastep.beecow.store: DEBUG\n        \njpa:\n    show-sql:
     true\n    properties:\n        hibernate.show_sql: true\n        hibernate.format_sql:
     true\n        hibernate.cache.use_second_level_cache: true\n        hibernate.cache.use_query_cache:
