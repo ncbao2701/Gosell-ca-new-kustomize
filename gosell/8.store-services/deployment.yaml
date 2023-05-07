@@ -26,6 +26,14 @@ spec:
           containerPort: 5701
           protocol: UDP
         resources: {}
+        startupProbe:
+          tcpSocket:
+            port: 8586
+          initialDelaySeconds: 120
+          timeoutSeconds: 2
+          periodSeconds: 10
+          successThreshold: 10
+          failureThreshold: 3
         livenessProbe:
           tcpSocket:
             port: 8586
