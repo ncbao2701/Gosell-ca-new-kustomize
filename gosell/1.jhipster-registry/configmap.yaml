@@ -2546,7 +2546,7 @@ data:
             isolation:
               thread:
                 timeoutInMilliseconds: 80000
-  storeService-prod.yml: "application:\n    webGsDashboardDomain: https://gosell.mediastep.com\n
+  storeService-prod.yml: "application:\n    webGsDashboardDomain: https://dev-gosell.mediastep.com\n
     \   webGsDashboardCallBackUrl: /payment/callback\n    webGsDashboardVNPTCallBackUrl:
     /payment/epay-callback?description={0}\n\nspring:\n    data:\n        jest:\n
     \           uri: http://172.16.111.8:9200\n            read-timeout: 180000\n\nlogging:\n
