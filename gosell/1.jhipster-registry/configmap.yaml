@@ -1655,7 +1655,7 @@ data:
                 enabled: true
   beehiveServices-prod.yml: |-
     application:
-      webGsDashboardDomain: 'https://gosell.mediastep.com'
+      webGsDashboardDomain: 'https://dev-gosell.mediastep.com'
       webGsDashboardCallBackUrl: /payment/callback
       webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
       jenkins:
@@ -1690,7 +1690,7 @@ data:
         database: 0
       data:
         jest:
-          uri: http://172.16.111.8:9200
+          uri: http://172.16.111.8:9022
           read-timeout: 180000
     jhipster:
       cache: # Cache configuration
