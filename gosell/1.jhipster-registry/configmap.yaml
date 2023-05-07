@@ -2574,7 +2574,7 @@ data:
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9200
+                uri: http://172.16.111.8:9022
                 read-timeout: 180000
     application:
         jenkins:
@@ -2584,7 +2584,7 @@ data:
             buildPath:
                 publishLandingPage: /view/Website/job/website-develop-qa/job/export-html-dev/buildWithParameters/
                 unPublishLandingPage: /view/Website/job/website-develop-qa/job/delete-html-dev/buildWithParameters/
-        baseUrl: "https://api.mediastep.com"
+        baseUrl: "https://dev-api.mediastep.com"
         resourceUrl: "https://ssr-resource-dev.gosell.vn"
         landingPageCreateCustomerProfile: "/beehiveservices/api/customer-profiles/landing-page/create"
         landingPageCreateOrder: "/orderservices2/api/bc-orders/checkout/gosell/landing-page"
