@@ -4,6 +4,9 @@ metadata:
   labels:
     app: catalog-services
   name: catalog-services
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+
 spec:
   replicas: 1
   selector:
