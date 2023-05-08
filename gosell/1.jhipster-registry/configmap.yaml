@@ -1785,7 +1785,7 @@ data:
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9200
+                uri: http://172.16.111.8:9202
                 read-timeout: 180000
         redis:
             host: redis-0.redis.redis.svc.cluster.local
@@ -1808,7 +1808,7 @@ data:
         businessAppSecret: 7569a0b10a67d6917878e82881384fe2
   integrateBeehiveService-prod.yml: |-
     application:
-      webGsDashboardDomain: 'https://gosell.mediastep.com'
+      webGsDashboardDomain: 'https://dev-gosell.mediastep.com'
       webGsDashboardCallBackUrl: /payment/callback
       webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
       jenkins:
@@ -2417,7 +2417,7 @@ data:
                 sellerOnboard: https://api.mediastep.com:443/paymentservices/shop-connect/paypal/onboarding
 
     application:
-        dashboard: https://gosell.mediastep.com
+        dashboard: https://dev-gosell.mediastep.com
         paymentProvider:
             epay:
                 merId: EPAY000001
@@ -2473,7 +2473,7 @@ data:
     \ dashboardAuthRedirectPath: /channel/shopee/account\n#  dashboardUrl: https://gosell.mediastep.com/channel/shopee/account\n#
     \ authorizationUrl: ${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}\n\napplication:\n
     \ gosellSupportEmail: hotro@gosell.vn\n  customerServiceEmail: bao.tran@mediastep.com\n
-    \ fromEmail: welcome@gosell.vn\n  webGsDashboardDomain: https://gosell.mediastep.com\n
+    \ fromEmail: welcome@gosell.vn\n  webGsDashboardDomain: https://dev-gosell.mediastep.com\n
     \ shopee:\n    # partnerId: ${SHOPEE_ID}\n    # requestUrl: ${SHOPEE_URL}\n    #
     secretKey: ${SHOPEE_KEY}\n    # dashboardUrl: ${DASHBOARD_URL}\n    # authorizationUrl:
     ${application.shopee.requestUrl}/shop/auth_partner?redirect={2}&id={0}&token={1}\n
