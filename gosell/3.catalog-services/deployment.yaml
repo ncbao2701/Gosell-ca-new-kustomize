@@ -23,7 +23,11 @@ spec:
         name: catalog-services
         ports:
         - containerPort: 9000
-        resources: {}
+        resources:
+          limits:
+            cpu: '0.5'
+          requests:
+            cpu: '0.2'
         livenessProbe:
           tcpSocket:
             port: 9000
