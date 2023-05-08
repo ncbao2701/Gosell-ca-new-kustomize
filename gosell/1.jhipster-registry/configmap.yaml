@@ -2631,12 +2631,34 @@ data:
             credentials:
                 accessKey: AKIAJ2GQ7ZJQ43ICWXJA
                 secretKey: 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
-  zaloServices-prod.yml: "logging:\n    level:\n        ROOT: DEBUG\n        io.github.jhipster:
-    DEBUG\n        com.mediastep.gosell.zalo: DEBUG\n\nfeign:\n    client:\n        config:
-    \n            default:\n                loggerLevel: full\n    hystrix:\n        enabled:
-    false\n\n\nzalo:\n    appID: 1795714633831552827\n    appSecret: 99R5a34T8ADBF1c326Go\n
-    \   codeVerifier: iuz4dxWsbZxYRK-b2KjjSNIDiOOZNMjT6quinzEwh30\n    oauthUrl: https://oauth.zaloapp.com/v4/oa/permission
-    \    \n    redirectUri: https://gosell.mediastep.com/live-chat/zalo/resolve-token "
+  zaloServices-prod.yml: |-
+    logging:
+        level:
+            ROOT: DEBUG
+            io.github.jhipster: DEBUG
+            com.mediastep.gosell.zalo: DEBUG
+    feign:
+        client:
+            config:
+                default:
+                    loggerLevel: full
+        hystrix:
+            enabled: false
+    spring:
+        data:
+            jest:
+                uri: http://172.16.111.8:9202
+                read-timeout: 180000
+        redis:
+            host: redis-0.redis.redis.svc.cluster.local
+            port: 6379
+            database: 0
+    zalo:
+        appID: 1795714633831552827
+        appSecret: 99R5a34T8ADBF1c326Go
+        codeVerifier: iuz4dxWsbZxYRK-b2KjjSNIDiOOZNMjT6quinzEwh30
+        oauthUrl: https://oauth.zaloapp.com/v4/oa/permission
+        redirectUri: https://dev-gosell.mediastep.com/live-chat/zalo/resolve-token
 kind: ConfigMap
 metadata:
   name: jhipster-registry
