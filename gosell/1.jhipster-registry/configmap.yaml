@@ -2032,7 +2032,7 @@ data:
               offsetFlushIntervalMs: 60000
               connectorName: inventory-summary-branch-connector
               databaseServerName: item-etl-service
-              databaseHostname: 172.16.111.46
+              databaseHostname: 172.16.111.48
               databasePort: 5432
               databaseUser: postgres
               databasePassword: postgres
