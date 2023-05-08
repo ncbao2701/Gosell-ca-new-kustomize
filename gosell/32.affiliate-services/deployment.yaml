@@ -4,6 +4,9 @@ metadata:
   labels:
     app: affiliate-services
   name: affiliate-services
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+
 spec:
   replicas: 1
   selector:
