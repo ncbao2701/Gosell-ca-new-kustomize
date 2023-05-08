@@ -18,5 +18,5 @@ labels:
 
 replicas:
 - name: item-services
-  count: 2
+  count: 1
 
