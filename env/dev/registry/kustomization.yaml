@@ -18,4 +18,4 @@ labels:
 
 replicas:
   - name: registry
-    count: 2
+    count: 1
