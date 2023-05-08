@@ -18,5 +18,5 @@ labels:
 
 replicas:
 - name: main-services
-  count: 2
+  count: 1
 
