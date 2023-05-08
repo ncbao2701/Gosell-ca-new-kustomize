@@ -4,6 +4,9 @@ metadata:
   labels:
     app: integrate-order-service
   name: integrate-order-service
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+
 spec:
   replicas: 1
   selector:
@@ -22,7 +25,14 @@ spec:
         - name: service
           containerPort: 8085
           protocol: TCP
-        resources: {}
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 1Gi
+          requests:
+            cpu: '0.2'
+            memory: 200Mi
+
         livenessProbe:
           httpGet:
             path: /management/health
