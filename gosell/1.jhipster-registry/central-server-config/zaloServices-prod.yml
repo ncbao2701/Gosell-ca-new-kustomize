@@ -3,19 +3,25 @@ logging:
         ROOT: DEBUG
         io.github.jhipster: DEBUG
         com.mediastep.gosell.zalo: DEBUG
-
 feign:
     client:
-        config: 
+        config:
             default:
                 loggerLevel: full
     hystrix:
         enabled: false
-
-
+spring:
+    data:
+        jest:
+            uri: http://es5.mediastep.com:9202
+            read-timeout: 180000
+    redis:
+        host: 10.10.0.18
+        port: 6379
+        database: 0
 zalo:
     appID: 1795714633831552827
     appSecret: 99R5a34T8ADBF1c326Go
     codeVerifier: iuz4dxWsbZxYRK-b2KjjSNIDiOOZNMjT6quinzEwh30
-    oauthUrl: https://oauth.zaloapp.com/v4/oa/permission     
-    redirectUri: https://gosell.mediastep.com/live-chat/zalo/resolve-token 
+    oauthUrl: https://oauth.zaloapp.com/v4/oa/permission
+    redirectUri: https://gosell.mediastep.com/live-chat/zalo/resolve-token
