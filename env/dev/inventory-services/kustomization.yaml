@@ -19,6 +19,6 @@ labels:
 
 replicas:
 - name: inventory-services
-  count: 2
+  count: 1
 
 
