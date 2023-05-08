@@ -4,6 +4,9 @@ metadata:
   labels:
     app: review-services
   name: review-services
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+
 spec:
   replicas: 1
   selector:
@@ -24,7 +27,14 @@ spec:
         - name: hazale
           containerPort: 5701
           protocol: UDP
-        resources: {}
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 1Gi
+          requests:
+            cpu: '0.2'
+            memory: 200Mi
+
         livenessProbe:
           tcpSocket:
             port: 8879
