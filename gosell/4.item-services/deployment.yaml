@@ -25,8 +25,10 @@ spec:
         resources:
           limits:
             cpu: '0.5'
+            memory: 1Gi
           requests:
             cpu: '0.2'
+            memory: 200Mi
         livenessProbe:
           httpGet:
             path: /management/health
