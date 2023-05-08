@@ -13,6 +13,10 @@ spring:
             hibernate.format_sql: true
             hibernate.cache.use_second_level_cache: true
             hibernate.cache.use_query_cache: false
+    kafka:
+        bootstrap-servers: 10.10.0.18:9092
+    lifecycle:
+        timeout-per-shutdown-phase: 1m
 logging:
     level:
         com.mediastep.gosell.item.etl: DEBUG
@@ -20,19 +24,21 @@ jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
             server: redis://10.10.0.18:6379
+server:
+    shutdown: graceful
 application:
     inventorySummaryBranchCdc:
         pluginName: pgoutput
         connectorClass: io.debezium.connector.postgresql.PostgresConnector
         offsetStorage: org.apache.kafka.connect.storage.FileOffsetBackingStore
-        offsetStorageFileFilename: C:\\TienDao\\inventory_summary_branch_offset.DAT
+        offsetStorageFileFilename: inventory_summary_branch_offset.DAT
         offsetFlushIntervalMs: 60000
         connectorName: inventory-summary-branch-connector
         databaseServerName: item-etl-service
-        databaseHostname: beecow-staging-item.clvpjm611njd.ap-southeast-1.rds.amazonaws.com
+        databaseHostname: 10.10.0.18
         databasePort: 5432
-        databaseUser: dbaitem
-        databasePassword: ShogdBiPHcC67RDQ6H1u
-        databaseDbname: beecow
-        tableWhitelist: item-services.inventory_summary_branch
-        skippedOperations: d,u
+        databaseUser: postgres
+        databasePassword: postgres
+        databaseDbname: postgres
+        tableWhitelist: item-services.inventory_summary_branch,item-services.cdc_update_es,item-services.item_model
+        skippedOperations: d
