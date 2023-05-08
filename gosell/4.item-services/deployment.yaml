@@ -4,6 +4,8 @@ metadata:
   labels:
     app: item-services
   name: item-services
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   replicas: 1
   selector:
@@ -20,7 +22,11 @@ spec:
         name: item-services
         ports:
         - containerPort: 8889
-        resources: {}
+        resources:
+          limits:
+            cpu: '0.5'
+          requests:
+            cpu: '0.2'
         livenessProbe:
           httpGet:
             path: /management/health
