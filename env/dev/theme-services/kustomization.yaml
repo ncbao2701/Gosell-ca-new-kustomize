@@ -19,4 +19,4 @@ labels:
 
 replicas:
 - name: theme-services
-  count: 2
+  count: 1
