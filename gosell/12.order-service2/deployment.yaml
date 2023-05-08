@@ -4,6 +4,8 @@ metadata:
   labels:
     app: order-service2
   name: order-service2
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   replicas: 1
   selector:
@@ -27,8 +29,10 @@ spec:
           protocol: UDP
         resources:
           limits:
+            cpu: '0.5'
             memory: 3584Mi
           requests:
+            cpu: '0.2'
             memory: 2Gi
         livenessProbe:
           tcpSocket:
