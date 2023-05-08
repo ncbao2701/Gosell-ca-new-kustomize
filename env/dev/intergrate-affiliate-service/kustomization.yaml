@@ -19,5 +19,5 @@ labels:
 
 replicas:
 - name: intergrate-affiliate-service
-  count: 2
+  count: 1
 
