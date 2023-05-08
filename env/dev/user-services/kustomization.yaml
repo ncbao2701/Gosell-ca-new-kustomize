@@ -19,5 +19,5 @@ labels:
 
 replicas:
 - name: user-services
-  count: 2
+  count: 1
 
