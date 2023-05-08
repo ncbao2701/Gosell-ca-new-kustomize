@@ -2016,6 +2016,11 @@ data:
                   hibernate.format_sql: true
                   hibernate.cache.use_second_level_cache: true
                   hibernate.cache.use_query_cache: false
+          kafka:
+              bootstrap-servers: 172.16.111.8:9092
+          lifecycle:
+              timeout-per-shutdown-phase: 1m
+
       logging:
           level:
               com.mediastep.gosell.item.etl: DEBUG
