@@ -4,6 +4,9 @@ metadata:
   labels:
     app: facebook-services
   name: facebook-services
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+
 spec:
   replicas: 1
   selector:
@@ -25,7 +28,14 @@ spec:
         - name: hazale
           containerPort: 5701
           protocol: UDP
-        resources: {}
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 1Gi
+          requests:
+            cpu: '0.2'
+            memory: 200Mi
+
         livenessProbe:
           tcpSocket:
             port: 8890
@@ -51,7 +61,7 @@ spec:
           - name: JHIPSTER_SLEEP
             value: "10"
           - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
-            value: "172.16.111.8:9300"
+            value: "172.16.111.8:9303"
           - name: JAVA_OPTS
             value: "-Xms256M -Xmx1G"
       imagePullSecrets:
