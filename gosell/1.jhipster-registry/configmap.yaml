@@ -2004,7 +2004,7 @@ data:
       spring:
           data:
               jest:
-                  uri: http://172.16.111.8:9200 #http://es5.mediastep.com:9202
+                  uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
                   read-timeout: 180000
           datasource:
               hikari:
