@@ -2258,7 +2258,7 @@ data:
                 privateKeyGosell:
                     - name: beecow-dev
                       filePath: http://firebase-project.s3.amazonaws.com/firebase-admin-dev.json
-                      filePath: https://firebase-project.s3.ap-southeast-1.amazonaws.com/firebase-admin-dev.json
+                      # filePath: https://firebase-project.s3.ap-southeast-1.amazonaws.com/firebase-admin-dev.json
     spring:
         data:
             jest:
