@@ -2247,7 +2247,8 @@ data:
         debugMode: true
         messageServices:
             firebase:
-                private-key-file-path: https://firebase-project.s3.ap-southeast-1.amazonaws.com/firebase-admin-dev.json
+                # private-key-file-path: https://firebase-project.s3.ap-southeast-1.amazonaws.com/firebase-admin-dev.json
+                private-key-file-path: http://firebase-project.s3.amazonaws.com/firebase-admin-dev.json
                 url: https://beecow-dev.firebaseio.com
                 rootPath:
                 userNode: Users
@@ -2256,11 +2257,12 @@ data:
                 timeoutUnit: SECONDS
                 privateKeyGosell:
                     - name: beecow-dev
-                      filePath: https://firebase-project.s3.ap-southeast-1.amazonaws.com/firebase-admin-dev.json
+                      filePath: http://firebase-project.s3.amazonaws.com/firebase-admin-dev.json
+                      # filePath: https://firebase-project.s3.ap-southeast-1.amazonaws.com/firebase-admin-dev.json
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9200
+                uri: http://172.16.111.8:9022
         redis:
           host: redis-0.redis.redis.svc.cluster.local
           port: 6379
