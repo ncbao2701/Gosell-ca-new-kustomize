@@ -1721,7 +1721,7 @@ data:
         bootstrap-servers: 172.16.111.8:9092
 
     application:
-        webGsDashboardDomain: https://gosell.mediastep.com
+        webGsDashboardDomain: https://dev-gosell.mediastep.com
         webGsDashboardCallBackUrl: /payment/callback
         webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
         vht:
