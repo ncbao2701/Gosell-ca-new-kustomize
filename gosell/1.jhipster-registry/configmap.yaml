@@ -2334,7 +2334,7 @@ data:
                     vnpHashSecret: GHTROFNVURELAGKAUSFIQANOZAUQHZKR
                     vnpOrderType: billpayment
                     vnpReturnUrlWeb: https://beecow.mediastep.com/new-order/{0}/result
-                    vnpReturnUrlMobile: https://api.mediastep.com/orderservices/api/payment/result/vnpay
+                    vnpReturnUrlMobile: https://dev-api.mediastep.com/orderservices/api/payment/result/vnpay
 
     spring:
         jpa:
@@ -2352,7 +2352,7 @@ data:
     5 #MINUTES\n        beecowDeliveryInfoId: 1\n        paymentService:\n            callback:\n
     \               waitTime: 5000 # Wait for VNPAY callback: 5s\n                webUrl:
     https://beecow.mediastep.com/shopping-cart/callback\n                mobileUrl:
-    https://api.mediastep.com/orderservices2/api/payment/result/vnpay\n                mobileSmartUrl:
+    https://dev-api.mediastep.com/orderservices2/api/payment/result/vnpay\n                mobileSmartUrl:
     gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal\n                webStorefrontBaseDomain:
     https://{0}.mediastep.com\n                webStorefrontUrlSurfix: /shopping-cart/callback\n
     \               webStorefrontBookingUrlSurfix: /shopping-cart-service/callback\n
@@ -2409,14 +2409,14 @@ data:
                 vnpVersion: 2.1.0
                 feign.client.logger.level: FULL
             vnptepay:
-                baseURL: https://api.mediastep.com:443/paymentservices/payment-gateway/epay
+                baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/epay
             chaipay:
-                baseURL: https://api.mediastep.com:443/paymentservices/payment-gateway/chaipay
+                baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/chaipay
                 atmAndCreditProvider: VNPAY
                 atmAndCreditMethod: VNPAY_ALL
             paypal:
-                baseURL: https://api.mediastep.com:443/paymentservices/payment-gateway/paypal
-                sellerOnboard: https://api.mediastep.com:443/paymentservices/shop-connect/paypal/onboarding
+                baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/paypal
+                sellerOnboard: https://dev-api.mediastep.com:443/paymentservices/shop-connect/paypal/onboarding
 
     application:
         dashboard: https://dev-gosell.mediastep.com
@@ -2438,7 +2438,7 @@ data:
                 merchantId: KXXB29BHQJPCE
 
         api:
-            domain: https://api.mediastep.com:443
+            domain: https://dev-api.mediastep.com:443
 
     jhipster:
         cache:
@@ -2498,7 +2498,7 @@ data:
     false\n"
   ssrStorefront-prod.yml: |
     application:
-      apiBaseUrl: https://api.mediastep.com
+      apiBaseUrl: https://dev-api.mediastep.com
       resourceUrl: https://ssr-resource-dev.gosell.vn
       fontUrl: https://ssr.mediastep.com
       paymentProvider: VNPAY
