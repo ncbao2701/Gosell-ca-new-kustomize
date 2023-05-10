@@ -80,3 +80,20 @@ spec:
         - name: fpt-cloud-registry  
 status: {}
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ssrstorefront-services
+  name: ssrstorefront-services
+spec:
+  ports:
+  - name: tcp-8286
+    port: 8286
+    protocol: TCP
+    targetPort: 8286
+
+  selector:
+    app: ssrstorefront-services
+status:
+  loadBalancer: {}
