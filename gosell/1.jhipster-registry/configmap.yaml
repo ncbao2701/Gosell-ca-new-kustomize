@@ -2500,7 +2500,7 @@ data:
     application:
       apiBaseUrl: https://dev-api.mediastep.com
       resourceUrl: https://ssr-resource-dev.gosell.vn
-      fontUrl: https://ssr.mediastep.com
+      fontUrl: https://dev-ssr.mediastep.com
       paymentProvider: VNPAY
       facebook:
         systemAppId: 1893566387566234
