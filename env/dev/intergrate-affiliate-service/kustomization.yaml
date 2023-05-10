@@ -7,7 +7,7 @@ namespace: dev
 images:
 - name: intergrate-affiliate-service
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-intergrate-affiliate-service
-  newTag:        2023.05.06.14
+  newTag:         2023.05.10.15
 
 resources:
 - ../../../gosell/14.intergrate-affiliate-service
