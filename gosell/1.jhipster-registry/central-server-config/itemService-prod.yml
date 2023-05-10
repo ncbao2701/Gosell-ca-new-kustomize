@@ -1,7 +1,7 @@
 spring:
     data:
         jest:
-            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
+            uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
             maxTotalConnection: 50
             read-timeout: 180000
 
@@ -88,7 +88,7 @@ logging:
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+            server: redis://redis-0.redis.redis.svc.cluster.local:6379
 application:
     itemProgressHandlingTimeoutInMinutes: 5
     # key from https://freecurrencyapi.net

@@ -95,7 +95,7 @@ jhipster:
   logging:
     logstash: # forward logs to ELK
       enabled: true
-      host: jhipster-logstash
+      host: 172.16.111.8
   metrics:
     logs: # report metrics in the logs
       enabled: true
@@ -103,7 +103,7 @@ jhipster:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://admin:admin@registry:8761/eureka/
+      defaultZone: http://admin:admin@dev-registry.dev.svc.cluster.local:8761/eureka/
   instance:
     lease-renewal-interval-in-seconds: 2
     registry-fetch-interval-seconds: 2
@@ -115,11 +115,11 @@ spring:
     stream:
       kafka:
         binder:
-          brokers: kafka.mediastep.com:9092
-          zk-nodes: zookeeper.mediastep.com:2181
+          brokers: 172.16.111.8:9092
+          zk-nodes: 172.16.111.8:2181
   zipkin:
     enabled: true
-    baseUrl: http://jhipster-zipkin:9411
+    baseUrl: http://172.16.111.8:9411
   sleuth.sampler.percentage: 1
   # mail:
   #   host: in-v3.mailjet.com

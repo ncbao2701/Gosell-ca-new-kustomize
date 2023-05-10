@@ -1,0 +1,44 @@
+spring:
+    data:
+        jest:
+            uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
+            read-timeout: 180000
+    datasource:
+        hikari:
+            maximum-pool-size: 1000
+    jpa:
+        show-sql: true
+        properties:
+            hibernate.show_sql: true
+            hibernate.format_sql: true
+            hibernate.cache.use_second_level_cache: true
+            hibernate.cache.use_query_cache: false
+    kafka:
+        bootstrap-servers: 172.16.111.8:9092
+    lifecycle:
+        timeout-per-shutdown-phase: 1m
+logging:
+    level:
+        com.mediastep.gosell.item.etl: DEBUG
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://redis-0.redis.redis.svc.cluster.local:6379
+server:
+    shutdown: graceful
+application:
+    inventorySummaryBranchCdc:
+        pluginName: pgoutput
+        connectorClass: io.debezium.connector.postgresql.PostgresConnector
+        offsetStorage: org.apache.kafka.connect.storage.FileOffsetBackingStore
+        offsetStorageFileFilename: inventory_summary_branch_offset.DAT
+        offsetFlushIntervalMs: 60000
+        connectorName: inventory-summary-branch-connector
+        databaseServerName: item-etl-service
+        databaseHostname: 172.16.10.85
+        databasePort: 5432
+        databaseUser: postgres
+        databasePassword: postgres
+        databaseDbname: postgres
+        tableWhitelist: item-services.inventory_summary_branch,item-services.cdc_update_es,item-services.item_model
+        skippedOperations: d

@@ -1,12 +1,19 @@
 logging:
     level:
         com.mediastep.gosell.theme: DEBUG
-
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://redis-0.redis.redis.svc.cluster.local:6379
 spring:
     data:
         jest:
-            uri: http://es5.mediastep.com:9202
+            uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
             read-timeout: 180000
+    redis:
+        host: redis-0.redis.redis.svc.cluster.local
+        port: 6379
+        database: 0
 application:
     jenkins:
         baseUrl: ci-master.mediastep.com
@@ -15,7 +22,7 @@ application:
         buildPath:
             publishLandingPage: /view/Website/job/website-develop-qa/job/export-html-dev/buildWithParameters/
             unPublishLandingPage: /view/Website/job/website-develop-qa/job/delete-html-dev/buildWithParameters/
-    baseUrl: "https://api.mediastep.com"
+    baseUrl: "https://dev-api.mediastep.com"
     resourceUrl: "https://ssr-resource-dev.gosell.vn"
     landingPageCreateCustomerProfile: "/beehiveservices/api/customer-profiles/landing-page/create"
     landingPageCreateOrder: "/orderservices2/api/bc-orders/checkout/gosell/landing-page"

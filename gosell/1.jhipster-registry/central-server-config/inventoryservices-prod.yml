@@ -1,7 +1,7 @@
 jhipster:
   cache:
     redis:
-      server: 'redis://10.10.0.18:6379'
+      server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
 spring:
   kafka:
     consumer:
@@ -9,7 +9,7 @@ spring:
         auto-sync-stock-topic: syncStock
         auto-sync-stock-group: inventoryServices
         auto-sync-stock-auto-startup: true
-    bootstrap-servers: '10.10.0.18:9009'
+    bootstrap-servers: '172.16.111.8:9092'
   jpa:
     show-sql: true
     properties:

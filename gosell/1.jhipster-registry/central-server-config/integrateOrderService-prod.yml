@@ -1,6 +1,6 @@
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+            server: redis://redis-0.redis.redis.svc.cluster.local:6379
 kafka:
-    bootstrapServers: 10.10.0.18:9092
+    bootstrapServers: 172.16.111.8:9092

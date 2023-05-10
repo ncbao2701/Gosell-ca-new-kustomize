@@ -9,17 +9,17 @@ beecow:
             vnpVersion: 2.1.0
             feign.client.logger.level: FULL
         vnptepay:
-            baseURL: https://api.mediastep.com:443/paymentservices/payment-gateway/epay
+            baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/epay
         chaipay:
-            baseURL: https://api.mediastep.com:443/paymentservices/payment-gateway/chaipay
+            baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/chaipay
             atmAndCreditProvider: VNPAY
             atmAndCreditMethod: VNPAY_ALL
         paypal:
-            baseURL: https://api.mediastep.com:443/paymentservices/payment-gateway/paypal
-            sellerOnboard: https://api.mediastep.com:443/paymentservices/shop-connect/paypal/onboarding
+            baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/paypal
+            sellerOnboard: https://dev-api.mediastep.com:443/paymentservices/shop-connect/paypal/onboarding
 
 application:
-    dashboard: https://gosell.mediastep.com
+    dashboard: https://dev-gosell.mediastep.com
     paymentProvider:
         epay:
             merId: EPAY000001
@@ -38,12 +38,12 @@ application:
             merchantId: KXXB29BHQJPCE
 
     api:
-        domain: https://api.mediastep.com:443
+        domain: https://dev-api.mediastep.com:443
 
 jhipster:
     cache:
         redis:
-            server: redis://10.10.0.18:6379
+            server: redis://redis-0.redis.redis.svc.cluster.local:6379
 
 logging:
     level:

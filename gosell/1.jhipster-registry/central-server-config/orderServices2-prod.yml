@@ -25,7 +25,7 @@ beecow:
             callback:
                 waitTime: 5000 # Wait for VNPAY callback: 5s
                 webUrl: https://beecow.mediastep.com/shopping-cart/callback
-                mobileUrl: https://api.mediastep.com/orderservices2/api/payment/result/vnpay
+                mobileUrl: https://dev-api.mediastep.com/orderservices2/api/payment/result/vnpay
                 mobileSmartUrl: gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal
                 webStorefrontBaseDomain: https://{0}.mediastep.com
                 webStorefrontUrlSurfix: /shopping-cart/callback
@@ -96,7 +96,7 @@ spring:
         show-sql: true
     data:
         jest:
-            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
+            uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
             read-timeout: 180000
     cloud:
         stream:
@@ -125,7 +125,7 @@ hystrix:
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+            server: redis://redis-0.redis.redis.svc.cluster.local:6379
 
 logging:
     level:

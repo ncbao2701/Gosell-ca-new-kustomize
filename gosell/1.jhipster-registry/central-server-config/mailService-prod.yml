@@ -1,19 +1,8 @@
-logging:
-    level:
-        com.mediastep.gosell.callcenter: DEBUG
-
 spring:
-    data:
-        jest:
-            uri: http://es5.mediastep.com:9202
-
-kafka:
-    bootstrap-servers: kafka.mediastep.com:9092
-
-application:
-    gosellDomain: gosell.vn
-
-management:
-    health:
-        elasticsearch:
-            enabled: false
+  redis:
+    host: redis-0.redis.redis.svc.cluster.local
+    port: 6379
+    database: 0
+logging:
+  level:
+    com.mediastep.beecow.main: DEBUG

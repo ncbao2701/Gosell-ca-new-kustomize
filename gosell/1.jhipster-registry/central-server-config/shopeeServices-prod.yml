@@ -17,7 +17,7 @@ application:
   gosellSupportEmail: hotro@gosell.vn
   customerServiceEmail: bao.tran@mediastep.com
   fromEmail: welcome@gosell.vn
-  webGsDashboardDomain: https://gosell.mediastep.com
+  webGsDashboardDomain: https://dev-gosell.mediastep.com
   shopee:
     # partnerId: ${SHOPEE_ID}
     # requestUrl: ${SHOPEE_URL}
@@ -34,7 +34,7 @@ application:
     partnerId: 2002146
     requestUrl: "https://partner.shopeemobile.com"
     secretKey: bf4dbace9ad45f6961661e100a4c6cb9beef83de15fb51f79125b8561053b2ea
-    dashboardUrl: "https://gosell.mediastep.com/channel/shopee/account"
+    dashboardUrl: "https://dev-gosell.mediastep.com/channel/shopee/account"
     authorizationUrl: "${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}"
     dashboardAuthRedirectPath: "/channel/shopee/account"
 
@@ -42,7 +42,7 @@ spring:
   jpa:
     show-sql: true
   redis:
-    host: 10.10.0.18
+    host: redis-0.redis.redis.svc.cluster.local
     port: 6379
     database: 0
 
