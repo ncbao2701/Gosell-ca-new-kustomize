@@ -18,7 +18,7 @@ spec:
         app: registry
     spec:
       containers:
-      - image: jhipster/jhipster-registry:v3.1.2
+      - image: jhipster-registry
         name: gateway
         ports:
         - containerPort: 8761
