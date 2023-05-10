@@ -66,8 +66,8 @@ spec:
         - name: jhipster-registry
           configMap:
             name: jhipster-registry
-      # imagePullSecrets:
-      #   - name: fpt-cloud-registry
+      imagePullSecrets:
+        - name: fpt-cloud-registry
 status: {}
 
 ---
