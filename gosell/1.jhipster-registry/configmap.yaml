@@ -2193,14 +2193,14 @@ data:
             host: redis-0.redis.redis.svc.cluster.local
             port: 6379
             database: 0
-        kafka:
-            bootstrap-servers: 172.16.111.8:9092
-        application:
-            gosellDomain: gosell.vn
-        management:
-            health:
-                elasticsearch:
-                    enabled: false
+    kafka:
+        bootstrap-servers: 172.16.111.8:9092
+    application:
+        gosellDomain: gosell.vn
+    management:
+        health:
+            elasticsearch:
+                enabled: false
   mainService-prod.yml: |-
     spring:
       redis:
