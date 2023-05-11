@@ -1808,7 +1808,7 @@ data:
         businessAppSecret: 7569a0b10a67d6917878e82881384fe2
   integrateBeehiveService-prod.yml: |-
     application:
-      webGsDashboardDomain: 'https://dev-gosell.mediastep.com'
+      webGsDashboardDomain: 'https://gosell.mediastep.com'
       webGsDashboardCallBackUrl: /payment/callback
       webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
       jenkins:
@@ -1838,17 +1838,17 @@ data:
       jpa:
         show-sql: true
       redis:
-        host: redis-0.redis.redis.svc.cluster.local:6379
+        host: 10.10.0.18
         port: 6379
         database: 0
       data:
         jest:
-          uri: http://172.16.111.8:9022
+          uri: http://10.10.0.104:9022
           read-timeout: 180000
     jhipster:
       cache: # Cache configuration
         redis: # Redis configuration
-          server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
+          server: 'redis://10.10.0.18:6379'
   integrateOrderService-prod.yml: |
     jhipster:
         cache: # Cache configuration
