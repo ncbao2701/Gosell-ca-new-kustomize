@@ -2189,6 +2189,18 @@ data:
     logging:
       level:
         com.mediastep.beecow.main: DEBUG
+    spring:
+        data:
+            jest:
+                uri: http://172.16.111.8:9202
+    kafka:
+        bootstrap-servers: 172.16.111.8:9092
+    application:
+        gosellDomain: gosell.vn
+    management:
+        health:
+            elasticsearch:
+                enabled: false
   mainService-prod.yml: |-
     spring:
       redis:
