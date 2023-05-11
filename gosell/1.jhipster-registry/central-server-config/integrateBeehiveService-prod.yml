@@ -1,5 +1,5 @@
 application:
-  webGsDashboardDomain: 'https://gosell.mediastep.com'
+  webGsDashboardDomain: 'https://dev-gosell.mediastep.com'
   webGsDashboardCallBackUrl: /payment/callback
   webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
   jenkins:
@@ -29,14 +29,14 @@ spring:
   jpa:
     show-sql: true
   redis:
-    host: 10.10.0.18
+    host: redis-0.redis.redis.svc.cluster.local:6379
     port: 6379
     database: 0
   data:
     jest:
-      uri: http://10.10.0.104:9022
+      uri: http://172.16.111.8:9022
       read-timeout: 180000
 jhipster:
   cache: # Cache configuration
     redis: # Redis configuration
-      server: 'redis://10.10.0.18:6379'
+      server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
