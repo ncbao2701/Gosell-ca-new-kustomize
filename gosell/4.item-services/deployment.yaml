@@ -24,11 +24,11 @@ spec:
         - containerPort: 8889
         resources:
           limits:
-            cpu: '0.5'
-            memory: 1Gi
+            cpu: '1'
+            memory: 3Gi
           requests:
             cpu: '0.2'
-            memory: 200Mi
+            memory: 1Gi
         livenessProbe:
           httpGet:
             path: /management/health
