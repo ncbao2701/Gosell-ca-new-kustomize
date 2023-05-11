@@ -2665,4 +2665,3 @@ kind: ConfigMap
 metadata:
   name: jhipster-registry
   namespace: dev
-1
