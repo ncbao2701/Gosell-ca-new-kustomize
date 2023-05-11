@@ -5,7 +5,7 @@ namePrefix: dev-
 namespace: dev
 
 images:
-- name: jhipster-registry
+- name: jhipster/jhipster-registry
   newTag: v3.1.2
 
 resources:
