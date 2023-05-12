@@ -52,7 +52,7 @@ spec:
           - name: SPRING_CLOUD_CONFIG_URI
             value: "http://admin:admin@dev-registry.dev.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql:/103.191.147.127:5432/postgres?currentSchema=catalog-services"
+            value: "jdbc:postgresql://103.191.147.127:5432/postgres?currentSchema=catalog-services"
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD
