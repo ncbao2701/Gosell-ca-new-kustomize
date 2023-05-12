@@ -53,7 +53,7 @@ spec:
             value: "http://admin:admin@dev-registry.dev.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
             value: "jdbc:postgresql://172.16.111.48:5432/postgres?currentSchema=catalog-services"
-          - name: POSTGRES_PASSWORD
+          - name: POSTGRES_USER
             value: "dbacatalog"
           - name: POSTGRES_PASSWORD
             value: "22xMg86Lv9HX"
