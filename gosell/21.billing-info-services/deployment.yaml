@@ -65,7 +65,7 @@ spec:
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD
-            value: "r57c3XpCDMGQ"
+            value: "postgres"
           - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
             value: "172.16.111.8:9300"
           - name: JAVA_OPTS
