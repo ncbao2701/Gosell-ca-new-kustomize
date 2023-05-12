@@ -57,7 +57,7 @@ spec:
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD
-            value: "r57c3XpCDMGQ"
+            value: "postgres"
           - name: JHIPSTER_SLEEP
             value: "10"
           - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
