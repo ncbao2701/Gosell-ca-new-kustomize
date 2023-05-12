@@ -58,11 +58,11 @@ spec:
           - name: SPRING_CLOUD_CONFIG_URI
             value: "http://admin:admin@dev-registry.dev.svc.cluster.local:8761/config"
           - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql://172.16.10.85:5432/postgres?currentSchema=mail-services"
+            value: "jdbc:postgresql://172.16.111.48:5432/postgres?currentSchema=mail-services"
           - name: POSTGRES_USER
             value: "postgres"
           - name: POSTGRES_PASSWORD
-            value: "postgres"
+            value: "r57c3XpCDMGQ"
           - name: JHIPSTER_SLEEP
             value: "10"
           - name: JAVA_OPTS
