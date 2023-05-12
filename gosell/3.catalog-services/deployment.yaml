@@ -54,9 +54,9 @@ spec:
           - name: SPRING_DATASOURCE_URL
             value: "jdbc:postgresql://172.16.111.48:5432/postgres?currentSchema=catalog-services"
           - name: POSTGRES_USER
-            value: "dbacatalog"
+            value: "postgres"
           - name: POSTGRES_PASSWORD
-            value: "22xMg86Lv9HX"
+            value: "r57c3XpCDMGQ"
           - name: JHIPSTER_SLEEP
             value: "3"
           - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
