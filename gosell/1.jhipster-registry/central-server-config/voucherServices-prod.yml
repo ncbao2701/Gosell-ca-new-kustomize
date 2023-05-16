@@ -6,8 +6,7 @@ beecow:
                 generationRetryTimes: 5
             voucherGettingExpiredTime: 3
             voucherGettingExpiredTimeUnit: DAYS
-            voucherGettingExpiredDateCheckTime: 86400000 # Check every day
-            voucherCheckPageSize: 100
+            voucherGettingExpiredDateCheckTime: 86400000 # Check every 5 minutes
         voucherHardCopyService:
             outputFromat: HTML
             outputFolder: /vouchers
@@ -16,7 +15,6 @@ beecow:
             awsBucketName: beecow-voucher-development
             awsLocation: new
             useThymeLeaf: true
-
 cloud:
     aws:
         region:

@@ -1,7 +1,7 @@
 spring:
     data:
         jest:
-            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
+            uri: http://10.10.0.103:9022 #http://es5.mediastep.com:9202
             read-timeout: 180000
 
     datasource:
@@ -17,7 +17,7 @@ spring:
             hibernate.cache.use_query_cache: false
 
     redis:
-        host: 10.10.0.18
+        host: 10.10.0.15
         port: 6379
 
 #    cloud:
@@ -41,6 +41,7 @@ hystrix:
                 isolation:
                     thread:
                         timeoutInMilliseconds: 30000
+                        interruptOnTimeout: false
             fallback:
                 enabled: false
         default:
@@ -75,7 +76,7 @@ logging:
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+            server: redis://10.10.0.15:6379
 application:
     itemProgressHandlingTimeoutInMinutes: 5
-    webGsDashboardDomain: https://admin.gosell.vn
+    webGsDashboardDomain: https://gosell.mediastep.ca

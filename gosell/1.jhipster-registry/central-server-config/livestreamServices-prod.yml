@@ -1,20 +1,38 @@
 beecow:
     livestreamServices:
         application:
-            envName: DEV
+            envName: QA
             changeStatusSleepTime: 3                # 3 seconds
             changeStatusTimeOut: 120                # 5 minutes
             checkStreamStatusSleepTime: 30          # 1 minutes
             waitStreamStatusActiveTimeout: 120      # 5 minutes
         googleAuth:
-            clientId: 577064194723-4qjabt3n7ird15r65usrmh3rb8uq7gjr.apps.googleusercontent.com
-            clientSecret: hOssFABVreDl4_5S1N64_kEl
+            clientId: 978381762368-sgultn4v5dssl86fapephlokq64ram87.apps.googleusercontent.com
+            clientSecret: BQQ3ft8iaHmQ-D7ZUYGnPrew
+            # clientId: 978381762368-ev24m2v0o1r3iq8qe65im50fkeu8qjkq.apps.googleusercontent.com
+            # clientSecret: 9_3rfG1DO0DPfmzWC2kctN5b
         firebase:
-            private-key-file-path: classpath:config/firebase-admin-dev.json
-            url: https://beecow-dev.firebaseio.com
-            projectId: beecow-dev
+            private-key-file-path: classpath:config/firebase-admin-qa.json
+            url: https://beecow-qa.firebaseio.com
+            projectId: beecow-qa
             fcmApi: https://fcm.googleapis.com/v1/projects/
             fcmAuthApi: https://www.googleapis.com/auth/firebase.messaging
             livestreamNode: Livestream
             timeout: 30
             timeoutUnit: SECONDS
+        dacast:
+            apiKey: 1639985295BM0wnna5l8FFIDXbNXf19LZPDkrZaVHl
+            url: https://developer.dacast.com
+            version: v2
+            expiredLiveStreamOffset: 30 #days
+            maxLiveStreamPerDay: 30 #times/day
+            maxLiveStreamDuration: 60 #minutes
+            heartBeatLiveStreamOffset: 5 #minutes
+            userId: b0447034-c90f-48e6-9f08-3cd4431f4545
+            
+spring:
+  data:
+    elasticsearch: 
+      cluster-name: elasticsearch
+      cluster-nodes: 10.10.0.103:9300
+      client.transport.ignore_cluster_name: true

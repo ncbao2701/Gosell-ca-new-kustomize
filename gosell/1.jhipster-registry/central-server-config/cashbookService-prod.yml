@@ -1,7 +1,7 @@
 spring:
     data:
         jest:
-            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
+            uri: http://10.10.0.103:9022 #http://es5.mediastep.com:9202
             read-timeout: 180000
 
     datasource:
@@ -17,7 +17,7 @@ spring:
             hibernate.cache.use_query_cache: false
 
     redis:
-        host: 10.10.0.18
+        host: 10.10.0.15
         port: 6379
 
 logging:

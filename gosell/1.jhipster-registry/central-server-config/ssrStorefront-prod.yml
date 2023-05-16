@@ -1,39 +1,28 @@
 application:
-  apiBaseUrl: https://api.mediastep.com
-  resourceUrl: https://ssr-resource-dev.gosell.vn
-  fontUrl: https://ssr.mediastep.com
+  apiBaseUrl: 'https://api.mediastep.ca'
+  # resourceUrl: 'https://ssr.mediastep.ca'
+  resourceUrl: 'https://ssr-resource-dev.gosell.vn'
+  fontUrl: 'https://ssr.mediastep.ca'
+  createCustomerProfileUrl: 'https://api.mediastep.ca/beehiveservices/api/customer-profiles/storefront/create'
+  policyUrl: 'https://www.gosell.vn/dieu-khoan-chung-va-chinh-sach-bao-mat.html'
+  gomuaUrl: 'https://gomua.mediastep.ca'
+  dashboardDomain: 'https://gosell.mediastep.ca'
+  blogArticlesUrl: '${application.apiBaseUrl}/beehiveservices/api/blog-articles'
+  sitemapStorageUrl: https://site-maps.mediastep.ca
   paymentProvider: VNPAY
   facebook:
     systemAppId: 1893566387566234
   paypal:
     domain: https://api-m.sandbox.paypal.com
-    clientKey: AWVkWNE68jovsAOLiPEiD1pNfQmNWrZgaDorfBEUO5UYXExq7kfkOmhHHazxUGvbxdEJijINVNPQw8ss
-    secretKey: ECpO1sdvmA9bfNZdaq3jzxvICZkkCBFZTrC3623qWRZXlD4FUFTj3glKlCiP0eCcxVQcfY3NcsMO1qWB
-    partnerId: 62WWDVKSM55LE
-
-logging:
-  level:
-    ROOT: DEBUG
-    io.github.jhipster: INFO
-    com.mediastep.gosell.storefront: DEBUG
-    com.mediastep.gosell.storefront.gstengine.processors.variables.resolver: INFO
-    com.mediastep.gosell.storefront.config.GosellStoreFilter: TRACE
-
-beecow:
-  debugMode: true
-  feign.client.logger.level: FULL
-
+    clientKey: AXmcrHmqYGQolcmst1xc7CGkt2BCPHgu0D_3LyDPChC-bR6BfWty97xu8TqHfcRy20lpjePgdIPfsGOB
+    secretKey: ELYmqgk-0-WKc2oUMUKiJKNiJSo6-LYElHQy50v9XIG_v555u2RzDxN7HTwPUBTYvhehZ6u9fQ-BY-Q-
+    partnerId: MY3BVGDQQYER2
 spring:
-  zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
-#    base-url: http://localhost:9411
+  zipkin:
     enabled: true
-#  data:
-#    mongodb:
-#      uri: mongodb://10.10.0.18:27017/ssr
   redis:
-    host: 10.10.0.18
+    host: 10.10.0.15
     port: 6379
-
 jhipster:
   logging:
     logstash:
@@ -41,20 +30,9 @@ jhipster:
   metrics:
     logs:
       enabled: true
-  cache: # Cache configuration
-    redis: # Redis configuration
-      expiration: 3600 # By default objects stay 1 hour (in seconds) in the cache
-      server: redis://${spring.redis.host}:${spring.redis.port}
-      cluster: false
-    hazelcast: # Hazelcast distributed cache
-      time-to-live-seconds: 3600
-      backup-count: 1
-      management-center: # Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html
-        enabled: true
-        update-interval: 3
-#        url: http://localhost:7071/mancenter #3.9
-        url: http://localhost:7072/hazelcast-mancenter #3.12
-
+  cache:
+    redis:
+      server: 'redis://${spring.redis.host}:${spring.redis.port}'
 hystrix:
   command:
     default:
@@ -62,3 +40,7 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 80000
+
+eureka:
+  instance:
+    appname: ssrStorefront

@@ -1,37 +1,49 @@
+#spring:
+#    data:
+#        elasticsearch:
+#            cluster-name:
+#            cluster-nodes: a107624aff525a698b6504b52f7a7876.ap-southeast-1.aws.found.io:9343
+#            properties:
+#                shield.user: readwrite:tpr25wjhc7c
+#                shield.transport.ssl: true
 spring:
-    data:
-        jest:
-            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
-            maxTotalConnection: 50
-            read-timeout: 180000
-
+    cloud:
+        stream:
+            bindings:
+                itemLanguageChannel:
+                    destination: itemLanguageChannel
+                    binder: kafka
+                    content-type: application/json
+                    producer:
+                        header-mode: embeddedHeaders
+                    group: itemServices
     datasource:
         hikari:
             maximum-pool-size: 1000
-
-    jpa:
-        show-sql: true
-        properties:
-            hibernate.show_sql: true
-            hibernate.format_sql: true
-            hibernate.cache.use_second_level_cache: true
-            hibernate.cache.use_query_cache: false
+    data:
+        jest:
+            uri: http://10.10.0.103:9022
+            readTimeout: 60000
+business:
+    deal:
+        main:
+            fetchSize: 50
+    product:
+        main:
+            fetchSize: 50
+logging:
+    level:
+        ROOT: DEBUG
+        com.mediastep.beecow.item: DEBUG
+        com.mediastep.beecow.item.service.impl.ProductServiceImpl: TRACE
 
 hystrix:
     command:
-        createItemByAdmin:
-            execution:
-                isolation:
-                    thread:
-                        timeoutInMilliseconds: 60000
-                        interruptOnTimeout: false
-            fallback:
-                enabled: false
         RestControllerCommand:
             execution:
                 isolation:
                     thread:
-                        timeoutInMilliseconds: 60000
+                        timeoutInMilliseconds: 35000
                         interruptOnTimeout: false
             fallback:
                 enabled: false
@@ -65,38 +77,11 @@ hystrix:
                     thread:
                         timeoutInMilliseconds: 10000
                         interruptOnTimeout: false
-# ===================================================================
-# Item Services specific properties
-# ===================================================================
-# application:
-#     useSearchRepo: true
-# ===================================================================
-# Business specific properties
-# ===================================================================
-business:
-    deal:
-        main:
-            fetchSize: 50
-    product:
-        main:
-            fetchSize: 50
-
-logging:
-    level:
-        com.mediastep.beecow.item: DEBUG
-
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+            server: redis://10.10.0.15:6379
 application:
     itemProgressHandlingTimeoutInMinutes: 5
-    # key from https://freecurrencyapi.net
     currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
-management:
-    metrics:
-        export:
-            prometheus:
-                enabled: false
-            jmx:
-                enabled: true
+    webGsDashboardDomain: https://gosell.mediastep.ca

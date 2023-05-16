@@ -1,0 +1,23 @@
+configserver:
+  name: JHipster Registry config server
+  status: Connected to the JHipster Registry config server!
+eureka:
+    instance:
+        #prefer-ip-address: true
+        #nonSecurePort: 80
+        appname: smsServices
+        #ip-address: ${EC2_LOCAL_IP}
+management:
+    health:
+        elasticsearch:
+            enabled: false
+spring:
+    cloud:
+        stream:
+            bindings:
+                smsChannel:
+                    destination: smsChannel
+                    contentType: application/json
+                    group: smsServices
+                    consumer:
+                        header-mode: embeddedHeaders

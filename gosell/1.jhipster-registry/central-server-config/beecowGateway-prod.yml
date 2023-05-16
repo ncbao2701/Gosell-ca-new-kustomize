@@ -1,17 +1,14 @@
-logging:
-    level:
-        com.mediastep.beecow.gateway.service.impl: TRACE
 jhipster:
     cors: #By default CORS are not enabled. Uncomment to enable.
         exposed-headers: X-Total-Count, Link, X-Error-Key, X-Total-Revenue, x-storeserviceapp-error
     security:
         authentication:
             jwt:
-                # Token for remember me is valid 5 minute
-                tokenValidityInSecondsForRememberMe: 86400 #86400 #seconds
+                # Token for remember me is valid 30 minute
+                tokenValidityInSecondsForRememberMe: 1800 #86400 #seconds
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+            server: redis://10.10.0.15:6379
 gosell:
     security:
         authentication:
@@ -32,7 +29,21 @@ ribbon:
     MaxConnectionsPerHost: 512
     ReadTimeout: 60000 # must equal to max hystrix timeout
     ConnectTimeout: 5000
-spring:
-    servlet:
-        multipart:
-            enabled: true
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
+        mainservice:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 25000
+        affiliateservice:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 10000
+

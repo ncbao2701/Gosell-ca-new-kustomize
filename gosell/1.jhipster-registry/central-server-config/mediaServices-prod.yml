@@ -2,6 +2,8 @@ mediafile:
   amazon:
     bucketName:
       billingInfo: beecow-billinginfo-development
+      liveStreamVideo: custom-gosell-livestr-qa
+      exportFile: custom-gosell-file-qa
     cdn: true
     cdnEndpoint:
       status: https://dhsfy2j3z9bm3.cloudfront.net
@@ -12,17 +14,24 @@ mediafile:
       banner: https://d8qbqtt58lzda.cloudfront.net
       job: https://d3sla10qaze016.cloudfront.net
       accessory: https://d36knys0k45mi9.cloudfront.net
-      liveStream: http://d3cah8h6fn1rc6.cloudfront.net/
-      storeLogo: https://d8qbqtt58lzda.cloudfront.net
-      appIcon: https://d8qbqtt58lzda.cloudfront.net
+      liveStream: https://d3cah8h6fn1rc6.cloudfront.net
+      liveStreamVideo: https://goselllive-qa.gosell.vn
+      exportFile: https://gosell-file-qa.gosell.vn
 
 jhipster:
   cache: # Cache configuration
     redis: # Redis configuration
-      server: redis://10.10.0.18:6379
+      server: redis://10.10.0.15:6379
 
 spring:
   jpa:
     properties:
       hibernate.cache.use_second_level_cache: false
       hibernate.cache.use_query_cache: false
+  redis:
+    database: 3
+application:
+  email:
+    gosellSupportEmail: customerService@mediastep.com
+    fromEmail: welcome@gosell.vn
+    dashboardDomain: https://gosell.mediastep.ca/

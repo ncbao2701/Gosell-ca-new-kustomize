@@ -2,13 +2,12 @@ beecow:
     debug-mode: true
     job:
         jobService:
-            jobEmailFrom: welcome@beecow.com
-            jobEmailReplyTo: cskh@beecow.com
-            jobEmailBcc: order-dev@beecow.com
-            recruimentPageUrl: https://www.beecow.com/career
-
+            jobEmailFrom: welcome@gosell.vn
+            jobEmailReplyTo: cskh@gosell.vn
+            jobEmailBcc: order-dev@gosell.vn
+            recruimentPageUrl: https://www.gosell.vn/career
+            
 application:
     defaultCompanyAvatarUrl: https://d3sla10qaze016.cloudfront.net/1510720305258.jpg
     payment:
-        callbackUrl:
-            web: https://beecow.mediastep.com/page/{0}/checkout
+        webCallbackUrl: https://beecow.mediastep.com/page/{0}/checkout

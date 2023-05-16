@@ -1,0 +1,6 @@
+eureka:
+  server:
+    expected-client-renewal-interval-seconds: 2
+  #   eviction-interval-timer-in-ms: 7
+  # instance:
+  #   lease-expiration-duration-in-seconds: 10

@@ -1,25 +1,17 @@
-beecow:
-    debugMode: true
-    feign.client.logger.level: FULL
-
-# application:
-lazada:
-    url: https://api.lazada.vn/rest
-    appkey: 108761
-    appsecret: ywoHXoCCJl8NJeqCqY7h8KWykxyyAeQ7
-jhipster:
-    cache: # Cache configuration
-        redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+hystrix:
+    enabled: true
+    client:
+        config:
+            default:
+                connectTimeout: 60000
+                readTimeout: 60000
 spring:
-    redis:
-        host: 10.10.0.18
-        port: 6379
-        database: 0
-    data:
-        jest:
-            uri: http://10.10.0.104:9022 #http://es5.mediastep.com:9202
-            read-timeout: 180000
-    elasticsearch:
-        rest:
-            uris: http://10.10.0.104:9022
+  data:
+    elasticsearch: 
+      cluster-name: 
+      cluster-nodes: 10.10.0.103:9300
+      client.transport.ignore_cluster_name: true
+jhipster:
+  cache: # Cache configuration
+    redis: # Redis configuration
+      server: redis://10.10.0.15:6379

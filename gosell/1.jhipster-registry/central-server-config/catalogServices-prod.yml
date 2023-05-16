@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: 10.10.0.18
+    host: 10.10.0.15
     port: 6379
     database: 0
   jpa:

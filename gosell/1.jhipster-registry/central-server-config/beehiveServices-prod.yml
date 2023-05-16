@@ -1,42 +1,46 @@
+logging:
+  level:
+    com.mediastep.beehive: DEBUG
 application:
-  webGsDashboardDomain: 'https://gosell.mediastep.com'
-  webGsDashboardCallBackUrl: /payment/callback
-  webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
+  default-firebase-config:
+    firebase-database-url: https://firebase-qa.firebaseio.com/
+    firebase-api-key-android: AIzaSyAY7x9cYHCQKmYnuYerfXM3NKoAQcm9G1w
+    firebase-app-id-android: '1:978381762368:android:bd6df837957c655f'
+    firebase-api-key-ios: AIzaSyCyDQTyTQkp7P_f4hQg0_aRgeRpBMBlfyM
+    firebase-app-id-ios: '1:978381762368:ios:5bb20311621d6652'
+    firebase-client-id-ios: 978381762368-hrphavuuogu26jkjnooskoph7mmpv6n2.apps.googleusercontent.com
+    firebase-sender-id-ios: 978381762368
   jenkins:
-    baseUrl: 'http://feignclient:testfeignclient@ci-master.mediastep.com'
+    baseUrl: ci-master.mediastep.com
     basicAuth: ZmVpZ25jbGllbnQ6MTFlMDc3Nzk4NWFhMDk4MDZjNjNhOTNjZTAzZjQ1ZDZhZg==
     buildPath:
       web: >-
-        /view/Website/job/websites/job/storefront-gosell-ca-s3/buildWithParameters
-      android: /view/Android/job/android-gosell-staging-auto/buildWithParameters
-      ios: /view/IOS/job/ios-gosells-auto/buildWithParameters
+        /view/Website/job/website-develop-qa/job/storefront-qa/buildWithParameters/
+      android: /view/Android/job/android-gosell-qa/buildWithParameters/
+      ios: /view/IOS/job/ios-gosell-auto-qa/buildWithParameters/
+      updateSubDomain: /view/Website/job/websites/job/update-subdomain-qa/buildWithParameters
+      updateCustomDomain: >-
+        /view/Website/job/websites/job/update-custom-domain-qa/buildWithParameters
+      removeCustomDomain: >-
+        /view/Website/job/websites/job/delete-custom-domain-qa/buildWithParameters
       ssr: >-
         /view/Website/job/website-develop-qa/job/storefront-qa/buildWithParameters
   trial:
     time: 15
     unit: DAYS
-  gosellDomain: gosell.vn
-  defaultFirebaseConfig:
-    firebaseAppIdAndroid: test
-    firebaseApiKeyAndroid: test
-logging:
-  level:
-    com.mediastep.beehive: DEBUG
+  webGsDashboardDomain: 'https://gosell.mediastep.ca'
+  webGsDashboardCallBackUrl: /payment/callback
+  webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
 spring:
-  datasource:
-    hikari:
-      maximum-pool-size: 1000
-  jpa:
-    show-sql: true
-  redis:
-    host: 10.10.0.18
-    port: 6379
-    database: 0
   data:
+    # elasticsearch:
+    #   cluster-name: null
+    #   cluster-nodes: 'elasticsearch.mediastep.ca:9300'
+    #   client.transport.ignore_cluster_name: true
     jest:
-      uri: http://10.10.0.104:9022
-      read-timeout: 180000
+      uri: http://10.10.0.103:9022
+      readTimeout: 60000
 jhipster:
   cache: # Cache configuration
     redis: # Redis configuration
-      server: 'redis://10.10.0.18:6379'
+      server: 'redis://10.10.0.15:6379'

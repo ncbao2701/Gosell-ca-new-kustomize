@@ -1,19 +1,36 @@
 #common configuration shared between all applications
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://10.10.0.15:6379
 beecow:
     debugMode: true
     messageServices:
         firebase:
-            private-key-file-path: http://firebase-project.s3.amazonaws.com/firebase-admin-dev.json
-            url: https://beecow-dev.firebaseio.com
+            # private-key-file-path: classpath:config/firebase-admin-qa.json
+            private-key-file-path: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/beecow-qa-firebase-adminsdk-fwlpz-d9853f7e4c.json
+            url: https://beecow-qa.firebaseio.com
+            projectId: beecow-qa
+            fcmApi: https://fcm.googleapis.com/v1/projects/
+            fcmAuthApi: https://www.googleapis.com/auth/firebase.messaging
             rootPath:
             userNode: Users
             roomNode: Rooms
             timeout: 30
             timeoutUnit: SECONDS
             privateKeyGosell:
-                - name: beecow-dev
-                  filePath: http://firebase-project.s3.amazonaws.com/firebase-admin-dev.json
+                - name: beecow-ca
+                  filePath: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/beecow-qa-firebase-adminsdk-fwlpz-d9853f7e4c.json
+                - name: gosell-ca
+                  filePath: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/gosell-ca-firebase-adminsdk-pb8yl-faca6ed45b.json
+                - name: gosell-qc-qa
+                  filePath: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/gosell-qc-qa-firebase-adminsdk-fvx4d-72544ae22f.json
+                - name: gosell-qc-qa-016to031
+                  filePath: https://firebase-project-ca.s3.ap-southeast-1.amazonaws.com/gs-qc-ca-016to031-firebase-adminsdk-ect50-77cddae161.json
+                - name: gosell-qc-qa-2
+                  filePath: https://firebase-project-ca.s3.ap-southeast-1.amazonaws.com/gosell-qc-qa-2-firebase-adminsdk-nryxf-10cb8304a8.json
 spring:
     data:
         jest:
-            uri: http://es5.mediastep.com:9202
+            uri: http://10.10.0.103:9022
+            readTimeout: 60000

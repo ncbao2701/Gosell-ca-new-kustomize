@@ -1,55 +1,19 @@
-#application:
-#  shopee:
-##    partnerId: 851195
-##    requestUrl: "https://partner.uat.shopeemobile.com"
-##    secretKey: bb8524d07bee43253991c7df55112d4dd9f2c1ac2905bf3bc02ad63c4f074ea5
-##    dashboardUrl: "https://gosell.mediastep.com/channel/shopee/account"
-##    authorizationUrl: "${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}"
-##    dashboardAuthRedirectPath: "/channel/shopee/account"
-#  partnerId: 2002146
-#  requestUrl: https://partner.shopeemobile.com
-#  secretKey: bf4dbace9ad45f6961661e100a4c6cb9beef83de15fb51f79125b8561053b2ea
-#  dashboardAuthRedirectPath: /channel/shopee/account
-#  dashboardUrl: https://gosell.mediastep.com/channel/shopee/account
-#  authorizationUrl: ${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}
-
 application:
-  gosellSupportEmail: hotro@gosell.vn
-  customerServiceEmail: bao.tran@mediastep.com
-  fromEmail: welcome@gosell.vn
-  webGsDashboardDomain: https://gosell.mediastep.com
   shopee:
-    # partnerId: ${SHOPEE_ID}
-    # requestUrl: ${SHOPEE_URL}
-    # secretKey: ${SHOPEE_KEY}
-    # dashboardUrl: ${DASHBOARD_URL}
-    # authorizationUrl: ${application.shopee.requestUrl}/shop/auth_partner?redirect={2}&id={0}&token={1}
-    # dashboardAuthRedirectPath: ${dashboard_auth_redirect_path}
-    # partnerId: 851195
-    # requestUrl: "https://partner.uat.shopeemobile.com"
-    # secretKey: bb8524d07bee43253991c7df55112d4dd9f2c1ac2905bf3bc02ad63c4f074ea5
-    # dashboardUrl: "https://admin.unisell.vn/channel/shopee/account"
-    # authorizationUrl: "${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}"
-    # dashboardAuthRedirectPath: "/channel/shopee/account" 
-    partnerId: 2002146
-    requestUrl: "https://partner.shopeemobile.com"
-    secretKey: bf4dbace9ad45f6961661e100a4c6cb9beef83de15fb51f79125b8561053b2ea
-    dashboardUrl: "https://gosell.mediastep.com/channel/shopee/account"
-    authorizationUrl: "${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}"
-    dashboardAuthRedirectPath: "/channel/shopee/account"
-
-spring:
-  jpa:
-    show-sql: true
-  redis:
-    host: 10.10.0.18
-    port: 6379
-    database: 0
-
-logging:
-  level:
-    ROOT: INFO
-    com.mediastep.beecow.shopee: DEBUG
+    partnerId: ${SHOPEE_ID}
+    requestUrl: ${SHOPEE_URL}
+    secretKey: ${SHOPEE_KEY}
+    dashboardUrl: ${DASHBOARD_URL}
+    authorizationUrl: ${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}
+    # authorizationUrl: ${application.shopee.requestUrl}/shop/auth_partner?redirect=${application.shopee.dashboardUrl}&id={0}&token={1}
+    dashboardAuthRedirectPath: ${dashboard_auth_redirect_path}
+  # shopee:
+  #     partnerId: 851195
+  #     requestUrl: "https://partner.uat.shopeemobile.com"
+  #     secretKey: bb8524d07bee43253991c7df55112d4dd9f2c1ac2905bf3bc02ad63c4f074ea5
+  #     dashboardUrl: "https://gosell.mediastep.ca/channel/shopee/account"
+  #     authorizationUrl: "${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}"
+  #     dashboardAuthRedirectPath: "/channel/shopee/account"
 
 hystrix:
   command:
@@ -58,12 +22,15 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 10000
-    RestControllerCommand:
-      execution:
-        isolation:
-          strategy: THREAD
-          thread:
-            timeoutInMilliseconds: 5000
-            interruptOnTimeout: false
-      fallback:
-        enabled: false
+spring:
+  data:
+    elasticsearch:
+      cluster-name:
+      cluster-nodes: elasticsearch.mediastep.ca:9300
+      client.transport.ignore_cluster_name: true
+  redis:
+    host: 10.10.0.15
+    port: 6379
+logging:
+  level:
+    com.mediastep.beecow.shopee: DEBUG

@@ -1,10 +1,17 @@
-jhipster:
-    cache: # Cache configuration
-        redis: # Redis configuration
-            server: redis://10.10.0.18:6379
+# application:
+#     useEsQuery: false
 logging:
     level:
         com.mediastep.beecow.billing: DEBUG
 spring:
     jpa:
         show-sql: true
+    # data:
+    #     elasticsearch: 
+    #         cluster-name: 
+    #         cluster-nodes: elasticsearch.mediastep.ca:9300
+    #         client.transport.ignore_cluster_name: true
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://10.10.0.15:6379

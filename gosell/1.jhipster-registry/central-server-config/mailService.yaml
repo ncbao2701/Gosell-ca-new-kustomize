@@ -2,13 +2,8 @@ logging:
     level:
         com.mediastep.gosell.callcenter: DEBUG
 
-spring:
-    data:
-        jest:
-            uri: http://es5.mediastep.com:9202
-
 kafka:
-    bootstrap-servers: kafka.mediastep.com:9092
+    bootstrap-servers: 10.10.0.15:9092
 
 application:
     gosellDomain: gosell.vn
