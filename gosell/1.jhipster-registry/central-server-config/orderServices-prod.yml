@@ -1,51 +1,57 @@
 beecow:
     debug-mode: true
+    feign.client.logger.level: BASIC
     order:
+        website: https://beecow.mediastep.ca/
         orderService:
             orderExpirationTime: 5
             orderExpirationTimeUnit: MINUTES
             orderExpireCheckPageSize: 100
             orderExpireCheckTime: 300000 # Check if any order is expired every 5 minutes
-            orderAbandonTime: 15
+            orderAbandonTime: 10
             orderAbandonTimeUnit: MINUTES
             orderAbandonCheckPageSize: 100
             orderAbandonCheckTime: 300000 # Check if any order is abandoned every 5 minutes
-            itemWebsiteURLPrefix: https://beecow.mediastep.com/
-            itemWebsiteURLPrefixProduct: https://beecow.mediastep.com/product/
-            itemWebsiteURLPrefixDeal: https://beecow.mediastep.com/deal/
+            itemWebsiteURLPrefix: https://beecow.mediastep.ca/
+            itemWebsiteURLPrefixProduct: https://beecow.mediastep.ca/product/
+            itemWebsiteURLPrefixDeal: https://beecow.mediastep.ca/deal/
             orderSalesEmail: welcome@beecow.com
             orderSalesEmailReplyTo: cskh@beecow.com
-            orderSalesEmailBcc: order-dev@beecow.com
+            orderSalesEmailBcc:
             freeShipItemId: 196369,196368,196366
-            freeShip: true
             removeCODMethodDuringTet: false
-            removeCODMethod: false
-        deliveryInfo:
-            beecowUserId: 1
+            codeCoupon: U23BEECOW
         deliveryService:
             giaohangnhanh:
                 enabled: true
                 baseURL: https://testapipds.ghn.vn:9999/external/marketplace
                 clientID: 192900
                 password: egGdykvdVyccpbbz6
-                apiKey: mfGUevFXYqsqb1uL
-                apiSecretKey: 481FB8D1BE5B27C2C0531971334935D5
+                apiKey: gYPDgvqzT2mybhUV
+                apiSecretKey: 1E0410A33DA9B2CB342A6CCF0F912BF8
             giaohangtietkiem:
                 enabled: true
                 baseURL: https://dev.ghtk.vn
-                token: 926bA31A92CfDfBf0946c204628cCf41669E04c8
+                token: AFF7C489342a41fbf90342885D3C66a9d8110b9a
         paymentService:
             vnpay:
                 vnpUrl: http://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-                vnpTmnCode: BMFMDONK
+                vnpTmnCode: BPHHJWKY
                 vnpMerchant: DEMO
                 vnpVersion: 2
                 vnpCommand: pay
-                vnpHashSecret: GHTROFNVURELAGKAUSFIQANOZAUQHZKR
+                vnpHashSecret: RLNRBZPWYCSEJLUDIUVFKKFNGMSPJFOY
                 vnpOrderType: billpayment
-                vnpReturnUrlWeb: https://beecow.mediastep.com/new-order/{0}/result
-                vnpReturnUrlMobile: https://api.mediastep.com/orderservices/api/payment/result/vnpay
-
+                vnpReturnUrlWeb: https://beecow.mediastep.ca/new-order/{0}/result
+                vnpReturnUrlMobile: https://api.mediastep.ca/orderservices/api/payment/result/vnpay
 spring:
     jpa:
         show-sql: true
+    data:
+        jest:
+            uri: http://10.10.0.103:9022
+            readTimeout: 60000
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: redis://10.10.0.15:6379

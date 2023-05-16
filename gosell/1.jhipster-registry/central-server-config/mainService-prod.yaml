@@ -1,0 +1,18 @@
+configserver:
+  name: JHipster Registry config server
+  status: Connected to the JHipster Registry config server!
+eureka:
+    instance:
+        #prefer-ip-address: true
+        #nonSecurePort: 80
+        appname: mainService
+        #ip-address: ${EC2_LOCAL_IP}
+management:
+    health:
+        elasticsearch:
+            enabled: false
+spring:
+  redis:
+    host: 10.10.0.15
+    port: 6379
+    database: 7

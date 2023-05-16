@@ -4,7 +4,7 @@ beecow:
     order:
         orderService:
             orderExpireCheckTime: 60000 # Check every 1m
-            orderAbandonCheckTime: 1800000 # Check every 30m
+            orderAbandonCheckTime: 300000 # Check every 5m
     voucher:
         voucherService:
             voucherGettingExpiredDateCheckTime: 86400000 # Check every day

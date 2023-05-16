@@ -4,7 +4,7 @@ data:
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
+                uri: http://10.10.0.103:9022 #http://es5.mediastep.com:9202
                 read-timeout: 180000
 
         datasource:
@@ -20,7 +20,7 @@ data:
                 hibernate.cache.use_query_cache: false
 
         redis:
-            host: redis-0.redis.redis.svc.cluster.local
+            host: 10.10.0.15
             port: 6379
 
     #    cloud:
@@ -44,6 +44,7 @@ data:
                     isolation:
                         thread:
                             timeoutInMilliseconds: 30000
+                            interruptOnTimeout: false
                 fallback:
                     enabled: false
             default:
@@ -78,1554 +79,101 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
+                server: redis://10.10.0.15:6379
     application:
         itemProgressHandlingTimeoutInMinutes: 5
-        webGsDashboardDomain: https://admin.gosell.vn
-  application.yml: |
-    #common configuration shared between all applications
-    beecow:
-      debugMode: true
-      feign.client.logger.level: FULL
-      hystrixMonitor.enabled: true
-      defaultLanguage: en
-      languages: en,vi
-      gateway:
-        userService:
-          user:
-            defaultLocation: US
-            defaultLanguage: en
-            defaultAvatarUrl:
-              default: https://dm4fv4ltmsvz0.cloudfront.net/1000.jpg
-              male: https://dm4fv4ltmsvz0.cloudfront.net/1001.jpg
-              female: https://dm4fv4ltmsvz0.cloudfront.net/1002.jpg
-            activationKeyValidTime: 5
-            activationKeyValidTimeUnit: MINUTES
-            resetKeyValidTime: 5
-            resetKeyValidTimeUnit: HOURS
-          guest:
-            createRetry: 5
-          beecowUser:
-            specialBeecowUser:
-              langKeys: my-zawgyi # list of special beecowuser languages, separated by ','
-        emailService:
-          senderEmail: welcome@beecow.com
-          contactUsEmail: cskh@beecow.com
-      order:
-        deliveryService:
-          giaohangnhanh:
-            ips: 0.0.0.0/0
-          giaohangtietkiem:
-            ips: 0.0.0.0/0
-      payment:
-        vnpay:
-          ips: 0.0.0.0/0
-      freeshipping:
-        eachUser:
-          perDay: 1
-        campaigns:
-          - enable: true
-            fromTime: 2016-11-29T00:00:00+07:00
-            toTime: 2018-07-26T16:40:00+07:00
-            maxDiscount:
-            totalAmount:
-            excludeGhnIDs: 3, 10, 12
-            excludeGhtkIDs: 13
-            itemTypes: DEAL
-
-          - enable: true
-            fromTime: 2018-04-27T00:17:00+07:00
-            toTime: 2018-07-27T17:40:00+07:00
-            maxDiscount:
-            totalAmount: 200000
-            excludeGhnIDs: 3, 10, 12
-            excludeGhtkIDs:
-            itemTypes: PRODUCT_DEAL
-
-          - enable: false
-            fromTime: 2018-04-27T00:17:00+07:00
-            toTime: 2018-07-27T17:40:00+07:00
-            maxDiscount: 50000
-            totalAmount:
-            excludeGhnIDs: 3, 10, 12
-            excludeGhtkIDs:
-            itemTypes: BUSINESS_PRODUCT
-      loyalty:
-        point:
-          purchase:
-            rate: 0.01
-        reminder:
-          inactivity:
-            period: 0, 1, 7, 14, 30
-            unit: days # months, years
-            closedPrize: 10000
-      lock:
-        timeout: 20000 #10s
-    configserver:
-      name: Docker JHipster (Beecow) Registry
-      status: Connected to the JHipster(Beecow) Registry running in Docker DEV
-    jhipster:
-      async:
-        corePoolSize: 8
-        maxPoolSize: 100
-        queueCapacity: 100000
-      security:
-        authentication:
-          jwt:
-            secret: b1b46ec3d7f8295e66c7e43d2f1c50eb94a8a5d4
-            # Token is valid for 1 year
-            tokenValidityInSeconds: 31536000
-            # Token for remember me is valid  for 1 year
-            tokenValidityInSecondsForRememberMe: 31536000
-      logging:
-        logstash: # forward logs to ELK
-          enabled: true
-          host: 172.16.111.8
-      metrics:
-        logs: # report metrics in the logs
-          enabled: true
-          reportFrequency: 60 # in seconds
-    eureka:
-      client:
-        serviceUrl:
-          defaultZone: http://admin:admin@dev-registry.dev.svc.cluster.local:8761/eureka/
-      instance:
-        lease-renewal-interval-in-seconds: 2
-        registry-fetch-interval-seconds: 2
-        lease-expiration-duration-in-seconds: 5
-    spring:
-      jackson:
-        default-property-inclusion: non_null
-      cloud:
-        stream:
-          kafka:
-            binder:
-              brokers: 172.16.111.8:9092
-              zk-nodes: 172.16.111.8:2181
-      zipkin:
-        enabled: true
-        baseUrl: http://172.16.111.8:9411
-      sleuth.sampler.percentage: 1
-      # mail:
-      #   host: in-v3.mailjet.com
-      #   port: 587
-      #   username: f17ca1565b3570ad1dba0d30edb01c09
-      #   password: fba9424ddbd124ec473df5d9db90799c
-      #   protocol: smtp
-      #   tls: true
-      #   properties:
-      #     mail:
-      #       smtp:
-      #         auth: true
-      #         ssl.enable: false
-      #         starttls.enable: true
-      #         debug: true
-      jpa:
-        properties:
-          hibernate.cache.use_second_level_cache: true
-          hibernate.cache.use_query_cache: false
-      # mail:
-      #   host: smtp.sparkpostmail.com
-      #   username: SMTP_Injection
-      #   password: a9645f093d87c0e47a3a42b0e1575fd5911f72a6
-      #   port: 587
-      #   tls: true
-      #   properties:
-      #     mail:
-      #       smtp:
-      #         auth: true
-      #         debug: false
-      #         ssl:
-      #           enable: false
-      #         starttls:
-      #           enable: true
-      #   protocol: smtp
-      mail:
-        host: smtp.elasticemail.com
-        port: 465
-        username: root@mediastep.com
-        password: 87adbb11-3474-4adf-923c-a6f16c121204
-        protocol: smtp
-        tls: true
-        properties:
-          mail:
-            smtp:
-              auth: true
-              ssl.enable: true
-              starttls.enable: true
-              debug: true
-    aws:
-      cdn:
-        status: https://dhsfy2j3z9bm3.cloudfront.net
-        item: https://d3a0f2zusjbf7r.cloudfront.net
-        cupid: https://d1gx7yxn0p91c9.cloudfront.net
-        general: https://dm4fv4ltmsvz0.cloudfront.net
-        doc: https://d2wimnuwlet7ii.cloudfront.net
-        banner: htpps://d8qbqtt58lzda.cloudfront.net
-        job: https://d3sla10qaze016.cloudfront.net
-        accessory: https://d36knys0k45mi9.cloudfront.net
-
-    logging:
-      level:
-        ROOT: DEBUG
-        io.github.jhipster: DEBUG
-        com.mediastep.gosell.storefront: DEBUG
-        com.mediastep.beecow: DEBUG
-    management:
-      health:
-        elasticsearch:
-          response-timeout: 30000
-    archaius.deployment.environment: DEV
-
-    # server.undertow.thread-count: 512
-    server:
-      undertow:
-        worker-threads: 512
-
-    gosell:
-      cron:
-        clearCache:
-          permission: 0 0/1 * 1/1 * ? #Every minute
-      security:
-        authentication:
-          jwt:
-            storeTokenValidityInSeconds: 21600000
-            storeTokenValidityInSecondsForRememberMe: 21600000
-
-    hystrix:
-      command:
-        max15:
-          execution:
-            isolation:
-              strategy: THREAD
-              thread:
-                timeoutInMilliseconds: 15000
-          fallback:
-            enabled: false
-        max20:
-          execution:
-            isolation:
-              strategy: THREAD
-              thread:
-                timeoutInMilliseconds: 20000
-          fallback:
-            enabled: false
-        max25:
-          execution:
-            isolation:
-              strategy: THREAD
-              thread:
-                timeoutInMilliseconds: 25000
-          fallback:
-            enabled: false
-        max30:
-          execution:
-            isolation:
-              strategy: THREAD
-              thread:
-                timeoutInMilliseconds: 30000
-          fallback:
-            enabled: false
-        max35:
-          execution:
-            isolation:
-              strategy: THREAD
-              thread:
-                timeoutInMilliseconds: 35000
-          fallback:
-            enabled: false
-
-    # Just let it at the bottom of file
-    email-domain:
-      whitelist:
-        - gmail.com
-        - hotmail.com
-        - mediastep.com
-      blacklist:
-        - 0815.ru
-        - 0815.ru0clickemail.com
-        - 0815.ry
-        - 0815.su
-        - 0845.ru
-        - 0clickemail.com
-        - 0-mail.com
-        - 0wnd.net
-        - 0wnd.org
-        - 10mail.com
-        - 10mail.org
-        - 10minut.com.pl
-        - 10minute-email.com
-        - 10minutemail.cf
-        - 10minutemail.co.uk
-        - 10minutemail.co.za
-        - 10minutemail.com
-        - 10minutemail.de
-        - 10minutemail.ga
-        - 10minutemail.gq
-        - 10minutemail.ml
-        - 10minutemail.net
-        - 10minutesmail.com
-        - 10x9.com
-        - 123-m.com
-        - 126.com
-        - 12houremail.com
-        - 12minutemail.com
-        - 12minutemail.net
-        - 139.com
-        - 163.com
-        - 1ce.us
-        - 1chuan.com
-        - 1fsdfdsfsdf.tk
-        - 1mail.ml
-        - 1pad.de
-        - 1zhuan.com
-        - 20mail.it
-        - 20email.eu
-        - 20minutemail.com
-        - 21cn.com
-        - 24hourmail.com
-        - 2fdgdfgdfgdf.tk
-        - 2prong.com
-        - 30minutemail.com
-        - 30mail.ir
-        - 33mail.com
-        - 3d-painting.com
-        - 3mail.ga
-        - 3trtretgfrfe.tk
-        - 420blaze.it
-        - 4gfdsgfdgfd.tk
-        - 4mail.cf
-        - 4mail.ga
-        - 4warding.com
-        - 4warding.net
-        - 4warding.org
-        - 5ghgfhfghfgh.tk
-        - 5mail.cf
-        - 5mail.ga
-        - 60minutemail.com
-        - 675hosting.com
-        - 675hosting.net
-        - 675hosting.org
-        - 6hjgjhgkilkj.tk
-        - 6ip.us
-        - 6mail.cf
-        - 6mail.ga
-        - 6mail.ml
-        - 6paq.com
-        - 6url.com
-        - 75hosting.com
-        - 75hosting.net
-        - 75hosting.org
-        - 7days-printing.com
-        - 7mail.ga
-        - 7mail.ml
-        - 7tags.com
-        - 8127ep.com
-        - 8chan.co
-        - 8mail.cf
-        - 8mail.ga
-        - 8mail.ml
-        - 99experts.com
-        - 9mail.cf
-        - 9ox.net
-        - a.mailcker.com
-        - a.vztc.com
-        - a45.in
-        - a-bc.net
-        - abyssmail.com
-        - afrobacon.com
-        - ag.us.to
-        - agedmail.com
-        - ajaxapp.net
-        - akapost.com
-        - akerd.com
-        - aktiefmail.nl
-        - alivance.com
-        - amail4.me
-        - ama-trade.de
-        - ama-trans.de
-        - amilegit.com
-        - amiri.net
-        - amiriindustries.com
-        - anappthat.com
-        - ano-mail.net
-        - anonbox.net
-        - anon-mail.de
-        - anonmails.de
-        - anonymail.dk
-        - anonymbox.com
-        - anonymousmail.org
-        - anonymousspeech.com
-        - antichef.com
-        - antichef.net
-        - antireg.com
-        - antireg.ru
-        - antispam.de
-        - antispam24.de
-        - antispammail.de
-        - armyspy.com
-        - artman-conception.com
-        - asdasd.nl
-        - asdasd.ru
-        - atvclub.msk.ru
-        - auti.st
-        - avpa.nl
-        - azmeil.tk
-        - b2cmail.de
-        - baxomale.ht.cx
-        - beddly.com
-        - beefmilk.com
-        - big1.us
-        - bigprofessor.so
-        - bigstring.com
-        - binkmail.com
-        - bio-muesli.info
-        - bio-muesli.net
-        - blackmarket.to
-        - bladesmail.net
-        - bloatbox.com
-        - blogmyway.org
-        - blogos.com
-        - bluebottle.com
-        - bobmail.info
-        - bodhi.lawlita.com
-        - bofthew.com
-        - bootybay.de
-        - boun.cr
-        - bouncr.com
-        - boxformail.in
-        - boximail.com
-        - br.mintemail.com
-        - brainonfire.net
-        - breakthru.com
-        - brefmail.com
-        - brennendesreich.de
-        - broadbandninja.com
-        - bsnow.net
-        - bspamfree.org
-        - bu.mintemail.com
-        - buffemail.com
-        - bugmenever.com
-        - bugmenot.com
-        - bumpymail.com
-        - bund.us
-        - bundes-li.ga
-        - burnthespam.info
-        - burstmail.info
-        - buymoreplays.com
-        - buyusedlibrarybooks.org
-        - byom.de
-        - c2.hu
-        - cachedot.net
-        - cam4you.cc
-        - card.zp.ua
-        - casualdx.com
-        - cc.liamria
-        - cek.pm
-        - cellurl.com
-        - centermail.com
-        - centermail.net
-        - chammy.info
-        - chaparmail.tk
-        - cheatmail.de
-        - childsavetrust.org
-        - chogmail.com
-        - choicemail1.com
-        - chong-mail.com
-        - chong-mail.net
-        - chong-mail.org
-        - clixser.com
-        - clrmail.com
-        - cmail.com
-        - cmail.net
-        - cmail.org
-        - cock.li
-        - coieo.com
-        - coldemail.info
-        - consumerriot.com
-        - cool.fr.nf
-        - correo.blogos.net
-        - cosmorph.com
-        - courriel.fr.nf
-        - courrieltemporaire.com
-        - crapmail.org
-        - crazymailing.com
-        - cubiclink.com
-        - cumallover.me
-        - curryworld.de
-        - cust.in
-        - cuvox.de
-        - d3p.dk
-        - dacoolest.com
-        - dandikmail.com
-        - dayrep.com
-        - dbunker.com
-        - dcemail.com
-        - deadaddress.com
-        - deadchildren.org
-        - deadfake.cf
-        - deadfake.ga
-        - deadfake.ml
-        - deadfake.tk
-        - deadspam.com
-        - deagot.com
-        - dealja.com
-        - delikkt.de
-        - despam.it
-        - despammed.com
-        - devnullmail.com
-        - dfgh.net
-        - dharmatel.net
-        - dicksinhisan.us
-        - dicksinmyan.us
-        - digitalsanctuary.com
-        - dingbone.com
-        - discard.cf
-        - discard.email
-        - discard.ga
-        - discard.gq
-        - discard.ml
-        - discard.tk
-        - discardmail.com
-        - discardmail.de
-        - disposable.cf
-        - disposable.ga
-        - disposable.ml
-        - disposableaddress.com
-        - disposable-email.ml
-        - disposableemailaddresses.com
-        - disposableinbox.com
-        - dispose.it
-        - disposeamail.com
-        - disposemail.com
-        - dispostable.com
-        - divermail.com
-        - dm.w3internet.co.uk
-        - dm.w3internet.co.ukexample.com
-        - docmail.com
-        - dodgeit.com
-        - dodgit.com
-        - dodgit.org
-        - doiea.com
-        - domozmail.com
-        - donemail.ru
-        - dontreg.com
-        - dontsendmespam.de
-        - dotman.de
-        - dotmsg.com
-        - drdrb.com
-        - drdrb.net
-        - dropcake.de
-        - droplister.com
-        - dropmail.me
-        - dudmail.com
-        - dumpandjunk.com
-        - dump-email.info
-        - dumpmail.de
-        - dumpyemail.com
-        - duskmail.com
-        - e4ward.com
-        - easytrashmail.com
-        - edv.to
-        - ee1.pl
-        - ee2.pl
-        - eelmail.com
-        - einmalmail.de
-        - einrot.com
-        - einrot.de
-        - eintagsmail.de
-        - e-mail.com
-        - emeil.cf
-        - email.net
-        - emailirani.ir
-        - e-mail.org
-        - email60.com
-        - emailage.cf
-        - emailage.ga
-        - emailage.gq
-        - emailage.ml
-        - emailage.tk
-        - emaildienst.de
-        - email-fake.cf
-        - email-fake.ga
-        - email-fake.gq
-        - email-fake.ml
-        - email-fake.tk
-        - emailgo.de
-        - emailias.com
-        - emailigo.de
-        - emailinfive.com
-        - emaillime.com
-        - emailmiser.com
-        - emails.ga
-        - emailsensei.com
-        - emailspam.cf
-        - emailspam.ga
-        - emailspam.gq
-        - emailspam.ml
-        - emailspam.tk
-        - emailtemporanea.com
-        - emailtemporanea.net
-        - emailtemporar.ro
-        - emailtemporario.com.br
-        - emailthe.net
-        - emailtmp.com
-        - emailto.de
-        - emailwarden.com
-        - emailx.at.hm
-        - emailxfer.com
-        - emailz.cf
-        - emailz.ga
-        - emailz.gq
-        - emailz.ml
-        - emall.ir
-        - emeil.in
-        - emeil.ir
-        - emkei.cf
-        - emkei.ga
-        - emkei.gq
-        - emkei.ml
-        - emkei.tk
-        - emz.net
-        - enterto.com
-        - ephemail.net
-        - e-postkasten.com
-        - e-postkasten.de
-        - e-postkasten.eu
-        - e-postkasten.info
-        - ero-tube.org
-        - etranquil.com
-        - etranquil.net
-        - etranquil.org
-        - evopo.com
-        - example.com
-        - explodemail.com
-        - express.net.ua
-        - eyepaste.com
-        - facebook-email.cf
-        - facebook-email.ga
-        - facebook-email.ml
-        - facebookmail.gq
-        - facebookmail.ml
-        - faecesmail.me
-        - fakedemail.com
-        - fakeinbox.cf
-        - fakeinbox.com
-        - fakeinbox.ga
-        - fakeinbox.ml
-        - fakeinbox.tk
-        - fakeinformation.com
-        - fake-mail.cf
-        - fakemail.fr
-        - fake-mail.ga
-        - fake-mail.ml
-        - fakemailgenerator.com
-        - fakemailz.com
-        - fammix.com
-        - fansworldwide.de
-        - fantasymail.de
-        - fastacura.com
-        - fastchevy.com
-        - fastchrysler.com
-        - fastermail.com
-        - fastkawasaki.com
-        - fastmail.fm
-        - fastmazda.com
-        - fastmitsubishi.com
-        - fastnissan.com
-        - fastsubaru.com
-        - fastsuzuki.com
-        - fasttoyota.com
-        - fastyamaha.com
-        - fatflap.com
-        - fdfdsfds.com
-        - fightallspam.com
-        - film-blog.biz
-        - filzmail.com
-        - fivemail.de
-        - fixmail.tk
-        - fizmail.com
-        - fleckens.hu
-        - flurred.com
-        - flyspam.com
-        - fly-ts.de
-        - footard.com
-        - forgetmail.com
-        - fornow.eu
-        - fr33mail.info
-        - frapmail.com
-        - freecoolemail.com
-        - free-email.cf
-        - free-email.ga
-        - freeletter.me
-        - freemail.ms
-        - freemails.cf
-        - freemails.ga
-        - freemails.ml
-        - freundin.ru
-        - friendlymail.co.uk
-        - front14.org
-        - fuckingduh.com
-        - fuckmail.me
-        - fudgerub.com
-        - fux0ringduh.com
-        - fyii.de
-        - garbagemail.org
-        - garliclife.com
-        - garrifulio.mailexpire.com
-        - gawab.com
-        - gehensiemirnichtaufdensack.de
-        - gelitik.in
-        - geschent.biz
-        - get1mail.com
-        - get2mail.fr
-        - getairmail.cf
-        - getairmail.com
-        - getairmail.ga
-        - getairmail.gq
-        - getairmail.ml
-        - getairmail.tk
-        - get-mail.cf
-        - get-mail.ga
-        - get-mail.ml
-        - get-mail.tk
-        - getmails.eu
-        - getonemail.com
-        - getonemail.net
-        - ghosttexter.de
-        - giantmail.de
-        - girlsundertheinfluence.com
-        - gishpuppy.com
-        - gmal.com
-        - gmial.com
-        - gmx.com
-        - goat.si
-        - goemailgo.com
-        - gomail.in
-        - gorillaswithdirtyarmpits.com
-        - gotmail.com
-        - gotmail.net
-        - gotmail.org
-        - gotti.otherinbox.com
-        - gowikibooks.com
-        - gowikicampus.com
-        - gowikicars.com
-        - gowikifilms.com
-        - gowikigames.com
-        - gowikimusic.com
-        - gowikinetwork.com
-        - gowikitravel.com
-        - gowikitv.com
-        - grandmamail.com
-        - grandmasmail.com
-        - great-host.in
-        - greensloth.com
-        - grr.la
-        - gsrv.co.uk
-        - guerillamail.biz
-        - guerillamail.com
-        - guerillamail.net
-        - guerillamail.org
-        - guerillamailblock.com
-        - guerrillamail.biz
-        - guerrillamail.com
-        - guerrillamail.de
-        - guerrillamail.info
-        - guerrillamail.net
-        - guerrillamail.org
-        - guerrillamailblock.com
-        - gustr.com
-        - h.mintemail.com
-        - h8s.org
-        - hacccc.com
-        - haltospam.com
-        - harakirimail.com
-        - hartbot.de
-        - hatespam.org
-        - hat-geld.de
-        - herp.in
-        - hidemail.de
-        - hidzz.com
-        - hmamail.com
-        - hochsitze.com
-        - hooohush.ai
-        - hopemail.biz
-        - horsefucker.org
-        - hotmai.com
-        - hot-mail.cf
-        - hot-mail.ga
-        - hot-mail.gq
-        - hot-mail.ml
-        - hot-mail.tk
-        - hotmial.com
-        - hotpop.com
-        - huajiachem.cn
-        - hulapla.de
-        - humaility.com
-        - hush.ai
-        - hush.com
-        - hushmail.com
-        - hushmail.me
-        - i2pmail.org
-        - ieatspam.eu
-        - ieatspam.info
-        - ieh-mail.de
-        - ignoremail.com
-        - ihateyoualot.info
-        - iheartspam.org
-        - ikbenspamvrij.nl
-        - imails.info
-        - imgof.com
-        - imgv.de
-        - imstations.com
-        - inbax.tk
-        - inbox.si
-        - inbox2.info
-        - inboxalias.com
-        - inboxclean.com
-        - inboxclean.org
-        - inboxdesign.me
-        - inboxed.im
-        - inboxed.pw
-        - inboxstore.me
-        - incognitomail.com
-        - incognitomail.net
-        - incognitomail.org
-        - infocom.zp.ua
-        - insorg-mail.info
-        - instantemailaddress.com
-        - instant-mail.de
-        - iozak.com
-        - ip6.li
-        - ipoo.org
-        - irish2me.com
-        - iroid.com
-        - is.af
-        - iwantmyname.com
-        - iwi.net
-        - jetable.com
-        - jetable.fr.nf
-        - jetable.net
-        - jetable.org
-        - jnxjn.com
-        - jourrapide.com
-        - jsrsolutions.com
-        - junk.to
-        - junk1e.com
-        - junkmail.ga
-        - junkmail.gq
-        - k2-herbal-incenses.com
-        - kasmail.com
-        - kaspop.com
-        - keepmymail.com
-        - killmail.com
-        - killmail.net
-        - kir.ch.tc
-        - klassmaster.com
-        - klassmaster.net
-        - kloap.com
-        - klzlk.com
-        - kmhow.com
-        - kostenlosemailadresse.de
-        - koszmail.pl
-        - kulturbetrieb.info
-        - kurzepost.de
-        - l33r.eu
-        - lackmail.net
-        - lags.us
-        - landmail.co
-        - lastmail.co
-        - lavabit.com
-        - lawlita.com
-        - letthemeatspam.com
-        - lhsdv.com
-        - lifebyfood.com
-        - link2mail.net
-        - linuxmail.so
-        - litedrop.com
-        - llogin.ru
-        - loadby.us
-        - login-email.cf
-        - login-email.ga
-        - login-email.ml
-        - login-email.tk
-        - lol.com
-        - lol.ovpn.to
-        - lolfreak.net
-        - lookugly.com
-        - lopl.co.cc
-        - lortemail.dk
-        - losemymail.com
-        - lovebitco.in
-        - lovemeleaveme.com
-        - loves.dicksinhisan.us
-        - loves.dicksinmyan.us
-        - lr7.us
-        - lr78.com
-        - lroid.com
-        - luckymail.org
-        - lukop.dk
-        - luv2.us
-        - m21.cc
-        - m4ilweb.info
-        - ma1l.bij.pl
-        - maboard.com
-        - mac.hush.com
-        - mail.by
-        - mail.me
-        - mail.mezimages.net
-        - mail.ru
-        - mail.zp.ua
-        - mail114.net
-        - mail1a.de
-        - mail21.cc
-        - mail2rss.org
-        - mail2world.com
-        - mail333.com
-        - mail4trash.com
-        - mailbidon.com
-        - mailbiz.biz
-        - mailblocks.com
-        - mailbucket.org
-        - mailcat.biz
-        - mailcatch.com
-        - mailde.de
-        - mailde.info
-        - maildrop.cc
-        - maildrop.cf
-        - maildrop.ga
-        - maildrop.gq
-        - maildrop.ml
-        - maildu.de
-        - maileater.com
-        - mailed.in
-        - maileimer.de
-        - mailexpire.com
-        - mailfa.tk
-        - mail-filter.com
-        - mailforspam.com
-        - mailfree.ga
-        - mailfree.gq
-        - mailfree.ml
-        - mailfreeonline.com
-        - mailguard.me
-        - mailhazard.com
-        - mailhazard.us
-        - mailhz.me
-        - mailimate.com
-        - mailin8r.com
-        - mailinater.com
-        - mailinator.com
-        - mailinator.gq
-        - mailinator.net
-        - mailinator.org
-        - mailinator.us
-        - mailinator2.com
-        - mailincubator.com
-        - mailismagic.com
-        - mailita.tk
-        - mailjunk.cf
-        - mailjunk.ga
-        - mailjunk.gq
-        - mailjunk.ml
-        - mailjunk.tk
-        - mailme.gq
-        - mailme.ir
-        - mailme.lv
-        - mailme24.com
-        - mailmetrash.com
-        - mailmoat.com
-        - mailms.com
-        - mailnator.com
-        - mailnesia.com
-        - mailnull.com
-        - mailorg.org
-        - mailpick.biz
-        - mailquack.com
-        - mailrock.biz
-        - mailsac.com
-        - mailscrap.com
-        - mailseal.de
-        - mailshell.com
-        - mailsiphon.com
-        - mailslapping.com
-        - mailslite.com
-        - mailtemp.info
-        - mail-temporaire.fr
-        - mailtome.de
-        - mailtothis.com
-        - mailtrash.net
-        - mailtv.net
-        - mailtv.tv
-        - mailwithyou.com
-        - mailzilla.com
-        - mailzilla.org
-        - makemetheking.com
-        - malahov.de
-        - manifestgenerator.com
-        - manybrain.com
-        - mbx.cc
-        - mega.zik.dj
-        - meinspamschutz.de
-        - meltmail.com
-        - messagebeamer.de
-        - mezimages.net
-        - mierdamail.com
-        - migmail.pl
-        - migumail.com
-        - ministry-of-silly-walks.de
-        - mintemail.com
-        - misterpinball.de
-        - mjukglass.nu
-        - mmmmail.com
-        - moakt.com
-        - mobi.web.id
-        - mobileninja.co.uk
-        - moburl.com
-        - moncourrier.fr.nf
-        - monemail.fr.nf
-        - monmail.fr.nf
-        - monumentmail.com
-        - ms9.mailslite.com
-        - msa.minsmail.com
-        - msb.minsmail.com
-        - msg.mailslite.com
-        - mt2009.com
-        - mt2014.com
-        - mt2015.com
-        - muchomail.com
-        - mx0.wwwnew.eu
-        - my10minutemail.com
-        - mycard.net.ua
-        - mycleaninbox.net
-        - myemailboxy.com
-        - mymail-in.net
-        - mynetstore.de
-        - mypacks.net
-        - mypartyclip.de
-        - myphantomemail.com
-        - mysamp.de
-        - myspaceinc.com
-        - myspaceinc.net
-        - myspaceinc.org
-        - myspacepimpedup.com
-        - myspamless.com
-        - mytempemail.com
-        - mytempmail.com
-        - mythrashmail.net
-        - mytrashmail.com
-        - nabuma.com
-        - national.shitposting.agency
-        - naver.com
-        - neomailbox.com
-        - nepwk.com
-        - nervmich.net
-        - nervtmich.net
-        - netmails.com
-        - netmails.net
-        - netzidiot.de
-        - neverbox.com
-        - nevermail.de
-        - nice-4u.com
-        - nigge.rs
-        - nincsmail.hu
-        - nmail.cf
-        - nnh.com
-        - noblepioneer.com
-        - nobugmail.com
-        - nobulk.com
-        - nobuma.com
-        - noclickemail.com
-        - nogmailspam.info
-        - nomail.pw
-        - nomail.xl.cx
-        - nomail2me.com
-        - nomorespamemails.com
-        - nonspam.eu
-        - nonspammer.de
-        - noref.in
-        - nospam.wins.com.br
-        - no-spam.ws
-        - nospam.ze.tc
-        - nospam4.us
-        - nospamfor.us
-        - nospammail.net
-        - nospamthanks.info
-        - notmailinator.com
-        - notsharingmy.info
-        - nowhere.org
-        - nowmymail.com
-        - ntlhelp.net
-        - nullbox.info
-        - nurfuerspam.de
-        - nus.edu.sg
-        - nwldx.com
-        - o2.co.uk
-        - o2.pl
-        - objectmail.com
-        - obobbo.com
-        - odaymail.com
-        - odnorazovoe.ru
-        - ohaaa.de
-        - omail.pro
-        - oneoffemail.com
-        - oneoffmail.com
-        - onewaymail.com
-        - onlatedotcom.info
-        - online.ms
-        - oopi.org
-        - opayq.com
-        - ordinaryamerican.net
-        - otherinbox.com
-        - ourklips.com
-        - outlawspam.com
-        - ovpn.to
-        - owlpic.com
-        - pancakemail.com
-        - paplease.com
-        - pcusers.otherinbox.com
-        - pepbot.com
-        - pfui.ru
-        - phentermine-mortgages-texas-holdem.biz
-        - pimpedupmyspace.com
-        - pjjkp.com
-        - plexolan.de
-        - poczta.onet.pl
-        - politikerclub.de
-        - poofy.org
-        - pookmail.com
-        - postonline.me
-        - powered.name
-        - privacy.net
-        - privatdemail.net
-        - privy-mail.com
-        - privymail.de
-        - privy-mail.de
-        - proxymail.eu
-        - prtnx.com
-        - prtz.eu
-        - punkass.com
-        - put2.net
-        - putthisinyourspamdatabase.com
-        - pwrby.com
-        - qasti.com
-        - qisdo.com
-        - qisoa.com
-        - qoika.com
-        - qq.com
-        - quickinbox.com
-        - quickmail.nl
-        - rcpt.at
-        - rcs.gaggle.net
-        - reallymymail.com
-        - realtyalerts.ca
-        - receiveee.com
-        - recode.me
-        - recursor.net
-        - recyclemail.dk
-        - redchan.it
-        - regbypass.com
-        - regbypass.comsafe-mail.net
-        - rejectmail.com
-        - reliable-mail.com
-        - remail.cf
-        - remail.ga
-        - rhyta.com
-        - rklips.com
-        - rmqkr.net
-        - royal.net
-        - rppkn.com
-        - rtrtr.com
-        - s0ny.net
-        - safe-mail.net
-        - safersignup.de
-        - safetymail.info
-        - safetypost.de
-        - sandelf.de
-        - saynotospams.com
-        - scatmail.com
-        - schafmail.de
-        - schmeissweg.tk
-        - schrott-email.de
-        - secmail.pw
-        - secretemail.de
-        - secure-mail.biz
-        - secure-mail.cc
-        - selfdestructingmail.com
-        - selfdestructingmail.org
-        - sendspamhere.com
-        - senseless-entertainment.com
-        - server.ms
-        - services391.com
-        - sharklasers.com
-        - shieldedmail.com
-        - shieldemail.com
-        - shiftmail.com
-        - shitmail.me
-        - shitmail.org
-        - shitware.nl
-        - shmeriously.com
-        - shortmail.net
-        - shut.name
-        - shut.ws
-        - sibmail.com
-        - sify.com
-        - sina.cn
-        - sina.com
-        - sinnlos-mail.de
-        - siteposter.net
-        - skeefmail.com
-        - sky-ts.de
-        - slapsfromlastnight.com
-        - slaskpost.se
-        - slave-auctions.net
-        - slopsbox.com
-        - slushmail.com
-        - smaakt.naar.gravel
-        - smapfree24.com
-        - smapfree24.de
-        - smapfree24.eu
-        - smapfree24.info
-        - smapfree24.org
-        - smashmail.de
-        - smellfear.com
-        - snakemail.com
-        - sneakemail.com
-        - sneakmail.de
-        - snkmail.com
-        - sofimail.com
-        - sofortmail.de
-        - sofort-mail.de
-        - sogetthis.com
-        - sohu.com
-        - solvemail.info
-        - soodomail.com
-        - soodonims.com
-        - spam.la
-        - spam.su
-        - spam4.me
-        - spamail.de
-        - spamarrest.com
-        - spamavert.com
-        - spam-be-gone.com
-        - spambob.com
-        - spambob.net
-        - spambob.org
-        - spambog.com
-        - spambog.de
-        - spambog.net
-        - spambog.ru
-        - spambooger.com
-        - spambox.info
-        - spambox.irishspringrealty.com
-        - spambox.org
-        - spambox.us
-        - spamcannon.com
-        - spamcannon.net
-        - spamcero.com
-        - spamcon.org
-        - spamcorptastic.com
-        - spamcowboy.com
-        - spamcowboy.net
-        - spamcowboy.org
-        - spamday.com
-        - spamdecoy.net
-        - spamex.com
-        - spamfighter.cf
-        - spamfighter.ga
-        - spamfighter.gq
-        - spamfighter.ml
-        - spamfighter.tk
-        - spamfree.eu
-        - spamfree24.com
-        - spamfree24.de
-        - spamfree24.eu
-        - spamfree24.info
-        - spamfree24.net
-        - spamfree24.org
-        - spamgoes.in
-        - spamgourmet.com
-        - spamgourmet.net
-        - spamgourmet.org
-        - spamherelots.com
-        - spamhereplease.com
-        - spamhole.com
-        - spamify.com
-        - spaminator.de
-        - spamkill.info
-        - spaml.com
-        - spaml.de
-        - spammotel.com
-        - spamobox.com
-        - spamoff.de
-        - spamsalad.in
-        - spamslicer.com
-        - spamspot.com
-        - spamstack.net
-        - spamthis.co.uk
-        - spamthisplease.com
-        - spamtrail.com
-        - spamtroll.net
-        - speed.1s.fr
-        - spoofmail.de
-        - squizzy.de
-        - sry.li
-        - ssoia.com
-        - startkeys.com
-        - stinkefinger.net
-        - stop-my-spam.cf
-        - stop-my-spam.com
-        - stop-my-spam.ga
-        - stop-my-spam.ml
-        - stop-my-spam.tk
-        - stuffmail.de
-        - suioe.com
-        - super-auswahl.de
-        - supergreatmail.com
-        - supermailer.jp
-        - superplatyna.com
-        - superrito.com
-        - superstachel.de
-        - suremail.info
-        - sweetxxx.de
-        - swift10minutemail.com
-        - trbvn.com
-        - tafmail.com
-        - tagyourself.com
-        - talkinator.com
-        - tapchicuoihoi.com
-        - techemail.com
-        - techgroup.me
-        - teewars.org
-        - teleworm.com
-        - teleworm.us
-        - temp.emeraldwebmail.com
-        - tempail.com
-        - tempalias.com
-        - tempemail.biz
-        - tempemail.co.za
-        - tempemail.com
-        - tempe-mail.com
-        - tempemail.net
-        - tempimbox.com
-        - tempinbox.co.uk
-        - tempinbox.com
-        - tempmail.eu
-        - tempmail.it
-        - temp-mail.org
-        - temp-mail.ru
-        - tempmail2.com
-        - tempmaildemo.com
-        - tempmailer.com
-        - tempmailer.de
-        - tempomail.fr
-        - temporarily.de
-        - temporarioemail.com.br
-        - temporaryemail.net
-        - temporaryemail.us
-        - temporaryforwarding.com
-        - temporaryinbox.com
-        - temporarymailaddress.com
-        - tempthe.net
-        - tempymail.com
-        - tfwno.gf
-        - thanksnospam.info
-        - thankyou2010.com
-        - thc.st
-        - thecloudindex.com
-        - thelimestones.com
-        - thisisnotmyrealemail.com
-        - thismail.net
-        - thrma.com
-        - throam.com
-        - throwawayemailaddress.com
-        - throwawaymail.com
-        - tijdelijkmailadres.nl
-        - tilien.com
-        - tittbit.in
-        - tizi.com
-        - tmail.com
-        - tmailinator.com
-        - toiea.com
-        - tokem.co
-        - toomail.biz
-        - topcoolemail.com
-        - topfreeemail.com
-        - topranklist.de
-        - tormail.net
-        - tormail.org
-        - tradermail.info
-        - trash2009.com
-        - trash2010.com
-        - trash2011.com
-        - trash-amil.com
-        - trashcanmail.com
-        - trashdevil.com
-        - trashdevil.de
-        - trashemail.de
-        - trashinbox.com
-        - trashmail.at
-        - trash-mail.at
-        - trash-mail.cf
-        - trashmail.com
-        - trash-mail.com
-        - trashmail.de
-        - trash-mail.de
-        - trash-mail.ga
-        - trash-mail.gq
-        - trashmail.me
-        - trash-mail.ml
-        - trashmail.net
-        - trashmail.org
-        - trash-mail.tk
-        - trashmail.ws
-        - trashmailer.com
-        - trashymail.com
-        - trashymail.net
-        - trayna.com
-        - trbvm.com
-        - trialmail.de
-        - trickmail.net
-        - trillianpro.com
-        - tryalert.com
-        - turual.com
-        - twinmail.de
-        - tyldd.com
-        - ubismail.net
-        - uggsrock.com
-        - umail.net
-        - upliftnow.com
-        - uplipht.com
-        - uroid.com
-        - us.af
-        - uyhip.com
-        - valemail.net
-        - venompen.com
-        - verticalscope.com
-        - veryrealemail.com
-        - veryrealmail.com
-        - vidchart.com
-        - viditag.com
-        - viewcastmedia.com
-        - viewcastmedia.net
-        - viewcastmedia.org
-        - vipmail.name
-        - vipmail.pw
-        - viralplays.com
-        - vistomail.com
-        - vomoto.com
-        - vpn.st
-        - vsimcard.com
-        - vubby.com
-        - vztc.com
-        - walala.org
-        - walkmail.net
-        - wants.dicksinhisan.us
-        - wants.dicksinmyan.us
-        - wasteland.rfc822.org
-        - watchfull.net
-        - watch-harry-potter.com
-        - wavemail.ir
-        - webemail.me
-        - webm4il.info
-        - webuser.in
-        - wegwerfadresse.de
-        - wegwerfemail.com
-        - wegwerfemail.de
-        - wegwerf-email.de
-        - weg-werf-email.de
-        - wegwerfemail.net
-        - wegwerf-email.net
-        - wegwerfemail.org
-        - wegwerf-email-addressen.de
-        - wegwerfemailadresse.com
-        - wegwerf-email-adressen.de
-        - wegwerf-emails.de
-        - wegwerfmail.de
-        - wegwerfmail.info
-        - wegwerfmail.net
-        - wegwerfmail.org
-        - wegwerpmailadres.nl
-        - wegwrfmail.de
-        - wegwrfmail.net
-        - wegwrfmail.org
-        - wetrainbayarea.com
-        - wetrainbayarea.org
-        - wh4f.org
-        - whatiaas.com
-        - whatpaas.com
-        - whatsaas.com
-        - whopy.com
-        - whyspam.me
-        - wickmail.net
-        - wilemail.com
-        - willhackforfood.biz
-        - willselfdestruct.com
-        - winemaven.info
-        - wmail.cf
-        - wolfsmail.tk
-        - writeme.us
-        - wronghead.com
-        - wuzup.net
-        - wuzupmail.net
-        - www.e4ward.com
-        - www.gishpuppy.com
-        - www.mailinator.com
-        - wwwnew.eu
-        - x.ip6.li
-        - xagloo.co
-        - xagloo.com
-        - xemaps.com
-        - xents.com
-        - xmail.com
-        - xmaily.com
-        - xoxox.cc
-        - xoxy.net
-        - xxtreamcam.com
-        - xyzfree.net
-        - yandex.com
-        - yanet.me
-        - yapped.net
-        - yeah.net
-        - yep.it
-        - yogamaven.com
-        - yomail.info
-        - yopmail.com
-        - yopmail.fr
-        - yopmail.gq
-        - yopmail.net
-        - youmail.ga
-        - youmailr.com
-        - yourdomain.com
-        - you-spam.com
-        - ypmail.webarnak.fr.eu.org
-        - yuurok.com
-        - yxzx.net
-        - z1p.biz
-        - za.com
-        - zebins.com
-        - zebins.eu
-        - zehnminuten.de
-        - zehnminutenmail.de
-        - zetmail.com
-        - zippymail.info
-        - zoaxe.com
-        - zoemail.com
-        - zoemail.net
-        - zoemail.org
-        - zomg.info
-  beecowGateway-prod.yml: |
-    logging:
-        level:
-            com.mediastep.beecow.gateway.service.impl: TRACE
+        webGsDashboardDomain: https://gosell.mediastep.ca
+  application.yml: "#common configuration shared between all applications\nbeecow:\n
+    \   debugMode: true\n    gateway:\n        userService:\n            user:\n                defaultLocation:
+    US\n                defaultLanguage: en\n                defaultAvatarUrl:\n                    default:
+    https://dm4fv4ltmsvz0.cloudfront.net/1000.jpg\n                    male: https://dm4fv4ltmsvz0.cloudfront.net/1001.jpg\n
+    \                   female: https://dm4fv4ltmsvz0.cloudfront.net/1002.jpg\n                activationKeyValidTime:
+    15\n                activationKeyValidTimeUnit: MINUTES\n                resetKeyValidTime:
+    24\n                resetKeyValidTimeUnit: HOURS\n            guest:\n                createRetry:
+    5\n            beecowUser:\n                specialBeecowUser:\n                    langKeys:
+    my-zawgyi # list of special beecowuser languages, separated by ','\n        emailService:\n
+    \           senderEmail: welcome@gosell.vn\n            contactUsEmail: cskh@gosell.vn\n
+    \   order:\n        deliveryService:\n            giaohangnhanh:\n                ips:
+    0.0.0.0/0\n            giaohangtietkiem:\n                ips: 0.0.0.0/0\n    payment:\n
+    \       vnpay:\n            ips: 0.0.0.0/0\n    freeshipping:\n        eachUser:\n
+    \           perDay: 3\n        campaigns:\n            -   enable: false\n                fromTime:
+    2018-06-29T00:00:00+07:00\n                toTime: 2020-11-16T16:40:00+07:00\n
+    \               maxDiscount: 20000\n                totalAmount: 200000\n                excludeGhnIDs:
+    3, 10, 12\n                excludeGhtkIDs:\n                itemTypes: DEAL,PRODUCT_DEAL,BUSINESS_PRODUCT\n
+    \           -   enable: false\n                fromTime: 2018-04-27T00:17:00+07:00\n
+    \               toTime: 2019-11-27T17:40:00+07:00\n                maxDiscount:
+    \n                totalAmount: 500000\n                excludeGhnIDs: 3, 10, 12\n
+    \               excludeGhtkIDs:\n                itemTypes: PRODUCT_DEAL\n            -
+    \  enable: false\n                fromTime: 2018-04-27T00:17:00+07:00\n                toTime:
+    2019-11-27T17:40:00+07:00\n                maxDiscount: 50000\n                totalAmount:
+    \n                excludeGhnIDs: 3, 10, 12\n                excludeGhtkIDs:\n
+    \               itemTypes: BUSINESS_PRODUCT\n    loyalty:\n        point:\n            purchase:\n
+    \               rate: 0.01\n        reminder:\n            inactivity:\n                period:
+    0, 1, 7, 14, 30\n                unit: days # months, years\n                closedPrize:
+    10000\n    \n    feign:\n        client:\n            logger:\n                level:
+    FULL\n\nconfigserver:\n    name: Docker JHipster (Beecow) Registry\n    status:
+    Connected to the JHipster(Beecow) Registry running in Docker QA\n\njhipster:\n
+    \   security:\n        authentication:\n            jwt:\n                secret:
+    b1b46ec3d7f8295e66c7e43d2f1c50eb94a8a5d4\n                # Token is valid 100
+    days\n                tokenValidityInSeconds: 8640000\n                # Token
+    for remember me is valid 365 days\n                tokenValidityInSecondsForRememberMe:
+    31536000\n    logging:\n        logstash: # forward logs to ELK\n            enabled:
+    true\n            host: 172.16.111.23\n    metrics:\n        logs: # report metrics
+    in the logs\n            enabled: true\n            reportFrequency: 60 # in seconds\n
+    \   async:\n        core-pool-size: 10\n        max-pool-size: 100\n    mail:\n
+    \       from: welcome@gosell.vn\neureka:\n    client:\n        serviceUrl:\n            defaultZone:
+    http://admin:admin@ca-registry.ca.svc.cluster.local:8761/eureka/\nspring:\n    jackson:\n
+    \       default-property-inclusion: non_null\n    cloud:\n        stream:\n            kafka:\n
+    \               binder:\n                    # brokers: 172.31.8.103:9092\n                    #
+    zk-nodes: 172.31.11.193:2181/kafka\n                    brokers: 172.16.111.23:9092\n
+    \                   zk-nodes: 172.16.111.23:2181\n    data:\n        jest:\n            #
+    uri: http://elasticsearch.mediastep.ca:9200\n            uri: http://172.16.111.23:9022\n
+    \   zipkin:\n        enabled: true\n        baseUrl: http://172.16.111.23:9411\n
+    \   # mail:\n    #     host: in-v3.mailjet.com\n    #     port: 587\n    #     username:
+    f17ca1565b3570ad1dba0d30edb01c09\n    #     password: fba9424ddbd124ec473df5d9db90799c\n
+    \   #     protocol: smtp\n    #     tls: true\n    #     properties:\n    #         mail:\n
+    \   #             smtp:\n    #                 auth: true\n    #                 ssl.enable:
+    false\n    #                 starttls.enable: true\n    #                 debug:
+    true\n    # mail:\n    #     host: smtp.sparkpostmail.com\n    #     port: 587\n
+    \   #     username: SMTP_Injection\n    #     password: a9645f093d87c0e47a3a42b0e1575fd5911f72a6\n
+    \   #     protocol: smtp\n    #     tls: true\n    #     properties:\n    #         mail:\n
+    \   #             smtp:\n    #                 auth: true\n    #                 ssl.enable:
+    false\n    #                 starttls.enable: true\n    #                 debug:
+    true\n    ###sendinblue\n    # mail:\n    #   host: smtp-relay.sendinblue.com\n
+    \   #   port: 587\n    #   username: an.truong@mediastep.com\n    #   password:
+    QdJ0vKHTSLch9mWB\n    #   protocol: smtp\n    #   tls: true\n    #   properties:\n
+    \   #     mail:\n    #       smtp:\n    #         auth: true\n    #         ssl.enable:
+    false\n    #         starttls.enable: true\n    #         debug: true\n    mail:\n
+    \     host: smtp.elasticemail.com\n      port: 465\n      username: root@mediastep.com\n
+    \     password: 87adbb11-3474-4adf-923c-a6f16c121204\n      protocol: smtp\n      tls:
+    true\n      properties:\n        mail:\n          smtp:\n            auth: true\n
+    \           ssl.enable: true\n            starttls.enable: true\n            debug:
+    true\naws:\n    cdn:\n        status: https://dhsfy2j3z9bm3.cloudfront.net\n        item:
+    https://d3a0f2zusjbf7r.cloudfront.net\n        cupid: https://d1gx7yxn0p91c9.cloudfront.net\n
+    \       general: https://dm4fv4ltmsvz0.cloudfront.net\n        doc: https://d2wimnuwlet7ii.cloudfront.net\n
+    \       banner: https://d8qbqtt58lzda.cloudfront.net\n        job: https://d3sla10qaze016.cloudfront.net\n
+    \       accessory: https://d36knys0k45mi9.cloudfront.net\nmanagement:\n    health:\n
+    \       elasticsearch:\n            response-timeout: 30000\n        mail:\n            enabled:
+    false\n            \narchaius.deployment.environment: QA\nserver:\n    undertow:\n
+    \       worker-threads: 512\ngosell:\n    cron:\n        clearCache:\n            permission:
+    0 0/1 * 1/1 * ? #Every minute\n    security:\n        authentication:\n            jwt:\n
+    \               storeTokenValidityInSeconds: 21600000\n                storeTokenValidityInSecondsForRememberMe:
+    21600000 # 6hours\n                staffTokenValidityInSecondsForRememberMe: 1800000
+    # 30min\n\ncloud:\n    aws:\n        region:\n            static: ap-southeast-1\n
+    \       stack:\n            auto: false\n        credentials:\n            accessKey:
+    AKIAZBAS6DT6C2CC7ZLJ\n            secretKey: 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
+    \           \n\nlogging:\n    level:\n        ROOT: DEBUG\n        io.github.jhipster:
+    DEBUG\n        com.mediastep.gosell.storefront: DEBUG\n        com.mediastep.beecow:
+    DEBUG\n        "
+  beecowGateway-prod.yml: |+
     jhipster:
         cors: #By default CORS are not enabled. Uncomment to enable.
             exposed-headers: X-Total-Count, Link, X-Error-Key, X-Total-Revenue, x-storeserviceapp-error
         security:
             authentication:
                 jwt:
-                    # Token for remember me is valid 5 minute
-                    tokenValidityInSecondsForRememberMe: 86400 #86400 #seconds
+                    # Token for remember me is valid 30 minute
+                    tokenValidityInSecondsForRememberMe: 1800 #86400 #seconds
         cache: # Cache configuration
             redis: # Redis configuration
                 server: redis://redis-0.redis.redis.svc.cluster.local:6379
@@ -1649,64 +197,77 @@ data:
         MaxConnectionsPerHost: 512
         ReadTimeout: 60000 # must equal to max hystrix timeout
         ConnectTimeout: 5000
-    spring:
-        servlet:
-            multipart:
-                enabled: true
+    hystrix:
+        command:
+            default:
+                execution:
+                    isolation:
+                        thread:
+                            timeoutInMilliseconds: 10000
+            mainservice:
+                execution:
+                    isolation:
+                        thread:
+                            timeoutInMilliseconds: 25000
+            affiliateservice:
+                execution:
+                    isolation:
+                        thread:
+                            timeoutInMilliseconds: 10000
+
   beehiveServices-prod.yml: |-
+    logging:
+      level:
+        com.mediastep.beehive: DEBUG
     application:
-      webGsDashboardDomain: 'https://dev-gosell.mediastep.com'
-      webGsDashboardCallBackUrl: /payment/callback
-      webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
+      default-firebase-config:
+        firebase-database-url: https://firebase-qa.firebaseio.com/
+        firebase-api-key-android: AIzaSyAY7x9cYHCQKmYnuYerfXM3NKoAQcm9G1w
+        firebase-app-id-android: '1:978381762368:android:bd6df837957c655f'
+        firebase-api-key-ios: AIzaSyCyDQTyTQkp7P_f4hQg0_aRgeRpBMBlfyM
+        firebase-app-id-ios: '1:978381762368:ios:5bb20311621d6652'
+        firebase-client-id-ios: 978381762368-hrphavuuogu26jkjnooskoph7mmpv6n2.apps.googleusercontent.com
+        firebase-sender-id-ios: 978381762368
       jenkins:
-        baseUrl: 'http://feignclient:testfeignclient@ci-master.mediastep.com'
+        baseUrl: ci-master.mediastep.com
         basicAuth: ZmVpZ25jbGllbnQ6MTFlMDc3Nzk4NWFhMDk4MDZjNjNhOTNjZTAzZjQ1ZDZhZg==
         buildPath:
           web: >-
-            /view/Website/job/websites/job/storefront-gosell-ca-s3/buildWithParameters
-          android: /view/Android/job/android-gosell-staging-auto/buildWithParameters
-          ios: /view/IOS/job/ios-gosells-auto/buildWithParameters
+            /view/Website/job/website-develop-qa/job/storefront-qa/buildWithParameters/
+          android: /view/Android/job/android-gosell-qa/buildWithParameters/
+          ios: /view/IOS/job/ios-gosell-auto-qa/buildWithParameters/
+          updateSubDomain: /view/Website/job/websites/job/update-subdomain-qa/buildWithParameters
+          updateCustomDomain: >-
+            /view/Website/job/websites/job/update-custom-domain-qa/buildWithParameters
+          removeCustomDomain: >-
+            /view/Website/job/websites/job/delete-custom-domain-qa/buildWithParameters
           ssr: >-
             /view/Website/job/website-develop-qa/job/storefront-qa/buildWithParameters
       trial:
         time: 15
         unit: DAYS
-      gosellDomain: gosell.vn
-      defaultFirebaseConfig:
-        firebaseAppIdAndroid: test
-        firebaseApiKeyAndroid: test
-    logging:
-      level:
-        com.mediastep.beehive: DEBUG
+      webGsDashboardDomain: 'https://gosell.mediastep.ca'
+      webGsDashboardCallBackUrl: /payment/callback
+      webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
     spring:
-      datasource:
-        hikari:
-          maximum-pool-size: 1000
-      jpa:
-        show-sql: true
-      redis:
-        host: 10.10.0.18
-        port: 6379
-        database: 0
       data:
+        # elasticsearch:
+        #   cluster-name: null
+        #   cluster-nodes: 'elasticsearch.mediastep.ca:9300'
+        #   client.transport.ignore_cluster_name: true
         jest:
-          uri: http://172.16.111.8:9022
-          read-timeout: 180000
+          uri: http://10.10.0.103:9022
+          readTimeout: 60000
     jhipster:
       cache: # Cache configuration
         redis: # Redis configuration
-          server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
-  billingInfoServices-prod.yml: |-
-    jhipster:
-        cache: # Cache configuration
-            redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
-    logging:
-        level:
-            com.mediastep.beecow.billing: DEBUG
-    spring:
-        jpa:
-            show-sql: true
+          server: 'redis://10.10.0.15:6379'
+  billingInfoServices-prod.yml: "# application:\n#     useEsQuery: false\nlogging:\n
+    \   level:\n        com.mediastep.beecow.billing: DEBUG\nspring:\n    jpa:\n        show-sql:
+    true\n    # data:\n    #     elasticsearch: \n    #         cluster-name: \n    #
+    \        cluster-nodes: elasticsearch.mediastep.ca:9300\n    #         client.transport.ignore_cluster_name:
+    true\njhipster:\n    cache: # Cache configuration\n        redis: # Redis configuration\n
+    \           server: redis://10.10.0.15:6379"
   callCenterServices-prod.yml: |-
     logging:
         level:
@@ -1715,21 +276,22 @@ data:
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9202
+                # uri: http://10.10.0.15:9202
+                uri: http://10.10.0.103:9022
 
     kafka:
-        bootstrap-servers: 172.16.111.8:9092
+        bootstrap-servers: 10.10.0.15:9092
 
     application:
-        webGsDashboardDomain: https://dev-gosell.mediastep.com
-        webGsDashboardCallBackUrl: /payment/callback
-        webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
         vht:
             apiKey: SKoSwiyFPDK9T8qgMuvad6urSgBRLuLhr9
             apiSecret: TEozUFBtNmZzU0p4TG1JT2RkdXVra3pHN2ZmZEsyRQ==
             baseUrl: https://acd-api.vht.com.vn/rest
         email:
-            gosellSupportEmail: dai.mai@mediastep.com
+            gosellSupportEmail: live.str.bc@gmail.com
+        webGsDashboardDomain: https://gosell.mediastep.ca
+        webGsDashboardCallBackUrl: /payment/callback
+        webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
 
     management:
         health:
@@ -1739,7 +301,7 @@ data:
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
+                uri: http://10.10.0.103:9022 #http://es5.mediastep.com:9202
                 read-timeout: 180000
 
         datasource:
@@ -1755,7 +317,7 @@ data:
                 hibernate.cache.use_query_cache: false
 
         redis:
-            host: redis-0.redis.redis.svc.cluster.local
+            host: 10.10.0.15
             port: 6379
 
     logging:
@@ -1766,7 +328,7 @@ data:
   catalogServices-prod.yml: |-
     spring:
       redis:
-        host: redis-0.redis.redis.svc.cluster.local
+        host: 10.10.0.15
         port: 6379
         database: 0
       jpa:
@@ -1778,23 +340,8 @@ data:
     logging:
         level:
             com.mediastep.gosell.facebook: DEBUG
-
     application:
-        webhookVerificationToken: 123456
-
-    spring:
-        data:
-            jest:
-                uri: http://172.16.111.8:9202
-                read-timeout: 180000
-        redis:
-            host: redis-0.redis.redis.svc.cluster.local
-            port: 6379
-            database: 0
-    jhipster:
-        cache: # Cache configuration
-            redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
+        webGsFacebookCreditCallBackUrl: https://gosell.mediastep.ca/payment/callback
     facebook:
         adAppSecret: 7df3ae5409b0c926197c15f65507f5dc
         # accessTokenBusiness:
@@ -1802,136 +349,87 @@ data:
         # businessAppSecret: 23649a073994cfc78e436ced0b007008
         #businessAppId: 2617004701933274
         #businessAppSecret: 7df3ae5409b0c926197c15f65507f5dc
-        #businessAppId: 246541766920377
-        #businessAppSecret: 92cae430c61a0497c6c405dbb9830471
-        businessAppId: 1172612549918082
-        businessAppSecret: 7569a0b10a67d6917878e82881384fe2
-  integrateBeehiveService-prod.yml: |-
-    application:
-      webGsDashboardDomain: 'https://dev-gosell.mediastep.com'
-      webGsDashboardCallBackUrl: /payment/callback
-      webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
-      jenkins:
-        baseUrl: 'http://feignclient:testfeignclient@ci-master.mediastep.com'
-        basicAuth: ZmVpZ25jbGllbnQ6MTFlMDc3Nzk4NWFhMDk4MDZjNjNhOTNjZTAzZjQ1ZDZhZg==
-        buildPath:
-          web: >-
-            /view/Website/job/websites/job/storefront-gosell-ca-s3/buildWithParameters
-          android: /view/Android/job/android-gosell-staging-auto/buildWithParameters
-          ios: /view/IOS/job/ios-gosells-auto/buildWithParameters
-          ssr: >-
-            /view/Website/job/website-develop-qa/job/storefront-qa/buildWithParameters
-      trial:
-        time: 15
-        unit: DAYS
-      gosellDomain: gosell.vn
-      defaultFirebaseConfig:
-        firebaseAppIdAndroid: test
-        firebaseApiKeyAndroid: test
-    logging:
-      level:
-        com.mediastep.beehive: DEBUG
-    spring:
-      datasource:
-        hikari:
-          maximum-pool-size: 1000
-      jpa:
-        show-sql: true
-      redis:
-        host: redis-0.redis.redis.svc.cluster.local:6379
-        port: 6379
-        database: 0
-      data:
-        jest:
-          uri: http://172.16.111.8:9022
-          read-timeout: 180000
-    jhipster:
-      cache: # Cache configuration
-        redis: # Redis configuration
-          server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
-  integrateOrderService-prod.yml: |
+        # businessAppId: 2617004701933274
+        # businessAppSecret: 7df3ae5409b0c926197c15f65507f5dc
+        # businessAppId: 1172612549918082
+        # businessAppSecret: 7569a0b10a67d6917878e82881384fe2
+        businessAppId: 2347321872092664
+        businessAppSecret: 753740ccb136dd9a29aaf07b8f6ee545
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
+                server: 'redis://10.10.0.15:6379'
+  integrateOrderService-prod.yml: |-
     kafka:
-        bootstrapServers: 172.16.111.8:9092
-  intergrateaffiliateservice-prod.yml: |-
-    spring:
-
-        redis:
-            host: redis-0.redis.redis.svc.cluster.local
-            port: 6379
-
-    #    cloud:
-    #        stream:
-    #            kafka:
-    #                binder:
-    #                    brokers: 192.168.1.228:9009
-    #                    zk-nodes: 192.168.1.228:2189
+      bootstrapServers: kafka.mediastep.ca:9092
+    jhipster:
+        cache: # Cache configuration
+            redis: # Redis configuration
+                server: redis://10.10.0.15:6379
+  intergrateaffiliateservice-prod.yml: |2-
 
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
+                server: redis://10.10.0.15:6379
 
     kafka:
-        bootstrapServers: 172.16.111.8:9092
-  inventoryservices-prod.yml: |
-    jhipster:
-      cache:
-        redis:
-          server: 'redis://redis-0.redis.redis.svc.cluster.local:6379'
+        bootstrapServers: kafka.mediastep.ca:9092
+  inventoryservices-prod.yml: "jhipster:\n  cache: # Cache configuration\n    redis:
+    # Redis configuration\n      server: redis://10.10.0.15:6379\nspring:\n    kafka:\n
+    \       consumer:\n          properties:\n            auto-sync-stock-topic: autoSyncStock\n
+    \           auto-sync-stock-group: inventoryServices\n            auto-sync-stock-auto-startup:
+    true   \n        bootstrap-servers: 10.10.0.15:9092\n    jpa:\n        show-sql:
+    true\n        properties:\n            hibernate.show_sql: true\n            hibernate.format_sql:
+    true\n            hibernate.cache.use_second_level_cache: true\n            hibernate.cache.use_query_cache:
+    false"
+  itemService-prod.yml: |
+    #spring:
+    #    data:
+    #        elasticsearch:
+    #            cluster-name:
+    #            cluster-nodes: a107624aff525a698b6504b52f7a7876.ap-southeast-1.aws.found.io:9343
+    #            properties:
+    #                shield.user: readwrite:tpr25wjhc7c
+    #                shield.transport.ssl: true
     spring:
-      kafka:
-        consumer:
-          properties:
-            auto-sync-stock-topic: syncStock
-            auto-sync-stock-group: inventoryServices
-            auto-sync-stock-auto-startup: true
-        bootstrap-servers: '172.16.111.8:9092'
-      jpa:
-        show-sql: true
-        properties:
-          hibernate.show_sql: true
-          hibernate.format_sql: true
-          hibernate.cache.use_second_level_cache: true
-          hibernate.cache.use_query_cache: false
-  itemService-prod.yml: |-
-    spring:
-        data:
-            jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
-                maxTotalConnection: 50
-                read-timeout: 180000
-
+        cloud:
+            stream:
+                bindings:
+                    itemLanguageChannel:
+                        destination: itemLanguageChannel
+                        binder: kafka
+                        content-type: application/json
+                        producer:
+                            header-mode: embeddedHeaders
+                        group: itemServices
         datasource:
             hikari:
                 maximum-pool-size: 1000
-
-        jpa:
-            show-sql: true
-            properties:
-                hibernate.show_sql: true
-                hibernate.format_sql: true
-                hibernate.cache.use_second_level_cache: true
-                hibernate.cache.use_query_cache: false
+        data:
+            jest:
+                uri: http://10.10.0.103:9022
+                readTimeout: 60000
+    business:
+        deal:
+            main:
+                fetchSize: 50
+        product:
+            main:
+                fetchSize: 50
+    logging:
+        level:
+            ROOT: DEBUG
+            com.mediastep.beecow.item: DEBUG
+            com.mediastep.beecow.item.service.impl.ProductServiceImpl: TRACE
 
     hystrix:
         command:
-            createItemByAdmin:
-                execution:
-                    isolation:
-                        thread:
-                            timeoutInMilliseconds: 60000
-                            interruptOnTimeout: false
-                fallback:
-                    enabled: false
             RestControllerCommand:
                 execution:
                     isolation:
                         thread:
-                            timeoutInMilliseconds: 60000
+                            timeoutInMilliseconds: 35000
                             interruptOnTimeout: false
                 fallback:
                     enabled: false
@@ -1965,153 +463,50 @@ data:
                         thread:
                             timeoutInMilliseconds: 10000
                             interruptOnTimeout: false
-    # ===================================================================
-    # Item Services specific properties
-    # ===================================================================
-    # application:
-    #     useSearchRepo: true
-    # ===================================================================
-    # Business specific properties
-    # ===================================================================
-    business:
-        deal:
-            main:
-                fetchSize: 50
-        product:
-            main:
-                fetchSize: 50
-
-    logging:
-        level:
-            com.mediastep.beecow.item: DEBUG
-
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
+                server: redis://10.10.0.15:6379
     application:
         itemProgressHandlingTimeoutInMinutes: 5
-        # key from https://freecurrencyapi.net
         currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
-    management:
-        metrics:
-            export:
-                prometheus:
-                    enabled: false
-                jmx:
-                    enabled: true
-  itemetlservice-prod.yml: |-
-    spring:
-        data:
-            jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
-                read-timeout: 180000
-        datasource:
-            hikari:
-                maximum-pool-size: 1000
-        jpa:
-            show-sql: true
-            properties:
-                hibernate.show_sql: true
-                hibernate.format_sql: true
-                hibernate.cache.use_second_level_cache: true
-                hibernate.cache.use_query_cache: false
-        kafka:
-            bootstrap-servers: 172.16.111.8:9092
-        lifecycle:
-            timeout-per-shutdown-phase: 1m
-    logging:
-        level:
-            com.mediastep.gosell.item.etl: DEBUG
-    jhipster:
-        cache: # Cache configuration
-            redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
-    server:
-        shutdown: graceful
-    application:
-        inventorySummaryBranchCdc:
-            pluginName: pgoutput
-            connectorClass: io.debezium.connector.postgresql.PostgresConnector
-            offsetStorage: org.apache.kafka.connect.storage.FileOffsetBackingStore
-            offsetStorageFileFilename: inventory_summary_branch_offset.DAT
-            offsetFlushIntervalMs: 60000
-            connectorName: inventory-summary-branch-connector
-            databaseServerName: item-etl-service
-            databaseHostname: 172.16.10.85
-            databasePort: 5432
-            databaseUser: postgres
-            databasePassword: postgres
-            databaseDbname: postgres
-            tableWhitelist: item-services.inventory_summary_branch,item-services.cdc_update_es,item-services.item_model
-            skippedOperations: d
-  jhipster-registry.yml: |-
+        webGsDashboardDomain: https://gosell.mediastep.ca
+  jhipster-registry-prod.yml: |-
     eureka:
-        client:
-            serviceUrl:
-                defaultZone: http://admin:admin@localhost:8761/eureka/
-  jobServices-prod.yml: |
-    beecow:
-        debug-mode: true
-        job:
-            jobService:
-                jobEmailFrom: welcome@beecow.com
-                jobEmailReplyTo: cskh@beecow.com
-                jobEmailBcc: order-dev@beecow.com
-                recruimentPageUrl: https://www.beecow.com/career
-
-    application:
-        defaultCompanyAvatarUrl: https://d3sla10qaze016.cloudfront.net/1510720305258.jpg
-        payment:
-            callbackUrl:
-                web: https://beecow.mediastep.com/page/{0}/checkout
-  lazadaServices-prod.yml: |
-    beecow:
-        debugMode: true
-        feign.client.logger.level: FULL
-
-    # application:
-    lazada:
-        url: https://api.lazada.vn/rest
-        appkey: 108761
-        appsecret: ywoHXoCCJl8NJeqCqY7h8KWykxyyAeQ7
-    jhipster:
-        cache: # Cache configuration
-            redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
-    spring:
-        redis:
-            host: redis-0.redis.redis.svc.cluster.local
-            port: 6379
-            database: 0
-        data:
-            jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
-                read-timeout: 180000
-        elasticsearch:
-            rest:
-                uris: http://172.16.111.8:9022
-  livestreamServices-prod.yml: |-
-    beecow:
-        livestreamServices:
-            application:
-                envName: DEV
-                changeStatusSleepTime: 3                # 3 seconds
-                changeStatusTimeOut: 120                # 5 minutes
-                checkStreamStatusSleepTime: 30          # 1 minutes
-                waitStreamStatusActiveTimeout: 120      # 5 minutes
-            googleAuth:
-                clientId: 577064194723-4qjabt3n7ird15r65usrmh3rb8uq7gjr.apps.googleusercontent.com
-                clientSecret: hOssFABVreDl4_5S1N64_kEl
-            firebase:
-                private-key-file-path: classpath:config/firebase-admin-dev.json
-                url: https://beecow-dev.firebaseio.com
-                projectId: beecow-dev
-                fcmApi: https://fcm.googleapis.com/v1/projects/
-                fcmAuthApi: https://www.googleapis.com/auth/firebase.messaging
-                livestreamNode: Livestream
-                timeout: 30
-                timeoutUnit: SECONDS
+      server:
+        expected-client-renewal-interval-seconds: 2
+      #   eviction-interval-timer-in-ms: 7
+      # instance:
+      #   lease-expiration-duration-in-seconds: 10
+  jobServices-prod.yml: "beecow:\n    debug-mode: true\n    job:\n        jobService:\n
+    \           jobEmailFrom: welcome@gosell.vn\n            jobEmailReplyTo: cskh@gosell.vn\n
+    \           jobEmailBcc: order-dev@gosell.vn\n            recruimentPageUrl: https://www.gosell.vn/career\n
+    \           \napplication:\n    defaultCompanyAvatarUrl: https://d3sla10qaze016.cloudfront.net/1510720305258.jpg\n
+    \   payment:\n        webCallbackUrl: https://beecow.mediastep.com/page/{0}/checkout"
+  lazadaServices-prod.yml: "hystrix:\n    enabled: true\n    client:\n        config:\n
+    \           default:\n                connectTimeout: 60000\n                readTimeout:
+    60000\nspring:\n  data:\n    elasticsearch: \n      cluster-name: \n      cluster-nodes:
+    10.10.0.103:9300\n      client.transport.ignore_cluster_name: true\njhipster:\n
+    \ cache: # Cache configuration\n    redis: # Redis configuration\n      server:
+    redis://10.10.0.15:6379"
+  livestreamServices-prod.yml: "beecow:\n    livestreamServices:\n        application:\n
+    \           envName: QA\n            changeStatusSleepTime: 3                #
+    3 seconds\n            changeStatusTimeOut: 120                # 5 minutes\n            checkStreamStatusSleepTime:
+    30          # 1 minutes\n            waitStreamStatusActiveTimeout: 120      #
+    5 minutes\n        googleAuth:\n            clientId: 978381762368-sgultn4v5dssl86fapephlokq64ram87.apps.googleusercontent.com\n
+    \           clientSecret: BQQ3ft8iaHmQ-D7ZUYGnPrew\n            # clientId: 978381762368-ev24m2v0o1r3iq8qe65im50fkeu8qjkq.apps.googleusercontent.com\n
+    \           # clientSecret: 9_3rfG1DO0DPfmzWC2kctN5b\n        firebase:\n            private-key-file-path:
+    classpath:config/firebase-admin-qa.json\n            url: https://beecow-qa.firebaseio.com\n
+    \           projectId: beecow-qa\n            fcmApi: https://fcm.googleapis.com/v1/projects/\n
+    \           fcmAuthApi: https://www.googleapis.com/auth/firebase.messaging\n            livestreamNode:
+    Livestream\n            timeout: 30\n            timeoutUnit: SECONDS\n        dacast:\n
+    \           apiKey: 1639985295BM0wnna5l8FFIDXbNXf19LZPDkrZaVHl\n            url:
+    https://developer.dacast.com\n            version: v2\n            expiredLiveStreamOffset:
+    30 #days\n            maxLiveStreamPerDay: 30 #times/day\n            maxLiveStreamDuration:
+    60 #minutes\n            heartBeatLiveStreamOffset: 5 #minutes\n            userId:
+    b0447034-c90f-48e6-9f08-3cd4431f4545\n            \nspring:\n  data:\n    elasticsearch:
+    \n      cluster-name: elasticsearch\n      cluster-nodes: 10.10.0.103:9300\n      client.transport.ignore_cluster_name:
+    true"
   logback-spring.xml: |
     <?xml version="1.0" encoding="UTF-8"?>
 
@@ -2180,41 +575,47 @@ data:
         </root>
 
     </configuration>
-  mailService-prod.yml: |-
+  mailService.yaml: |-
     logging:
-      level:
-        com.mediastep.beecow.main: DEBUG
+        level:
+            com.mediastep.gosell.callcenter: DEBUG
 
-    spring:
-        data:
-            jest:
-                uri: http://172.16.111.8:9202
-        redis:
-            host: redis-0.redis.redis.svc.cluster.local
-            port: 6379
-            database: 0
     kafka:
-        bootstrap-servers: 172.16.111.8:9092
+        bootstrap-servers: 10.10.0.15:9092
+
     application:
         gosellDomain: gosell.vn
+
     management:
         health:
             elasticsearch:
                 enabled: false
-  mainService-prod.yml: |-
+  mainService-prod.yaml: |
+    configserver:
+      name: JHipster Registry config server
+      status: Connected to the JHipster Registry config server!
+    eureka:
+        instance:
+            #prefer-ip-address: true
+            #nonSecurePort: 80
+            appname: mainService
+            #ip-address: ${EC2_LOCAL_IP}
+    management:
+        health:
+            elasticsearch:
+                enabled: false
     spring:
       redis:
-        host: redis-0.redis.redis.svc.cluster.local
+        host: 10.10.0.15
         port: 6379
-        database: 0
-    logging:
-      level:
-        com.mediastep.beecow.main: DEBUG
-  mediaServices-prod.yml: |-
+        database: 7
+  mediaServices-prod.yml: |
     mediafile:
       amazon:
         bucketName:
           billingInfo: beecow-billinginfo-development
+          liveStreamVideo: custom-gosell-livestr-qa
+          exportFile: custom-gosell-file-qa
         cdn: true
         cdnEndpoint:
           status: https://dhsfy2j3z9bm3.cloudfront.net
@@ -2225,335 +626,289 @@ data:
           banner: https://d8qbqtt58lzda.cloudfront.net
           job: https://d3sla10qaze016.cloudfront.net
           accessory: https://d36knys0k45mi9.cloudfront.net
-          liveStream: http://d3cah8h6fn1rc6.cloudfront.net/
-          storeLogo: https://d8qbqtt58lzda.cloudfront.net
-          appIcon: https://d8qbqtt58lzda.cloudfront.net
+          liveStream: https://d3cah8h6fn1rc6.cloudfront.net
+          liveStreamVideo: https://goselllive-qa.gosell.vn
+          exportFile: https://gosell-file-qa.gosell.vn
 
     jhipster:
       cache: # Cache configuration
         redis: # Redis configuration
-          server: redis://redis-0.redis.redis.svc.cluster.local:6379
+          server: redis://10.10.0.15:6379
 
     spring:
       jpa:
         properties:
           hibernate.cache.use_second_level_cache: false
           hibernate.cache.use_query_cache: false
-  messageServices-prod.yml: |
+      redis:
+        database: 3
+    application:
+      email:
+        gosellSupportEmail: customerService@mediastep.com
+        fromEmail: welcome@gosell.vn
+        dashboardDomain: https://gosell.mediastep.ca/
+  messageServices-prod.yml: |-
     #common configuration shared between all applications
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
-
+                server: redis://10.10.0.15:6379
     beecow:
         debugMode: true
         messageServices:
             firebase:
-                private-key-file-path: http://firebase-project.s3.amazonaws.com/firebase-admin-dev.json
-                url: https://beecow-dev.firebaseio.com
+                # private-key-file-path: classpath:config/firebase-admin-qa.json
+                private-key-file-path: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/beecow-qa-firebase-adminsdk-fwlpz-d9853f7e4c.json
+                url: https://beecow-qa.firebaseio.com
+                projectId: beecow-qa
+                fcmApi: https://fcm.googleapis.com/v1/projects/
+                fcmAuthApi: https://www.googleapis.com/auth/firebase.messaging
                 rootPath:
                 userNode: Users
                 roomNode: Rooms
                 timeout: 30
                 timeoutUnit: SECONDS
                 privateKeyGosell:
-                    - name: beecow-dev
-                      filePath: http://firebase-project.s3.amazonaws.com/firebase-admin-dev.json
+                    - name: beecow-ca
+                      filePath: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/beecow-qa-firebase-adminsdk-fwlpz-d9853f7e4c.json
+                    - name: gosell-ca
+                      filePath: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/gosell-ca-firebase-adminsdk-pb8yl-faca6ed45b.json
+                    - name: gosell-qc-qa
+                      filePath: https://firebase-project-ca.s3-ap-southeast-1.amazonaws.com/gosell-qc-qa-firebase-adminsdk-fvx4d-72544ae22f.json
+                    - name: gosell-qc-qa-016to031
+                      filePath: https://firebase-project-ca.s3.ap-southeast-1.amazonaws.com/gs-qc-ca-016to031-firebase-adminsdk-ect50-77cddae161.json
+                    - name: gosell-qc-qa-2
+                      filePath: https://firebase-project-ca.s3.ap-southeast-1.amazonaws.com/gosell-qc-qa-2-firebase-adminsdk-nryxf-10cb8304a8.json
     spring:
         data:
             jest:
-                uri: http://172.16.111.8:9022
-        redis:
-            host: redis-0.redis.redis.svc.cluster.local
-            port: 6379
-            database: 0
-  minions-prod.yml: |
+                uri: http://10.10.0.103:9022
+                readTimeout: 60000
+  minions-prod.yml: |-
     beecow:
         debug-mode: true
         feign.client.logger.level: BASIC
         order:
             orderService:
                 orderExpireCheckTime: 60000 # Check every 1m
-                orderAbandonCheckTime: 1800000 # Check every 30m
+                orderAbandonCheckTime: 300000 # Check every 5m
         voucher:
             voucherService:
                 voucherGettingExpiredDateCheckTime: 86400000 # Check every day
-  notifyServices-prod.yml: |-
-    application:
-        #ios-app-arn: arn:aws:sns:ap-southeast-1:620662496508:app/APNS/beecow-ios-prod
-        ios-app-arn: arn:aws:sns:ap-southeast-1:620662496508:app/APNS_SANDBOX/beecow-ios-sandbox
-        android-app-arn: arn:aws:sns:ap-southeast-1:620662496508:app/GCM/beecow-android-dev
-        push-notify-profile: dev
-        firebase:
-            key: AAAAhlu00qM:APA91bFoSdySr1H4aPELv43XjCFXa76MOUJg_11RWKu4JAsQ93jt5TXlaoOAc7Z2MXzexngOMXSaJ0IzFcElEa75rPUIH_ToieUR9CDw0bONDm67SnsLja72P-vwI8_YqY6L62TfZ09J
-            url: https://fcm.googleapis.com/fcm/send
   orderServices-prod.yml: |
     beecow:
         debug-mode: true
+        feign.client.logger.level: BASIC
         order:
+            website: https://beecow.mediastep.ca/
             orderService:
                 orderExpirationTime: 5
                 orderExpirationTimeUnit: MINUTES
                 orderExpireCheckPageSize: 100
                 orderExpireCheckTime: 300000 # Check if any order is expired every 5 minutes
-                orderAbandonTime: 15
+                orderAbandonTime: 10
                 orderAbandonTimeUnit: MINUTES
                 orderAbandonCheckPageSize: 100
                 orderAbandonCheckTime: 300000 # Check if any order is abandoned every 5 minutes
-                itemWebsiteURLPrefix: https://beecow.mediastep.com/
-                itemWebsiteURLPrefixProduct: https://beecow.mediastep.com/product/
-                itemWebsiteURLPrefixDeal: https://beecow.mediastep.com/deal/
+                itemWebsiteURLPrefix: https://beecow.mediastep.ca/
+                itemWebsiteURLPrefixProduct: https://beecow.mediastep.ca/product/
+                itemWebsiteURLPrefixDeal: https://beecow.mediastep.ca/deal/
                 orderSalesEmail: welcome@beecow.com
                 orderSalesEmailReplyTo: cskh@beecow.com
-                orderSalesEmailBcc: order-dev@beecow.com
+                orderSalesEmailBcc:
                 freeShipItemId: 196369,196368,196366
-                freeShip: true
                 removeCODMethodDuringTet: false
-                removeCODMethod: false
-            deliveryInfo:
-                beecowUserId: 1
+                codeCoupon: U23BEECOW
             deliveryService:
                 giaohangnhanh:
                     enabled: true
                     baseURL: https://testapipds.ghn.vn:9999/external/marketplace
                     clientID: 192900
                     password: egGdykvdVyccpbbz6
-                    apiKey: mfGUevFXYqsqb1uL
-                    apiSecretKey: 481FB8D1BE5B27C2C0531971334935D5
+                    apiKey: gYPDgvqzT2mybhUV
+                    apiSecretKey: 1E0410A33DA9B2CB342A6CCF0F912BF8
                 giaohangtietkiem:
                     enabled: true
                     baseURL: https://dev.ghtk.vn
-                    token: 926bA31A92CfDfBf0946c204628cCf41669E04c8
+                    token: AFF7C489342a41fbf90342885D3C66a9d8110b9a
             paymentService:
                 vnpay:
                     vnpUrl: http://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-                    vnpTmnCode: BMFMDONK
+                    vnpTmnCode: BPHHJWKY
                     vnpMerchant: DEMO
                     vnpVersion: 2
                     vnpCommand: pay
-                    vnpHashSecret: GHTROFNVURELAGKAUSFIQANOZAUQHZKR
+                    vnpHashSecret: RLNRBZPWYCSEJLUDIUVFKKFNGMSPJFOY
                     vnpOrderType: billpayment
-                    vnpReturnUrlWeb: https://beecow.mediastep.com/new-order/{0}/result
-                    vnpReturnUrlMobile: https://api.mediastep.com/orderservices/api/payment/result/vnpay
-
+                    vnpReturnUrlWeb: https://beecow.mediastep.ca/new-order/{0}/result
+                    vnpReturnUrlMobile: https://api.mediastep.ca/orderservices/api/payment/result/vnpay
     spring:
         jpa:
             show-sql: true
-  orderServices2-prod.yml: "beecow:\n    debug-mode: true\n    feign.client.logger.level:
-    FULL\n    order:\n        sync:\n            pageSize: 20\n        orderService:\n
-    \           codMaximumPrice: 30000000 # 10,000,000 VND\n            orderExpirationTime:
-    10 # 10'\n            orderExpirationTimeUnit: MINUTES\n            freeShip:
-    true\n            orderAbandonTime: 15\n            orderAbandonTimeUnit: MINUTES\n
-    \           itemWebsiteURLPrefix: https://beecow.mediastep.com/\n            itemWebsiteURLPrefixProduct:
-    https://beecow.mediastep.com/product/\n            itemWebsiteURLPrefixDeal: https://beecow.mediastep.com/deal/\n
-    \           orderSalesEmail: welcome@beecow.com\n            orderSalesEmailReplyTo:
-    cskh@beecow.com\n            orderSalesEmailBcc:\n            vietnamCustomerServiceEmail:
-    cskh@beecow.com\n            vietnamCustomerServicePhone: \"02873030800\"\n            orderProgressExpirationTime:
-    5 #MINUTES\n        beecowDeliveryInfoId: 1\n        paymentService:\n            callback:\n
-    \               waitTime: 5000 # Wait for VNPAY callback: 5s\n                webUrl:
-    https://beecow.mediastep.com/shopping-cart/callback\n                mobileUrl:
-    https://dev-api.mediastep.com/orderservices2/api/payment/result/vnpay\n                mobileSmartUrl:
-    gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal\n                webStorefrontBaseDomain:
-    https://{0}.mediastep.com\n                webStorefrontUrlSurfix: /shopping-cart/callback\n
-    \               webStorefrontBookingUrlSurfix: /shopping-cart-service/callback\n
-    \               mobileSmartPaypalCreateOrder: gosell-smart-paypal-{0}://shopping-cart/paypal-smart-checkout/create-order/callback\n
-    \           epay:\n                callback:\n                    webUrl: http://beecow.mediastep.com/shopping-cart/callback/vnpt-epay\n
-    \           chaipay:\n                callback:\n                    waitTime:
-    5000 # Wait for CHAIPAY callback: 5s\n                    webUrl: https://beecow.mediastep.com/shopping-cart/callback/chaipay\n
-    \           paypal:\n                callback:\n                    waitTime:
-    5000 # Wait for PAYPAL callback: 5s\n                    webUrl: https://beecow.mediastep.com/shopping-cart/callback/paypal\n
-    \       voucherHardCopyService:\n            outputFromat: HTML\n            outputFolder:
-    /vouchers\n            htmlToPDFCommandTimeout: 30000\n            htmlToPDFCommand:
-    /home/huyen/programs/wkhtmltox/bin/wkhtmltopdf\n            awsBucketName: beecow-voucher-development\n
-    \           awsLocation: new\n    delivery:\n        deliveryPlanTimeout: 15000
-    # Delivery plan suggestion timeout 15s\n        provider:\n            default:
-    giaohangnhanh,giaohangtietkiem # selfdelivery is activated only if selected\n
-    \           giaohangnhanh:\n                enabled: true\n                tax:
-    0.0 # 0%\n                baseURL: https://testapipds.ghn.vn:9999/external/marketplace\n
-    \               clientID: 192900\n                password: egGdykvdVyccpbbz6\n
-    \               apiKey: gYPDgvqzT2mybhUV\n                apiSecretKey: 1E0410A33DA9B2CB342A6CCF0F912BF8\n
-    \           giaohangnhanh3:\n                enabled: true\n                tax:
-    0.0 # 0%\n                baseURL: https://dev-online-gateway.ghn.vn/apiv3-api/api/v1/apiv3\n
-    \               token: BeecowTokenTest\n                paymentTypeId: 1 # 1:shop
-    - 2:buyer - 4:wallet - 5:credit\n            ghn:\n                shiip:\n                    v2:\n
-    \                       baseURL: ${GHN_API_URL}/shiip/public-api\n                        token:
-    ${GHN_API_TOKEN}\n                        paymentTypeId: 1\n            giaohangtietkiem:\n
-    \               enabled: true\n                tax: 10.0 # 0%\n                baseURL:
-    https://services-staging.ghtklab.com\n                token: a6db76aD46e0D1109eDD0566F1C07644Df10853c\n
-    \           selfdelivery:\n                enabled: true\n            vnpost:\n
-    \               enabled: false\n                userName: \"0909015765\"\n                password:
-    123456\n                serviceBaseUrl: https://donhang.vnpost.vn\n                customerCode:\n
-    \               services:\n                    - id: EMS\n                      deliveryTimes:
-    2\n                    - id: BK\n                      deliveryTimes: 3\nspring:\n
-    \   jpa:\n        show-sql: true\n    data:\n        jest:\n            uri: http://172.16.111.8:9022
-    #http://es5.mediastep.com:9202\n            read-timeout: 180000\n    cloud:\n
-    \       stream:\n            bindings:\n                orderBeecowChannel:\n
-    \                   producer:\n                        partition-count: 2\n                        partition-key-expression:
-    payload.entity.id\n\nfeign:\n    client:\n        config:\n            default:\n
-    \               connectTimeout: 60000\n                readTimeout: 60000\n                \nhystrix:\n
-    \   command:\n        default:\n            execution:\n                isolation:\n
-    \                   # See https://github.com/spring-cloud/spring-cloud-netflix/issues/1330\n
-    \                   thread:\n                        timeoutInMilliseconds: 10000\n
-    \                       \njhipster:\n    cache: # Cache configuration\n        redis:
-    # Redis configuration\n            server: redis://redis-0.redis.redis.svc.cluster.local:6379\n\nlogging:\n
-    \   level:\n        ROOT: DEBUG\n        com.mediastep.beecow.order2: DEBUG"
-  paymentServices-prod.yml: |-
-    beecow:
-        payment:
-            vnpay:
-                vnpUrl: http://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-                baseURL: https://sandbox.vnpayment.vn/merchant_webapi/merchant.html
-                vnpHashSecret: GHTROFNVURELAGKAUSFIQANOZAUQHZKR
-                vnpMerchant: DEMO
-                vnpTmnCode: BMFMDONK
-                vnpVersion: 2.1.0
-                feign.client.logger.level: FULL
-            vnptepay:
-                baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/epay
-            chaipay:
-                baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/chaipay
-                atmAndCreditProvider: VNPAY
-                atmAndCreditMethod: VNPAY_ALL
-            paypal:
-                baseURL: https://dev-api.mediastep.com:443/paymentservices/payment-gateway/paypal
-                sellerOnboard: https://dev-api.mediastep.com:443/paymentservices/shop-connect/paypal/onboarding
-
-    application:
-        dashboard: https://dev-gosell.mediastep.com
-        paymentProvider:
-            epay:
-                merId: EPAY000001
-                encodeKey: rf8whwaejNhJiQG2bsFubSzccfRc/iRYyGUn6SPmT6y/L7A2XABbu9y4GvCoSTOTpvJykFi6b1G0crU8et2O0Q==
-            chaipay:
-                jsResource: https://static.chaipay.io/staging-chaipay.js
-                clientKey: ciayggHaxgVVdlLs
-                secretKey: cdfa106efe12f79c00a5dcde6a70b30df0df094cf6d73d17b8c2b31756f7d7fc
-            paypal:
-                domain: https://api-m.sandbox.paypal.com
-                #clientKey: ATX5o52YbuA082gSl_gqnNolMzwT-8Ep8ezVHbr1QAthL95YZu1UuKycKLNL5nAVkVRy0a8et38SKl1L
-                #secretKey: ENcJdlXMaLPZkgPBoaozPzKFkItQfAyScbLpdCrHFnSsSL1ntJXywnMJ0FmNytE42bCIue11rEMOVKOf
-                clientKey: AXmcrHmqYGQolcmst1xc7CGkt2BCPHgu0D_3LyDPChC-bR6BfWty97xu8TqHfcRy20lpjePgdIPfsGOB
-                secretKey: ELYmqgk-0-WKc2oUMUKiJKNiJSo6-LYElHQy50v9XIG_v555u2RzDxN7HTwPUBTYvhehZ6u9fQ-BY-Q-
-                partnerId: MY3BVGDQQYER2
-                merchantId: KXXB29BHQJPCE
-
-        api:
-            domain: https://dev-api.mediastep.com:443
-
+        data:
+            jest:
+                uri: http://10.10.0.103:9022
+                readTimeout: 60000
     jhipster:
-        cache:
-            redis:
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
-
-    logging:
-        level:
-            ROOT: DEBUG
-            io.github.jhipster: DEBUG
-            com.ms.payment: DEBUG
-  reviewServices-prod.yml: |-
-    # spring:
-    #     data:
-    #         elasticsearch:
-    #             cluster-name:
-    #             cluster-nodes: 0fb8f4bf1ba53cf72009947f0bfd3e7a.ap-southeast-1.aws.found.io:9343
-    #             properties:
-    #                 shield.user: beecow:vh1qbqbgvln
-    #                 shield.transport.ssl: true
-    #                 custom:
-    #                     dns_refresh_enabled: true
-    #                     dns_refresh_time: 600000
-    # server:
-    #     undertow:
-    #         io-threads: 25
-    #         worker-threads: 300
-  shopeeServices-prod.yml: "#application:\n#  shopee:\n##    partnerId: 851195\n##
-    \   requestUrl: \"https://partner.uat.shopeemobile.com\"\n##    secretKey: bb8524d07bee43253991c7df55112d4dd9f2c1ac2905bf3bc02ad63c4f074ea5\n##
-    \   dashboardUrl: \"https://gosell.mediastep.com/channel/shopee/account\"\n##
-    \   authorizationUrl: \"${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}\"\n##
-    \   dashboardAuthRedirectPath: \"/channel/shopee/account\"\n#  partnerId: 2002146\n#
-    \ requestUrl: https://partner.shopeemobile.com\n#  secretKey: bf4dbace9ad45f6961661e100a4c6cb9beef83de15fb51f79125b8561053b2ea\n#
-    \ dashboardAuthRedirectPath: /channel/shopee/account\n#  dashboardUrl: https://gosell.mediastep.com/channel/shopee/account\n#
-    \ authorizationUrl: ${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}\n\napplication:\n
-    \ gosellSupportEmail: hotro@gosell.vn\n  customerServiceEmail: bao.tran@mediastep.com\n
-    \ fromEmail: welcome@gosell.vn\n  webGsDashboardDomain: https://dev-gosell.mediastep.com\n
-    \ shopee:\n    # partnerId: ${SHOPEE_ID}\n    # requestUrl: ${SHOPEE_URL}\n    #
-    secretKey: ${SHOPEE_KEY}\n    # dashboardUrl: ${DASHBOARD_URL}\n    # authorizationUrl:
-    ${application.shopee.requestUrl}/shop/auth_partner?redirect={2}&id={0}&token={1}\n
-    \   # dashboardAuthRedirectPath: ${dashboard_auth_redirect_path}\n    # partnerId:
-    851195\n    # requestUrl: \"https://partner.uat.shopeemobile.com\"\n    # secretKey:
-    bb8524d07bee43253991c7df55112d4dd9f2c1ac2905bf3bc02ad63c4f074ea5\n    # dashboardUrl:
-    \"https://admin.unisell.vn/channel/shopee/account\"\n    # authorizationUrl: \"${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}\"\n
-    \   # dashboardAuthRedirectPath: \"/channel/shopee/account\" \n    partnerId:
-    2002146\n    requestUrl: \"https://partner.shopeemobile.com\"\n    secretKey:
-    bf4dbace9ad45f6961661e100a4c6cb9beef83de15fb51f79125b8561053b2ea\n    dashboardUrl:
-    \"https://dev-gosell.mediastep.com/channel/shopee/account\"\n    authorizationUrl:
-    \"${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}\"\n
-    \   dashboardAuthRedirectPath: \"/channel/shopee/account\"\n\nspring:\n  jpa:\n
-    \   show-sql: true\n  redis:\n    host: redis-0.redis.redis.svc.cluster.local\n
-    \   port: 6379\n    database: 0\n\nlogging:\n  level:\n    ROOT: INFO\n    com.mediastep.beecow.shopee:
-    DEBUG\n\nhystrix:\n  command:\n    default:\n      execution:\n        isolation:\n
-    \         thread:\n            timeoutInMilliseconds: 10000\n    RestControllerCommand:\n
-    \     execution:\n        isolation:\n          strategy: THREAD\n          thread:\n
-    \           timeoutInMilliseconds: 5000\n            interruptOnTimeout: false\n
-    \     fallback:\n        enabled: false\n"
-  ssrStorefront-prod.yml: |
+        cache: # Cache configuration
+            redis: # Redis configuration
+                server: redis://10.10.0.15:6379
+  orderServices2-prod.yml: "spring:\n    datasource:\n        hikari:\n            maximum-pool-size:
+    50\n    jpa:\n        show-sql: true\n    cloud:\n        stream:\n            bindings:\n
+    \               itemLanguageChannel:\n                    destination: itemLanguageChannel\n
+    \                   binder: kafka\n                    content-type: application/json\n
+    \                   group: orderServices2\n                    \nlogging:\n    level:\n
+    \       org.hibernate.SQL: INFO\n        com.mediastep.beecow.message.service.NotifyService:
+    \ DEBUG\n        com.mediastep.beecow.message.client.MessageServiceClient: DEBUG\n\nbeecow:\n
+    \   debug-mode: true\n    feign.client.logger.level: FULL\n    order:\n        sync:\n
+    \           pageSize: 20\n        orderService:\n            codMaximumPrice:
+    10000000 # 10,000,000 VND\n            orderExpirationTime: 5 # 5'\n            orderExpirationTimeUnit:
+    MINUTES\n            freeShip: true\n            orderAbandonTime: 15\n            orderAbandonTimeUnit:
+    MINUTES\n            itemWebsiteURLPrefix: https://gomua.mediastep.ca/\n            itemWebsiteURLPrefixProduct:
+    https://gomua.mediastep.ca/product/\n            itemWebsiteURLPrefixDeal: https://gomua.mediastep.ca/deal/\n
+    \           orderSalesEmail: no-reply@gosell.vn\n            orderSalesEmailReplyTo:
+    cskh@beecow.com\n            orderSalesEmailBcc: order-dev@beecow.com\n            #
+    vietnamCustomerServiceEmail: cskh@beecow.com\n            vietnamCustomerServicePhone:
+    \"02873030800\"\n            vietnamCustomerServiceEmail: hotro@gosell.vn\n        beecowDeliveryInfoId:
+    1\n        paymentService:\n            callback:\n                waitTime: 5000
+    # Wait for VNPAY callback: 5s\n                webUrl: https://gomua.mediastep.ca/shopping-cart/callback\n
+    \               mobileUrl: https://api.mediastep.ca/orderservices2/api/payment/result/vnpay\n
+    \               mobileSmartUrl: gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal\n
+    \               webVipDealUrl: https://debug.vipdeal.vn/shopping-cart/callback\n
+    \               webStorefrontBaseDomain: https://{0}.mediastep.ca\n                webStorefrontUrlSurfix:
+    /shopping-cart/callback\n                webStorefrontBookingUrlSurfix: /shopping-cart-service/callback\n
+    \               mobileSmartPaypalCreateOrder: gosell-smart-paypal-{0}://shopping-cart/paypal-smart-checkout/create-order/callback\n
+    \           epay:\n                callback:\n                    waitTime: 5000
+    # Wait for VNPT EPAY callback: 5s\n                    webUrl: https://gomua.mediastep.ca/shopping-cart/callback/vnpt-epay\n
+    \                   mobileUrl: gosell-buyer-{0}://orderservices2/api/payment/result/vnptepay\n
+    \                   webStorefrontBaseDomain: https://{0}.mediastep.ca\n                    webStorefrontUrlSurfix:
+    /shopping-cart/vnpt-epay/callback?shoppingCartType={0}\n                    webStorefrontBookingUrlSurfix:
+    /shopping-cart/vnpt-epay/callback?shoppingCartType={0}\n                    webVipDealUrl:
+    https://debug.vipdeal.vn/shopping-cart/vnpt-epay/callback\n            paypal:\n
+    \               callback:\n                    waitTime: 5000 # Wait for PAYPAL
+    callback: 5s\n                    webUrl: https://beecow.mediastep.ca/shopping-cart/callback/paypal\n
+    \                   mobileUrl: gosell-paypal-{0}://orderservices2/api/payment/result/paypal\n
+    \                   webStorefrontBaseDomain: https://{0}.mediastep.ca\n                    webStorefrontUrlSurfix:
+    /shopping-cart/paypal/callback?shoppingCartType={0}\n                    webStorefrontBookingUrlSurfix:
+    /shopping-cart/paypal/callback?shoppingCartType={0}\n                    webStorefrontSmartPaypalCreateOrder:
+    /shopping-cart/paypal-smart-checkout/create-order/callback\n                    webVipDealUrl:
+    https://beecow.mediastep.ca/shopping-cart/paypal/callback\n            momo:\n
+    \               callback:\n                    waitTime: 5000 # Wait for MoMo
+    callback: 5s\n                    webUrl: https://gosell.mediastep.ca/shopping-cart/callback/momo\n
+    \                   mobileUrl: gosell-momo-{0}://orderservices2/api/payment/result/momo\n
+    \                   webStorefrontBaseDomain: https://{0}.mediastep.ca\n                    webStorefrontUrlSurfix:
+    /shopping-cart/momo/callback?shoppingCartType={0}\n                    webStorefrontBookingUrlSurfix:
+    /shopping-cart/momo/callback?shoppingCartType={0}\n                    webVipDealUrl:
+    https://gosell.mediastep.ca/shopping-cart/momo/callback\n        voucherHardCopyService:\n
+    \           outputFromat: HTML\n            outputFolder: temp\n            htmlToPDFCommandTimeout:
+    30000\n            htmlToPDFCommand: /home/huyen/programs/wkhtmltox/bin/wkhtmltopdf\n
+    \           awsBucketName: beecow-voucher-development\n            awsLocation:
+    new\n    delivery:\n        deliveryPlanTimeout: 15000 # Delivery plan suggestion
+    timeout 15s\n        provider:\n            default: giaohangnhanh,giaohangtietkiem
+    # selfdelivery is activated only if selected\n            vnpost:\n                enabled:
+    false\n                userName: \"0909015765\"\n                password: 123456\n
+    \               serviceBaseUrl: https://donhang.vnpost.vn\n                loyaltyCustomerCode:\n
+    \               customerCode:\n                 services:\n                    -\n
+    \                       id: EMS\n                        deliveryTimes: 2\n                    -\n
+    \                       id: BK\n                        deliveryTimes: 3\n            giaohangnhanh:\n
+    \               enabled: true\n                tax: 0.0 #0%\n                baseURL:
+    https://testapipds.ghn.vn:9999/external/marketplace\n                clientID:
+    192900\n                password: egGdykvdVyccpbbz6\n                apiKey: gYPDgvqzT2mybhUV\n
+    \               apiSecretKey: 1E0410A33DA9B2CB342A6CCF0F912BF8\n            giaohangnhanh3:\n
+    \               enabled: true\n                tax: 0.0 #0%\n                baseURL:
+    https://dev-online-gateway.ghn.vn/apiv3-api/api/v1/apiv3\n                token:
+    BeecowTokenTest\n                paymentTypeId: 1\n            giaohangtietkiem:\n
+    \               enabled: true\n                baseURL: https://services-staging.ghtklab.com\n
+    \               token: a6db76aD46e0D1109eDD0566F1C07644Df10853c\n            ghn:\n
+    \               shiip:\n                    v2:\n                        baseURL:
+    ${GHN_API_URL}/shiip/public-api\n                        token: ${GHN_API_TOKEN}\n
+    \                       paymentTypeId: 1\n\nhystrix:\n    command:\n        default:\n
+    \           execution:\n                isolation:\n                    # See
+    https://github.com/spring-cloud/spring-cloud-netflix/issues/1330\n                    thread:\n
+    \                       timeoutInMilliseconds: 20000\njhipster:\n    cache: #
+    Cache configuration\n        redis: # Redis configuration\n            server:
+    redis://10.10.0.15:6379\nredission:\n    config:\n        nettyThreads: 64\n"
+  paymentServices-prod.yml: |
+    beecow:
+      payment:
+        vnpay:
+          vnpUrl: "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html"
+          baseURL: "https://sandbox.vnpayment.vn/merchant_webapi/merchant.html"
+          vnpHashSecret: RLNRBZPWYCSEJLUDIUVFKKFNGMSPJFOY
+          vnpMerchant: DEMO
+          vnpTmnCode: BPHHJWKY
+          vnpVersion: 2.1.0
+          feign.client.logger.level: FULL
+        vnptepay:
+          baseURL: "https://gomua.mediastep.ca/epay/"
+        chaipay:
+          baseURL: "https://api.mediastep.com:443/paymentservices/payment-gateway/chaipay"
+          atmAndCreditProvider: VNPAY
+          atmAndCreditMethod: VNPAY_ALL
+        paypal:
+          baseURL: "https://api.mediastep.ca/paymentservices/payment-gateway/paypal"
+          sellerOnboard: "https://api.mediastep.ca/paymentservices/shop-connect/paypal/onboarding"
+      installment:
+        vnpay:
+          baseURL: "https://sandbox.vnpayment.vn/merchant_webapi/merchant.html"
+          vnpUrl: "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html"
+          vnpHashSecret: FQXMYXANTOZKHBBZVWOLGABPUORZNCUD
+          vnpMerchant: DEMO
+          vnpTmnCode: MEDIAS04
+          vnpVersion: 2.1.0
+          feign.client.logger.level: FULL
+    spring:
+      jpa:
+        properties:
+          hibernate.cache.use_second_level_cache: true
+          hibernate.cache.use_query_cache: false
+    jhipster:
+      cache:
+        redis:
+          server: "redis://10.10.0.15:6379"
     application:
-      apiBaseUrl: https://dev-api.mediastep.com
-      resourceUrl: https://ssr-resource-dev.gosell.vn
-      fontUrl: https://dev-ssr.mediastep.com
-      paymentProvider: VNPAY
-      facebook:
-        systemAppId: 1893566387566234
-      paypal:
-        domain: https://api-m.sandbox.paypal.com
-        clientKey: AWVkWNE68jovsAOLiPEiD1pNfQmNWrZgaDorfBEUO5UYXExq7kfkOmhHHazxUGvbxdEJijINVNPQw8ss
-        secretKey: ECpO1sdvmA9bfNZdaq3jzxvICZkkCBFZTrC3623qWRZXlD4FUFTj3glKlCiP0eCcxVQcfY3NcsMO1qWB
-        partnerId: 62WWDVKSM55LE
-
+      dashboard: "https://gosell.mediastep.ca"
+      paymentProvider:
+        epay:
+          jsResource: "https://sandbox.megapay.vn:2810/pg_was/js/payment/layer/paymentClient.js"
+          cssResource: >-
+            https://sandbox.megapay.vn:2810/pg_was/css/payment/layer/paymentClient.css
+          domain: "https://sandbox.megapay.vn:2810"
+          merId: EPAY000001
+          encodeKey: >-
+            rf8whwaejNhJiQG2bsFubSzccfRc/iRYyGUn6SPmT6y/L7A2XABbu9y4GvCoSTOTpvJykFi6b1G0crU8et2O0Q==
+        chaipay:
+          jsResource: "https://static.chaipay.io/staging-chaipay.js"
+          clientKey: ciayggHaxgVVdlLs
+          secretKey: cdfa106efe12f79c00a5dcde6a70b30df0df094cf6d73d17b8c2b31756f7d7fc
+        paypal:
+          domain: "https://api-m.sandbox.paypal.com"
+          clientKey: AXmcrHmqYGQolcmst1xc7CGkt2BCPHgu0D_3LyDPChC-bR6BfWty97xu8TqHfcRy20lpjePgdIPfsGOB
+          secretKey: ELYmqgk-0-WKc2oUMUKiJKNiJSo6-LYElHQy50v9XIG_v555u2RzDxN7HTwPUBTYvhehZ6u9fQ-BY-Q-
+          partnerId: MY3BVGDQQYER2
+          merchantId: KXXB29BHQJPCE
+      api:
+        domain: "https://api.mediastep.ca"
     logging:
       level:
-        ROOT: DEBUG
-        io.github.jhipster: INFO
-        com.mediastep.gosell.storefront: DEBUG
-        com.mediastep.gosell.storefront.gstengine.processors.variables.resolver: INFO
-        com.mediastep.gosell.storefront.config.GosellStoreFilter: TRACE
-
-    beecow:
-      debugMode: true
-      feign.client.logger.level: FULL
-
-    spring:
-      zipkin: # Use the "zipkin" Maven profile to have the Spring Cloud Zipkin dependencies
-    #    base-url: http://localhost:9411
-        enabled: true
-    #  data:
-    #    mongodb:
-    #      uri: mongodb://10.10.0.18:27017/ssr
-      redis:
-        host: redis-0.redis.redis.svc.cluster.local
-        port: 6379
-
-    jhipster:
-      logging:
-        logstash:
-          enabled: true
-      metrics:
-        logs:
-          enabled: true
-      cache: # Cache configuration
-        redis: # Redis configuration
-          expiration: 3600 # By default objects stay 1 hour (in seconds) in the cache
-          server: redis://${spring.redis.host}:${spring.redis.port}
-          cluster: false
-        hazelcast: # Hazelcast distributed cache
-          time-to-live-seconds: 3600
-          backup-count: 1
-          management-center: # Full reference is available at: http://docs.hazelcast.org/docs/management-center/3.9/manual/html/Deploying_and_Starting.html
-            enabled: true
-            update-interval: 3
-    #        url: http://localhost:7071/mancenter #3.9
-            url: http://management-center-3-12.dev.svc.cluster.local:7072/hazelcast-mancenter #3.12
+        com.ms.payment: DEBUG
+  shopeeServices-prod.yml: |
+    application:
+      shopee:
+        partnerId: ${SHOPEE_ID}
+        requestUrl: ${SHOPEE_URL}
+        secretKey: ${SHOPEE_KEY}
+        dashboardUrl: ${DASHBOARD_URL}
+        authorizationUrl: ${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}
+        # authorizationUrl: ${application.shopee.requestUrl}/shop/auth_partner?redirect=${application.shopee.dashboardUrl}&id={0}&token={1}
+        dashboardAuthRedirectPath: ${dashboard_auth_redirect_path}
+      # shopee:
+      #     partnerId: 851195
+      #     requestUrl: "https://partner.uat.shopeemobile.com"
+      #     secretKey: bb8524d07bee43253991c7df55112d4dd9f2c1ac2905bf3bc02ad63c4f074ea5
+      #     dashboardUrl: "https://gosell.mediastep.ca/channel/shopee/account"
+      #     authorizationUrl: "${application.shopee.requestUrl}/api/v2/shop/auth_partner?redirect={2}&partner_id={0}&sign={1}&timestamp={3}"
+      #     dashboardAuthRedirectPath: "/channel/shopee/account"
 
     hystrix:
       command:
@@ -2561,58 +916,181 @@ data:
           execution:
             isolation:
               thread:
-                timeoutInMilliseconds: 80000
-  storeService-prod.yml: "application:\n    webGsDashboardDomain: https://dev-gosell.mediastep.com\n
-    \   webGsDashboardCallBackUrl: /payment/callback\n    webGsDashboardVNPTCallBackUrl:
-    /payment/epay-callback?description={0}\n\nspring:\n    data:\n        jest:\n
-    \           uri: http://172.16.111.8:9022\n            read-timeout: 180000\n\nlogging:\n
-    \   level:\n        com.mediastep.beecow.store: DEBUG\n        \njpa:\n    show-sql:
-    true\n    properties:\n        hibernate.show_sql: true\n        hibernate.format_sql:
-    true\n        hibernate.cache.use_second_level_cache: true\n        hibernate.cache.use_query_cache:
-    false\n\nhystrix:\n    command:\n        default:\n            execution:\n                isolation:\n
-    \                   thread:\n                        timeoutInMilliseconds: 10000\njhipster:\n
-    \   cache: # Cache configuration\n        redis: # Redis configuration\n            server:
-    redis://redis-0.redis.redis.svc.cluster.local:6379"
-  test.yml: tes
-  themeServices-prod.yml: |-
-    logging:
-        level:
-            com.mediastep.gosell.theme: DEBUG
-    jhipster:
-        cache: # Cache configuration
-            redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
+                timeoutInMilliseconds: 10000
     spring:
-        data:
-            jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
-                read-timeout: 180000
-        redis:
-            host: redis-0.redis.redis.svc.cluster.local
-            port: 6379
-            database: 0
+      data:
+        elasticsearch:
+          cluster-name:
+          cluster-nodes: elasticsearch.mediastep.ca:9300
+          client.transport.ignore_cluster_name: true
+      redis:
+        host: 10.10.0.15
+        port: 6379
+    logging:
+      level:
+        com.mediastep.beecow.shopee: DEBUG
+  smsServices-prod.yml: |-
+    configserver:
+      name: JHipster Registry config server
+      status: Connected to the JHipster Registry config server!
+    eureka:
+        instance:
+            #prefer-ip-address: true
+            #nonSecurePort: 80
+            appname: smsServices
+            #ip-address: ${EC2_LOCAL_IP}
+    management:
+        health:
+            elasticsearch:
+                enabled: false
+    spring:
+        cloud:
+            stream:
+                bindings:
+                    smsChannel:
+                        destination: smsChannel
+                        contentType: application/json
+                        group: smsServices
+                        consumer:
+                            header-mode: embeddedHeaders
+  ssrStorefront-prod.yml: |-
     application:
-        jenkins:
-            baseUrl: ci-master.mediastep.com
-            basicAuth: ZmVpZ25jbGllbnQ6MTFlMDc3Nzk4NWFhMDk4MDZjNjNhOTNjZTAzZjQ1ZDZhZg==
-            domain: landingpage.mediastep.ccom/
-            buildPath:
-                publishLandingPage: /view/Website/job/website-develop-qa/job/export-html-dev/buildWithParameters/
-                unPublishLandingPage: /view/Website/job/website-develop-qa/job/delete-html-dev/buildWithParameters/
-        baseUrl: "https://dev-api.mediastep.com"
-        resourceUrl: "https://ssr-resource-dev.gosell.vn"
-        landingPageCreateCustomerProfile: "/beehiveservices/api/customer-profiles/landing-page/create"
-        landingPageCreateOrder: "/orderservices2/api/bc-orders/checkout/gosell/landing-page"
-        landingPageGetCountries: "/catalogservices/api/countries"
-        landingPageGetCitiesOfCountry: "/catalogservices/api/country/${countryCode}/cities"
-        landingPageGetDistrictsOfCity: "/catalogservices/api/city/${cityCode}/districts"
-        landingPageGetWardsOfDistrict: "/catalogservices/api/district/${districtCode}/wards"
+      apiBaseUrl: 'https://api.mediastep.ca'
+      # resourceUrl: 'https://ssr.mediastep.ca'
+      resourceUrl: 'https://ssr-resource-dev.gosell.vn'
+      fontUrl: 'https://ssr.mediastep.ca'
+      createCustomerProfileUrl: 'https://api.mediastep.ca/beehiveservices/api/customer-profiles/storefront/create'
+      policyUrl: 'https://www.gosell.vn/dieu-khoan-chung-va-chinh-sach-bao-mat.html'
+      gomuaUrl: 'https://gomua.mediastep.ca'
+      dashboardDomain: 'https://gosell.mediastep.ca'
+      blogArticlesUrl: '${application.apiBaseUrl}/beehiveservices/api/blog-articles'
+      sitemapStorageUrl: https://site-maps.mediastep.ca
+      paymentProvider: VNPAY
+      facebook:
+        systemAppId: 1893566387566234
+      paypal:
+        domain: https://api-m.sandbox.paypal.com
+        clientKey: AXmcrHmqYGQolcmst1xc7CGkt2BCPHgu0D_3LyDPChC-bR6BfWty97xu8TqHfcRy20lpjePgdIPfsGOB
+        secretKey: ELYmqgk-0-WKc2oUMUKiJKNiJSo6-LYElHQy50v9XIG_v555u2RzDxN7HTwPUBTYvhehZ6u9fQ-BY-Q-
+        partnerId: MY3BVGDQQYER2
+    spring:
+      zipkin:
+        enabled: true
+      redis:
+        host: 10.10.0.15
+        port: 6379
+    jhipster:
+      logging:
+        logstash:
+          enabled: true
+      metrics:
+        logs:
+          enabled: true
+      cache:
+        redis:
+          server: 'redis://${spring.redis.host}:${spring.redis.port}'
+    hystrix:
+      command:
+        default:
+          execution:
+            isolation:
+              thread:
+                timeoutInMilliseconds: 80000
+
+    eureka:
+      instance:
+        appname: ssrStorefront
+  storeService-prod.yml: |
+    logging:
+      level:
+        com.mediastep.beecow.store: DEBUG
+    application:
+      gosellSupportEmail: hotro@gosell.vn
+      customerServiceEmail: hoa.le@mediastep.com
+      # customerServiceEmail: live.str.bc@gmail.com
+      gosellDomain: mediastep.ca
+      webGsDashboardDomain: https://gosell.mediastep.ca
+      webGsDashboardCallBackUrl: /payment/callback
+      webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
+    hystrix:
+      command:
+        default:
+          execution:
+            isolation:
+              thread:
+                timeoutInMilliseconds: 10000
+        RestControllerCommand:
+          execution:
+            isolation:
+              strategy: THREAD
+              thread:
+                timeoutInMilliseconds: 5000
+                interruptOnTimeout: false
+          fallback:
+            enabled: false
+        createOrUpdateShopInfo:
+          execution:
+            isolation:
+              strategy: THREAD
+              thread:
+                timeoutInMilliseconds: 10000
+                interruptOnTimeout: false
+          fallback:
+            enabled: false
+        getStoreBranchesWithAvailableStockMultiple:
+          execution:
+            isolation:
+              thread:
+                timeoutInMilliseconds: 10000
+          fallback:
+            enabled: false
+        createShopAffiliate:
+          execution:
+            isolation:
+              thread:
+                timeoutInMilliseconds: 20000
+          fallback:
+            enabled: false
+    spring:
+      redis:
+        host: 10.10.0.15
+        port: 6379
+        database: 8
+    jhipster:
+      cache: # Cache configuration
+        redis: # Redis configuration
+          server: redis://10.10.0.15:6379
+    management:
+      health:
+        elasticsearch:
+          enabled: false
+  test.yml: tes
+  themeServices.yml: "jhipster:\n    cache: # Cache configuration\n        redis:
+    # Redis configuration\n            server: redis://10.10.0.15:6379\napplication:\n
+    \   jenkins:\n        baseUrl: ci-master.mediastep.com\n        basicAuth: ZmVpZ25jbGllbnQ6MTFlMDc3Nzk4NWFhMDk4MDZjNjNhOTNjZTAzZjQ1ZDZhZg==\n
+    \       domain: landingpage.mediastep.ca/\n        buildPath:\n            publishLandingPage:
+    /view/Website/job/website-develop-qa/job/export-html-ca/buildWithParameters/\n
+    \           unPublishLandingPage: /view/Website/job/website-develop-qa/job/delete-html-ca/buildWithParameters/\n
+    \   baseUrl: \"https://api.mediastep.ca\"\n    resourceUrl: \"https://ssr-resource-dev.gosell.vn\"\n
+    \   landingPageCreateCustomerProfile: \"/beehiveservices/api/customer-profiles/landing-page/create\"\n
+    \   landingPageCreateOrder: \"/orderservices2/api/bc-orders/checkout/gosell/landing-page\"\n
+    \   landingPageGetCountries: \"/catalogservices/api/countries\"\n    landingPageGetCitiesOfCountry:
+    \"/catalogservices/api/country/${countryCode}/cities\"\n    landingPageGetDistrictsOfCity:
+    \"/catalogservices/api/city/${cityCode}/districts\"\n    landingPageGetWardsOfDistrict:
+    \"/catalogservices/api/district/${districtCode}/wards\"\n    "
   tiktokservices-prod.yml: |-
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
-  voucherServices-prod.yml: |
+                server: redis://10.10.0.15:6379
+    application:
+        tiktok:
+            waitingTime: 10000 #millisecond
+            imageUrl: https://p16-oec-va.ibyteimg.com
+            imageIdPrefix: tos-maliva-i-o3syd03w52-us
+            tiktokAppKey: 67ne9bqf57ekv
+            tiktokAppSerect: 3d9d4c4925dd3325a75bacafee7a5589e7f09150
+  voucherServices-prod.yml: |-
     beecow:
         debugMode: true
         voucher:
@@ -2621,8 +1099,7 @@ data:
                     generationRetryTimes: 5
                 voucherGettingExpiredTime: 3
                 voucherGettingExpiredTimeUnit: DAYS
-                voucherGettingExpiredDateCheckTime: 86400000 # Check every day
-                voucherCheckPageSize: 100
+                voucherGettingExpiredDateCheckTime: 86400000 # Check every 5 minutes
             voucherHardCopyService:
                 outputFromat: HTML
                 outputFolder: /vouchers
@@ -2631,7 +1108,6 @@ data:
                 awsBucketName: beecow-voucher-development
                 awsLocation: new
                 useThymeLeaf: true
-
     cloud:
         aws:
             region:
@@ -2641,34 +1117,12 @@ data:
             credentials:
                 accessKey: AKIAJ2GQ7ZJQ43ICWXJA
                 secretKey: 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
-  zaloServices-prod.yml: |
-    logging:
-        level:
-            ROOT: DEBUG
-            io.github.jhipster: DEBUG
-            com.mediastep.gosell.zalo: DEBUG
-    feign:
-        client:
-            config:
-                default:
-                    loggerLevel: full
-        hystrix:
-            enabled: false
-    spring:
-        data:
-            jest:
-                uri: http://172.16.111.8:9202
-                read-timeout: 180000
-        redis:
-            host: redis-0.redis.redis.svc.cluster.local
-            port: 6379
-            database: 0
-    zalo:
-        appID: 1795714633831552827
-        appSecret: 99R5a34T8ADBF1c326Go
-        codeVerifier: iuz4dxWsbZxYRK-b2KjjSNIDiOOZNMjT6quinzEwh30
-        oauthUrl: https://oauth.zaloapp.com/v4/oa/permission
-        redirectUri: https://dev-gosell.mediastep.com/live-chat/zalo/resolve-token
+  zaloServices-prod.yml: "zalo:\n appID: 4511031267098261681\n appSecret: IS4GIQC3aD7TW1Q1IVUw\n
+    codeVerifier: iuz4dxWsbZxYRK-b2KjjSNIDiOOZNMjT6quinzEwh30\n oauthUrl: https://oauth.zaloapp.com/v4/oa/permission
+    \n redirectUri: https://gosell.mediastep.ca/live-chat/zalo/resolve-token\njhipster:\n
+    cache: # Cache configuration\n  redis: # Redis configuration\n   server: 'redis://10.10.0.15:6379'\nspring:\n
+    redis:\n  host: 10.10.0.15\n  port: 6379\n"
 kind: ConfigMap
 metadata:
+  creationTimestamp: null
   name: jhipster-registry

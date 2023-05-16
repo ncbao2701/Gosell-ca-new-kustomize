@@ -1,20 +1,8 @@
-spring:
-
-    redis:
-        host: redis-0.redis.redis.svc.cluster.local
-        port: 6379
-
-#    cloud:
-#        stream:
-#            kafka:
-#                binder:
-#                    brokers: 192.168.1.228:9009
-#                    zk-nodes: 192.168.1.228:2189
 
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://redis-0.redis.redis.svc.cluster.local:6379
+            server: redis://10.10.0.15:6379
 
 kafka:
-    bootstrapServers: 172.16.111.8:9092
+    bootstrapServers: kafka.mediastep.ca:9092

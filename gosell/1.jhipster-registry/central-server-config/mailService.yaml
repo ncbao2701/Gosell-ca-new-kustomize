@@ -1,0 +1,14 @@
+logging:
+    level:
+        com.mediastep.gosell.callcenter: DEBUG
+
+kafka:
+    bootstrap-servers: 10.10.0.15:9092
+
+application:
+    gosellDomain: gosell.vn
+
+management:
+    health:
+        elasticsearch:
+            enabled: false

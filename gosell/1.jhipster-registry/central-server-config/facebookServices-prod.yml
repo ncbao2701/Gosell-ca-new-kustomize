@@ -1,23 +1,8 @@
 logging:
     level:
         com.mediastep.gosell.facebook: DEBUG
-
 application:
-    webhookVerificationToken: 123456
-
-spring:
-    data:
-        jest:
-            uri: http://172.16.111.8:9202
-            read-timeout: 180000
-    redis:
-        host: redis-0.redis.redis.svc.cluster.local
-        port: 6379
-        database: 0
-jhipster:
-    cache: # Cache configuration
-        redis: # Redis configuration
-            server: redis://redis-0.redis.redis.svc.cluster.local:6379
+    webGsFacebookCreditCallBackUrl: https://gosell.mediastep.ca/payment/callback
 facebook:
     adAppSecret: 7df3ae5409b0c926197c15f65507f5dc
     # accessTokenBusiness:
@@ -25,7 +10,13 @@ facebook:
     # businessAppSecret: 23649a073994cfc78e436ced0b007008
     #businessAppId: 2617004701933274
     #businessAppSecret: 7df3ae5409b0c926197c15f65507f5dc
-    #businessAppId: 246541766920377
-    #businessAppSecret: 92cae430c61a0497c6c405dbb9830471
-    businessAppId: 1172612549918082
-    businessAppSecret: 7569a0b10a67d6917878e82881384fe2
+    # businessAppId: 2617004701933274
+    # businessAppSecret: 7df3ae5409b0c926197c15f65507f5dc
+    # businessAppId: 1172612549918082
+    # businessAppSecret: 7569a0b10a67d6917878e82881384fe2
+    businessAppId: 2347321872092664
+    businessAppSecret: 753740ccb136dd9a29aaf07b8f6ee545
+jhipster:
+    cache: # Cache configuration
+        redis: # Redis configuration
+            server: 'redis://10.10.0.15:6379'

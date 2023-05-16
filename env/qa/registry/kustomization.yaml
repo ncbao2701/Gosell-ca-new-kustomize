@@ -1,8 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namePrefix: qa-
-namespace: qa
+namePrefix: dev-
+namespace: dev
 
 images:
 - name: jhipster/jhipster-registry
@@ -14,7 +14,7 @@ resources:
 labels:
 - includeSelectors: true
   pairs:
-    env: qa
+    env: dev
 
 replicas:
   - name: registry

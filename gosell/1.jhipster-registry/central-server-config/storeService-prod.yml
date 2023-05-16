@@ -1,34 +1,63 @@
-application:
-    webGsDashboardDomain: https://dev-gosell.mediastep.com
-    webGsDashboardCallBackUrl: /payment/callback
-    webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
-
-spring:
-    data:
-        jest:
-            uri: http://172.16.111.8:9022
-            read-timeout: 180000
-
 logging:
-    level:
-        com.mediastep.beecow.store: DEBUG
-        
-jpa:
-    show-sql: true
-    properties:
-        hibernate.show_sql: true
-        hibernate.format_sql: true
-        hibernate.cache.use_second_level_cache: true
-        hibernate.cache.use_query_cache: false
-
+  level:
+    com.mediastep.beecow.store: DEBUG
+application:
+  gosellSupportEmail: hotro@gosell.vn
+  customerServiceEmail: hoa.le@mediastep.com
+  # customerServiceEmail: live.str.bc@gmail.com
+  gosellDomain: mediastep.ca
+  webGsDashboardDomain: https://gosell.mediastep.ca
+  webGsDashboardCallBackUrl: /payment/callback
+  webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
 hystrix:
-    command:
-        default:
-            execution:
-                isolation:
-                    thread:
-                        timeoutInMilliseconds: 10000
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+    RestControllerCommand:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 5000
+            interruptOnTimeout: false
+      fallback:
+        enabled: false
+    createOrUpdateShopInfo:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 10000
+            interruptOnTimeout: false
+      fallback:
+        enabled: false
+    getStoreBranchesWithAvailableStockMultiple:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+      fallback:
+        enabled: false
+    createShopAffiliate:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+      fallback:
+        enabled: false
+spring:
+  redis:
+    host: 10.10.0.15
+    port: 6379
+    database: 8
 jhipster:
-    cache: # Cache configuration
-        redis: # Redis configuration
-            server: redis://redis-0.redis.redis.svc.cluster.local:6379
+  cache: # Cache configuration
+    redis: # Redis configuration
+      server: redis://10.10.0.15:6379
+management:
+  health:
+    elasticsearch:
+      enabled: false
