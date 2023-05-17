@@ -54,7 +54,7 @@ spec:
           - name: JHIPSTER_LOGGING_LOGSTASH_ENABLED
             value: "true"
           - name: JHIPSTER_LOGGING_LOGSTASH_HOST
-            value: "172.16.111.8"
+            value: "172.16.111.23"
           - name: JHIPSTER_METRICS_LOGS_ENABLED
             value: "true"
           - name: JHIPSTER_METRICS_LOGS_REPORTFREQUENCY
