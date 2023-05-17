@@ -328,7 +328,7 @@ data:
   catalogServices-prod.yml: |-
     spring:
       redis:
-        host: 10.10.0.15
+        host: redis-0.redis.redis.svc.cluster.local
         port: 6379
         database: 0
       jpa:
