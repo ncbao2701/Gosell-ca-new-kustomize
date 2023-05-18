@@ -45,7 +45,7 @@ spec:
             successThreshold: 1
             failureThreshold: 3
         envFrom:
-          secretRef:
+          - secretRef:
               name: gateway
       imagePullSecrets:
         - name: fpt-cloud-registry
