@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: integrate-order-service
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-integrate-order-service
-  newTag:        2023.05.10.4
+  newTag:         2023.05.19.4
 
 resources:
 - ../../../gosell/13.integrate-order-service
