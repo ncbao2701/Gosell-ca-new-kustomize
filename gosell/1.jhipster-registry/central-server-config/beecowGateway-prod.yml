@@ -8,7 +8,7 @@ jhipster:
                 tokenValidityInSecondsForRememberMe: 1800 #86400 #seconds
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://redis-0.redis.redis.svc.cluster.local:6379
+            server: redis://redis-0.redis.redis:6379
 gosell:
     security:
         authentication:

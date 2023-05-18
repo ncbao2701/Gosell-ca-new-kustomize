@@ -21,7 +21,7 @@ mediafile:
 jhipster:
   cache: # Cache configuration
     redis: # Redis configuration
-      server: redis://10.10.0.15:6379
+      server: redis://redis-0.redis.redis:6379
 
 spring:
   jpa:
@@ -34,4 +34,4 @@ application:
   email:
     gosellSupportEmail: customerService@mediastep.com
     fromEmail: welcome@gosell.vn
-    dashboardDomain: https://gosell.mediastep.ca/
+    dashboardDomain: https://ca-gosell.mediastep.com/

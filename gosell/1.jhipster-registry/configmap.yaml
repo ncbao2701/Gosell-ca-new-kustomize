@@ -176,7 +176,7 @@ data:
                     tokenValidityInSecondsForRememberMe: 1800 #86400 #seconds
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
+                server: redis://redis-0.redis.redis:6379
     gosell:
         security:
             authentication:
@@ -328,7 +328,7 @@ data:
   catalogServices-prod.yml: |-
     spring:
       redis:
-        host: redis-0.redis.redis.svc.cluster.local
+        host: redis-0.redis.redis
         port: 6379
         database: 0
       jpa:
@@ -408,7 +408,7 @@ data:
                 maximum-pool-size: 1000
         data:
             jest:
-                uri: http://10.10.0.103:9022
+                uri: http://172.16.111.23:9022
                 readTimeout: 60000
     business:
         deal:
@@ -466,11 +466,11 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://10.10.0.15:6379
+                server: redis://redis-0.redis.redis:6379
     application:
         itemProgressHandlingTimeoutInMinutes: 5
         currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
-        webGsDashboardDomain: https://gosell.mediastep.ca
+        webGsDashboardDomain: https://ca-gosell.mediastep.com
   jhipster-registry-prod.yml: |-
     eureka:
       server:
@@ -606,7 +606,7 @@ data:
                 enabled: false
     spring:
       redis:
-        host: 10.10.0.15
+        host: redis-0.redis.redis
         port: 6379
         database: 7
   mediaServices-prod.yml: |
@@ -633,7 +633,7 @@ data:
     jhipster:
       cache: # Cache configuration
         redis: # Redis configuration
-          server: redis://10.10.0.15:6379
+          server: redis://redis-0.redis.redis:6379
 
     spring:
       jpa:
@@ -646,7 +646,7 @@ data:
       email:
         gosellSupportEmail: customerService@mediastep.com
         fromEmail: welcome@gosell.vn
-        dashboardDomain: https://gosell.mediastep.ca/
+        dashboardDomain: https://ca-gosell.mediastep.com/
   messageServices-prod.yml: |-
     #common configuration shared between all applications
     jhipster:
@@ -1008,8 +1008,8 @@ data:
       gosellSupportEmail: hotro@gosell.vn
       customerServiceEmail: hoa.le@mediastep.com
       # customerServiceEmail: live.str.bc@gmail.com
-      gosellDomain: mediastep.ca
-      webGsDashboardDomain: https://gosell.mediastep.ca
+      gosellDomain: mediastep.com
+      webGsDashboardDomain: https://ca-gosell.mediastep.com
       webGsDashboardCallBackUrl: /payment/callback
       webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
     hystrix:
@@ -1053,13 +1053,13 @@ data:
             enabled: false
     spring:
       redis:
-        host: 10.10.0.15
+        host: redis-0.redis.redis
         port: 6379
         database: 8
     jhipster:
       cache: # Cache configuration
         redis: # Redis configuration
-          server: redis://10.10.0.15:6379
+          server: redis://redis-0.redis.redis:6379
     management:
       health:
         elasticsearch:

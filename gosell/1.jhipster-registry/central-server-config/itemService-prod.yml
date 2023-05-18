@@ -22,7 +22,7 @@ spring:
             maximum-pool-size: 1000
     data:
         jest:
-            uri: http://10.10.0.103:9022
+            uri: http://172.16.111.23:9022
             readTimeout: 60000
 business:
     deal:
@@ -80,8 +80,8 @@ hystrix:
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.15:6379
+            server: redis://redis-0.redis.redis:6379
 application:
     itemProgressHandlingTimeoutInMinutes: 5
     currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
-    webGsDashboardDomain: https://gosell.mediastep.ca
+    webGsDashboardDomain: https://ca-gosell.mediastep.com
