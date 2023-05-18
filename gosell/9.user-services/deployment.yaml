@@ -51,8 +51,8 @@ spec:
           successThreshold: 1
           failureThreshold: 3
         envFrom:
-          secretRef:
-            - name: user-services
+          - secretRef:
+              name: user-services
       imagePullSecrets:
         - name: fpt-cloud-registry
 status: {}
