@@ -51,23 +51,9 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           failureThreshold: 3
-        env:
-          - name: SPRING_PROFILES_ACTIVE
-            value: "prod,swagger"
-          - name: SPRING_CLOUD_CONFIG_URI
-            value: "http://admin:admin@ca-registry.ca.svc.cluster.local:8761/config"
-          - name: SPRING_DATASOURCE_URL
-            value: "jdbc:postgresql://172.16.111.33:5432/postgres?currentSchema=store-services"
-          - name: POSTGRES_USER
-            value: "dbastore"
-          - name: POSTGRES_PASSWORD
-            value: "dbastore"
-          - name: JHIPSTER_SLEEP
-            value: "10"
-          - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
-            value: "172.16.111.23:9300"
-          - name: JAVA_OPTS
-            value: "-Xms256M -Xmx1G"
+        envFrom:
+          - secretRef:
+              name: store-services
       imagePullSecrets:
         - name: fpt-cloud-registry
 status: {}
