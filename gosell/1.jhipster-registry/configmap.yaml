@@ -361,20 +361,20 @@ data:
                 server: 'redis://10.10.0.15:6379'
   integrateOrderService-prod.yml: |-
     kafka:
-      bootstrapServers: kafka.mediastep.ca:9092
+      bootstrapServers: 172.16.111.23:9092
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://10.10.0.15:6379
+                server: redis://redis-0.redis.redis:6379
   intergrateaffiliateservice-prod.yml: |2-
 
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://10.10.0.15:6379
+                server: redis://redis-0.redis.redis:6379
 
     kafka:
-        bootstrapServers: kafka.mediastep.ca:9092
+        bootstrapServers: 172.16.111.23:9092
   inventoryservices-prod.yml: "jhipster:\n  cache: # Cache configuration\n    redis:
     # Redis configuration\n      server: redis://10.10.0.15:6379\nspring:\n    kafka:\n
     \       consumer:\n          properties:\n            auto-sync-stock-topic: autoSyncStock\n
@@ -652,7 +652,7 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://10.10.0.15:6379
+                server: redis://redis-0.redis.redis:6379
     beecow:
         debugMode: true
         messageServices:
@@ -682,7 +682,7 @@ data:
     spring:
         data:
             jest:
-                uri: http://10.10.0.103:9022
+                uri: http://172.16.111.23:9022
                 readTimeout: 60000
   minions-prod.yml: |-
     beecow:
@@ -772,7 +772,7 @@ data:
     \"02873030800\"\n            vietnamCustomerServiceEmail: hotro@gosell.vn\n        beecowDeliveryInfoId:
     1\n        paymentService:\n            callback:\n                waitTime: 5000
     # Wait for VNPAY callback: 5s\n                webUrl: https://gomua.mediastep.ca/shopping-cart/callback\n
-    \               mobileUrl: https://api.mediastep.ca/orderservices2/api/payment/result/vnpay\n
+    \               mobileUrl: https://ca-api.mediastep.com/orderservices2/api/payment/result/vnpay\n
     \               mobileSmartUrl: gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal\n
     \               webVipDealUrl: https://debug.vipdeal.vn/shopping-cart/callback\n
     \               webStorefrontBaseDomain: https://{0}.mediastep.ca\n                webStorefrontUrlSurfix:
@@ -827,7 +827,8 @@ data:
     https://github.com/spring-cloud/spring-cloud-netflix/issues/1330\n                    thread:\n
     \                       timeoutInMilliseconds: 20000\njhipster:\n    cache: #
     Cache configuration\n        redis: # Redis configuration\n            server:
-    redis://10.10.0.15:6379\nredission:\n    config:\n        nettyThreads: 64\n"
+    redis://redis-0.redis.redis:6379\nredission:\n    config:\n        nettyThreads:
+    64\n"
   paymentServices-prod.yml: |
     beecow:
       payment:

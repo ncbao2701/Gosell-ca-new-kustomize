@@ -46,7 +46,7 @@ beecow:
             callback:
                 waitTime: 5000 # Wait for VNPAY callback: 5s
                 webUrl: https://gomua.mediastep.ca/shopping-cart/callback
-                mobileUrl: https://api.mediastep.ca/orderservices2/api/payment/result/vnpay
+                mobileUrl: https://ca-api.mediastep.com/orderservices2/api/payment/result/vnpay
                 mobileSmartUrl: gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal
                 webVipDealUrl: https://debug.vipdeal.vn/shopping-cart/callback
                 webStorefrontBaseDomain: https://{0}.mediastep.ca
@@ -142,7 +142,7 @@ hystrix:
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.15:6379
+            server: redis://redis-0.redis.redis:6379
 redission:
     config:
         nettyThreads: 64
