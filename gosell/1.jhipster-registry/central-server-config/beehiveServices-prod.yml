@@ -38,9 +38,9 @@ spring:
     #   cluster-nodes: 'elasticsearch.mediastep.ca:9300'
     #   client.transport.ignore_cluster_name: true
     jest:
-      uri: http://10.10.0.103:9022
+      uri: http://172.16.111.23:9022
       readTimeout: 60000
 jhipster:
   cache: # Cache configuration
     redis: # Redis configuration
-      server: 'redis://10.10.0.15:6379'
+      server: 'redis://redis-0.redis.redis:6379'

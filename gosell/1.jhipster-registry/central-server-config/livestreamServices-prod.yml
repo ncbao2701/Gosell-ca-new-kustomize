@@ -34,5 +34,5 @@ spring:
   data:
     elasticsearch: 
       cluster-name: elasticsearch
-      cluster-nodes: 10.10.0.103:9300
+      cluster-nodes: 172.16.111.23:9300
       client.transport.ignore_cluster_name: true

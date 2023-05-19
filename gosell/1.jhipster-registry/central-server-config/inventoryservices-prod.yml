@@ -1,7 +1,7 @@
 jhipster:
   cache: # Cache configuration
     redis: # Redis configuration
-      server: redis://10.10.0.15:6379
+      server: redis://redis-0.redis.redis:6379
 spring:
     kafka:
         consumer:
@@ -9,7 +9,7 @@ spring:
             auto-sync-stock-topic: autoSyncStock
             auto-sync-stock-group: inventoryServices
             auto-sync-stock-auto-startup: true   
-        bootstrap-servers: 10.10.0.15:9092
+        bootstrap-servers: 172.16.111.23:9092
     jpa:
         show-sql: true
         properties:

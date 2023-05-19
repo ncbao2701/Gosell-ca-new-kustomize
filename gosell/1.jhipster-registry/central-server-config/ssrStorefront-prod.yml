@@ -21,7 +21,7 @@ spring:
   zipkin:
     enabled: true
   redis:
-    host: 10.10.0.15
+    host: redis-0.redis.redis
     port: 6379
 jhipster:
   logging:

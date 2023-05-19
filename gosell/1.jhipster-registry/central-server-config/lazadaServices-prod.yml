@@ -9,9 +9,9 @@ spring:
   data:
     elasticsearch: 
       cluster-name: 
-      cluster-nodes: 10.10.0.103:9300
+      cluster-nodes: 172.16.111.23:9300
       client.transport.ignore_cluster_name: true
 jhipster:
   cache: # Cache configuration
     redis: # Redis configuration
-      server: redis://10.10.0.15:6379
+      server: redis://redis-0.redis.redis:6379

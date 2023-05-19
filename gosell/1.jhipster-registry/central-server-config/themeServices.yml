@@ -1,7 +1,7 @@
 jhipster:
     cache: # Cache configuration
         redis: # Redis configuration
-            server: redis://10.10.0.15:6379
+            server: redis://redis-0.redis.redis:6379
 application:
     jenkins:
         baseUrl: ci-master.mediastep.com

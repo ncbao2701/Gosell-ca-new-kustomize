@@ -26,10 +26,10 @@ spring:
   data:
     elasticsearch:
       cluster-name:
-      cluster-nodes: elasticsearch.mediastep.ca:9300
+      cluster-nodes: 172.16.111.23:9300
       client.transport.ignore_cluster_name: true
   redis:
-    host: 10.10.0.15
+    host: redis-0.redis.redis
     port: 6379
 logging:
   level:
