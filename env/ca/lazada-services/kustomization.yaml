@@ -1,12 +1,12 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namePrefix: dev-
-namespace: dev
+namePrefix: ca-
+namespace: ca
 
 images:
 - name: lazada-services
-  newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/dev-lazada-services
+  newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-lazada-services
   newTag:         2023.05.11.6
 
 resources:
@@ -15,7 +15,7 @@ resources:
 labels:
 - includeSelectors: true
   pairs:
-    env: dev
+    env: ca
 
 replicas:
 - name: lazada-services
