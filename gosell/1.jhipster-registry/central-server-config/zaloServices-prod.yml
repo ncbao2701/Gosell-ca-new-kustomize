@@ -3,7 +3,7 @@ zalo:
  appSecret: IS4GIQC3aD7TW1Q1IVUw
  codeVerifier: iuz4dxWsbZxYRK-b2KjjSNIDiOOZNMjT6quinzEwh30
  oauthUrl: https://oauth.zaloapp.com/v4/oa/permission 
- redirectUri: https://gosell.mediastep.ca/live-chat/zalo/resolve-token
+ redirectUri: https://ca-gosell.mediastep.ca/live-chat/zalo/resolve-token
 jhipster:
  cache: # Cache configuration
   redis: # Redis configuration

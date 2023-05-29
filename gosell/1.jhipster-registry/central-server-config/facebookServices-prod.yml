@@ -2,7 +2,7 @@ logging:
     level:
         com.mediastep.gosell.facebook: DEBUG
 application:
-    webGsFacebookCreditCallBackUrl: https://gosell.mediastep.ca/payment/callback
+    webGsFacebookCreditCallBackUrl: https://ca-gosell.mediastep.ca/payment/callback
 facebook:
     adAppSecret: 7df3ae5409b0c926197c15f65507f5dc
     # accessTokenBusiness:
