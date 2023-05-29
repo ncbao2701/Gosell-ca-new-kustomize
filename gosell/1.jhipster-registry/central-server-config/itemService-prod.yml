@@ -84,4 +84,4 @@ jhipster:
 application:
     itemProgressHandlingTimeoutInMinutes: 5
     currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
-    webGsDashboardDomain: https://ca-gosell.mediastep.com
+    webGsDashboardDomain: https://ca-gosell.mediastep.ca

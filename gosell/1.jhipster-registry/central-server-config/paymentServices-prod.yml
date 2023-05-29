@@ -15,8 +15,8 @@ beecow:
       atmAndCreditProvider: VNPAY
       atmAndCreditMethod: VNPAY_ALL
     paypal:
-      baseURL: "https://api.mediastep.ca/paymentservices/payment-gateway/paypal"
-      sellerOnboard: "https://api.mediastep.ca/paymentservices/shop-connect/paypal/onboarding"
+      baseURL: "https://ca-api.mediastep.ca/paymentservices/payment-gateway/paypal"
+      sellerOnboard: "https://ca-api.mediastep.ca/paymentservices/shop-connect/paypal/onboarding"
   installment:
     vnpay:
       baseURL: "https://sandbox.vnpayment.vn/merchant_webapi/merchant.html"
@@ -36,7 +36,7 @@ jhipster:
     redis:
       server: "redis://redis-0.redis.redis:6379"
 application:
-  dashboard: "https://gosell.mediastep.ca"
+  dashboard: "https://ca-gosell.mediastep.ca"
   paymentProvider:
     epay:
       jsResource: "https://sandbox.megapay.vn:2810/pg_was/js/payment/layer/paymentClient.js"
@@ -57,7 +57,7 @@ application:
       partnerId: MY3BVGDQQYER2
       merchantId: KXXB29BHQJPCE
   api:
-    domain: "https://api.mediastep.ca"
+    domain: "https://ca-api.mediastep.ca"
 logging:
   level:
     com.ms.payment: DEBUG

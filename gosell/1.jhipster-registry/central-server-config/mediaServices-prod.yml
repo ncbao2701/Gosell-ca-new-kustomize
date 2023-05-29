@@ -34,4 +34,4 @@ application:
   email:
     gosellSupportEmail: customerService@mediastep.com
     fromEmail: welcome@gosell.vn
-    dashboardDomain: https://ca-gosell.mediastep.com/
+    dashboardDomain: https://ca-gosell.mediastep.ca/
