@@ -57,7 +57,7 @@ spec:
           failureThreshold: 3
         envFrom:
           - secretRef:
-            name: billing-info-services
+              name: billing-info-services
       imagePullSecrets:
         - name: fpt-cloud-registry
 status: {}
