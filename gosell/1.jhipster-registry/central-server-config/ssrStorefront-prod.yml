@@ -1,12 +1,12 @@
 application:
-  apiBaseUrl: 'https://api.mediastep.ca'
+  apiBaseUrl: 'https://ca-api.mediastep.ca'
   # resourceUrl: 'https://ssr.mediastep.ca'
   resourceUrl: 'https://ssr-resource-dev.gosell.vn'
-  fontUrl: 'https://ssr.mediastep.ca'
-  createCustomerProfileUrl: 'https://api.mediastep.ca/beehiveservices/api/customer-profiles/storefront/create'
+  fontUrl: 'https://ca-ssr.mediastep.ca'
+  createCustomerProfileUrl: 'https://ca-api.mediastep.ca/beehiveservices/api/customer-profiles/storefront/create'
   policyUrl: 'https://www.gosell.vn/dieu-khoan-chung-va-chinh-sach-bao-mat.html'
   gomuaUrl: 'https://gomua.mediastep.ca'
-  dashboardDomain: 'https://gosell.mediastep.ca'
+  dashboardDomain: 'https://ca-gosell.mediastep.ca'
   blogArticlesUrl: '${application.apiBaseUrl}/beehiveservices/api/blog-articles'
   sitemapStorageUrl: https://site-maps.mediastep.ca
   paymentProvider: VNPAY

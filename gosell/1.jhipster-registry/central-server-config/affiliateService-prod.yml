@@ -79,4 +79,4 @@ jhipster:
             server: redis://redis-0.redis.redis:6379
 application:
     itemProgressHandlingTimeoutInMinutes: 5
-    webGsDashboardDomain: https://gosell.mediastep.ca
+    webGsDashboardDomain: https://ca-gosell.mediastep.ca

@@ -18,7 +18,7 @@ application:
         baseUrl: https://acd-api.vht.com.vn/rest
     email:
         gosellSupportEmail: live.str.bc@gmail.com
-    webGsDashboardDomain: https://gosell.mediastep.ca
+    webGsDashboardDomain: https://ca-gosell.mediastep.ca
     webGsDashboardCallBackUrl: /payment/callback
     webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
 

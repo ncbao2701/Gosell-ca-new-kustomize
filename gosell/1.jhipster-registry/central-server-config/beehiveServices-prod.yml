@@ -28,7 +28,7 @@ application:
   trial:
     time: 15
     unit: DAYS
-  webGsDashboardDomain: 'https://gosell.mediastep.ca'
+  webGsDashboardDomain: 'https://ca-gosell.mediastep.ca'
   webGsDashboardCallBackUrl: /payment/callback
   webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
 spring:
