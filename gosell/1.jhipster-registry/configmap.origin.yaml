@@ -82,7 +82,7 @@ data:
                 server: redis://redis-0.redis.redis:6379
     application:
         itemProgressHandlingTimeoutInMinutes: 5
-        webGsDashboardDomain: https://ca-gosell.mediastep.ca
+        webGsDashboardDomain: https://gosell.mediastep.ca
   application.yml: "#common configuration shared between all applications\nbeecow:\n
     \   debugMode: true\n    gateway:\n        userService:\n            user:\n                defaultLocation:
     US\n                defaultLanguage: en\n                defaultAvatarUrl:\n                    default:
@@ -246,7 +246,7 @@ data:
       trial:
         time: 15
         unit: DAYS
-      webGsDashboardDomain: 'https://ca-gosell.mediastep.ca'
+      webGsDashboardDomain: 'https://gosell.mediastep.ca'
       webGsDashboardCallBackUrl: /payment/callback
       webGsDashboardVNPTCallBackUrl: '/payment/epay-callback?description={0}'
     spring:
@@ -289,7 +289,7 @@ data:
             baseUrl: https://acd-api.vht.com.vn/rest
         email:
             gosellSupportEmail: live.str.bc@gmail.com
-        webGsDashboardDomain: https://ca-gosell.mediastep.ca
+        webGsDashboardDomain: https://gosell.mediastep.ca
         webGsDashboardCallBackUrl: /payment/callback
         webGsDashboardVNPTCallBackUrl: /payment/epay-callback?description={0}
 
@@ -341,7 +341,7 @@ data:
         level:
             com.mediastep.gosell.facebook: DEBUG
     application:
-        webGsFacebookCreditCallBackUrl: https://ca-gosell.mediastep.ca/payment/callback
+        webGsFacebookCreditCallBackUrl: https://gosell.mediastep.ca/payment/callback
     facebook:
         adAppSecret: 7df3ae5409b0c926197c15f65507f5dc
         # accessTokenBusiness:
@@ -470,52 +470,7 @@ data:
     application:
         itemProgressHandlingTimeoutInMinutes: 5
         currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
-        webGsDashboardDomain: https://ca-gosell.mediastep.ca
-  itemetlservice-prod.yml: |
-    spring:
-        data:
-            jest:
-                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
-                read-timeout: 180000
-        datasource:
-            hikari:
-                maximum-pool-size: 1000
-        jpa:
-            show-sql: true
-            properties:
-                hibernate.show_sql: true
-                hibernate.format_sql: true
-                hibernate.cache.use_second_level_cache: true
-                hibernate.cache.use_query_cache: false
-        kafka:
-            bootstrap-servers: 172.16.111.8:9092
-        lifecycle:
-            timeout-per-shutdown-phase: 1m
-    logging:
-        level:
-            com.mediastep.gosell.item.etl: DEBUG
-    jhipster:
-        cache: # Cache configuration
-            redis: # Redis configuration
-                server: redis://redis-0.redis.redis.svc.cluster.local:6379
-    server:
-        shutdown: graceful
-    application:
-        inventorySummaryBranchCdc:
-            pluginName: pgoutput
-            connectorClass: io.debezium.connector.postgresql.PostgresConnector
-            offsetStorage: org.apache.kafka.connect.storage.FileOffsetBackingStore
-            offsetStorageFileFilename: inventory_summary_branch_offset.DAT
-            offsetFlushIntervalMs: 60000
-            connectorName: inventory-summary-branch-connector
-            databaseServerName: item-etl-service
-            databaseHostname: 172.16.10.85
-            databasePort: 5432
-            databaseUser: postgres
-            databasePassword: postgres
-            databaseDbname: postgres
-            tableWhitelist: item-services.inventory_summary_branch,item-services.cdc_update_es,item-services.item_model
-            skippedOperations: d
+        webGsDashboardDomain: https://ca-gosell.mediastep.com
   jhipster-registry-prod.yml: |-
     eureka:
       server:
@@ -691,7 +646,7 @@ data:
       email:
         gosellSupportEmail: customerService@mediastep.com
         fromEmail: welcome@gosell.vn
-        dashboardDomain: https://ca-gosell.mediastep.ca/
+        dashboardDomain: https://ca-gosell.mediastep.com/
   messageServices-prod.yml: |-
     #common configuration shared between all applications
     jhipster:
@@ -892,8 +847,8 @@ data:
           atmAndCreditProvider: VNPAY
           atmAndCreditMethod: VNPAY_ALL
         paypal:
-          baseURL: "https://ca-api.mediastep.ca/paymentservices/payment-gateway/paypal"
-          sellerOnboard: "https://ca-api.mediastep.ca/paymentservices/shop-connect/paypal/onboarding"
+          baseURL: "https://api.mediastep.ca/paymentservices/payment-gateway/paypal"
+          sellerOnboard: "https://api.mediastep.ca/paymentservices/shop-connect/paypal/onboarding"
       installment:
         vnpay:
           baseURL: "https://sandbox.vnpayment.vn/merchant_webapi/merchant.html"
@@ -913,7 +868,7 @@ data:
         redis:
           server: "redis://redis-0.redis.redis:6379"
     application:
-      dashboard: "https://ca-gosell.mediastep.ca"
+      dashboard: "https://gosell.mediastep.ca"
       paymentProvider:
         epay:
           jsResource: "https://sandbox.megapay.vn:2810/pg_was/js/payment/layer/paymentClient.js"
@@ -934,7 +889,7 @@ data:
           partnerId: MY3BVGDQQYER2
           merchantId: KXXB29BHQJPCE
       api:
-        domain: "https://ca-api.mediastep.ca"
+        domain: "https://api.mediastep.ca"
     logging:
       level:
         com.ms.payment: DEBUG
@@ -1001,14 +956,14 @@ data:
                             header-mode: embeddedHeaders
   ssrStorefront-prod.yml: |-
     application:
-      apiBaseUrl: 'https://ca-api.mediastep.ca'
+      apiBaseUrl: 'https://api.mediastep.ca'
       # resourceUrl: 'https://ssr.mediastep.ca'
       resourceUrl: 'https://ssr-resource-dev.gosell.vn'
-      fontUrl: 'https://ca-ssr.mediastep.ca'
-      createCustomerProfileUrl: 'https://ca-api.mediastep.ca/beehiveservices/api/customer-profiles/storefront/create'
+      fontUrl: 'https://ssr.mediastep.ca'
+      createCustomerProfileUrl: 'https://api.mediastep.ca/beehiveservices/api/customer-profiles/storefront/create'
       policyUrl: 'https://www.gosell.vn/dieu-khoan-chung-va-chinh-sach-bao-mat.html'
       gomuaUrl: 'https://gomua.mediastep.ca'
-      dashboardDomain: 'https://ca-gosell.mediastep.ca'
+      dashboardDomain: 'https://gosell.mediastep.ca'
       blogArticlesUrl: '${application.apiBaseUrl}/beehiveservices/api/blog-articles'
       sitemapStorageUrl: https://site-maps.mediastep.ca
       paymentProvider: VNPAY
@@ -1117,7 +1072,7 @@ data:
     \       domain: landingpage.mediastep.ca/\n        buildPath:\n            publishLandingPage:
     /view/Website/job/website-develop-qa/job/export-html-ca/buildWithParameters/\n
     \           unPublishLandingPage: /view/Website/job/website-develop-qa/job/delete-html-ca/buildWithParameters/\n
-    \   baseUrl: \"https://ca-api.mediastep.ca\"\n    resourceUrl: \"https://ssr-resource-dev.gosell.vn\"\n
+    \   baseUrl: \"https://api.mediastep.ca\"\n    resourceUrl: \"https://ssr-resource-dev.gosell.vn\"\n
     \   landingPageCreateCustomerProfile: \"/beehiveservices/api/customer-profiles/landing-page/create\"\n
     \   landingPageCreateOrder: \"/orderservices2/api/bc-orders/checkout/gosell/landing-page\"\n
     \   landingPageGetCountries: \"/catalogservices/api/countries\"\n    landingPageGetCitiesOfCountry:
@@ -1165,7 +1120,7 @@ data:
                 secretKey: /6RHttXkcJF77zY3K5TixQBAyI83gdRiw+q0likG
   zaloServices-prod.yml: "zalo:\n appID: 4511031267098261681\n appSecret: IS4GIQC3aD7TW1Q1IVUw\n
     codeVerifier: iuz4dxWsbZxYRK-b2KjjSNIDiOOZNMjT6quinzEwh30\n oauthUrl: https://oauth.zaloapp.com/v4/oa/permission
-    \n redirectUri: https://ca-gosell.mediastep.ca/live-chat/zalo/resolve-token\njhipster:\n
+    \n redirectUri: https://gosell.mediastep.ca/live-chat/zalo/resolve-token\njhipster:\n
     cache: # Cache configuration\n  redis: # Redis configuration\n   server: 'redis://redis-0.redis.redis:6379'\nspring:\n
     redis:\n  host: redis-0.redis.redis\n  port: 6379\n"
 kind: ConfigMap
