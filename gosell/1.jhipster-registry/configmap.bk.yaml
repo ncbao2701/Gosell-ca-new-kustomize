@@ -475,7 +475,7 @@ data:
     spring:
         data:
             jest:
-                uri: http://172.16.111.23:9022 #http://es5.mediastep.com:9202
+                uri: http://172.16.111.8:9022 #http://es5.mediastep.com:9202
                 read-timeout: 180000
         datasource:
             hikari:
@@ -488,7 +488,7 @@ data:
                 hibernate.cache.use_second_level_cache: true
                 hibernate.cache.use_query_cache: false
         kafka:
-            bootstrap-servers: 172.16.111.23:9092
+            bootstrap-servers: 172.16.111.8:9092
         lifecycle:
             timeout-per-shutdown-phase: 1m
     logging:
@@ -497,7 +497,7 @@ data:
     jhipster:
         cache: # Cache configuration
             redis: # Redis configuration
-                server: redis://redis-0.redis.redis:6379
+                server: redis://redis-0.redis.redis.svc.cluster.local:6379
     server:
         shutdown: graceful
     application:
@@ -509,7 +509,7 @@ data:
             offsetFlushIntervalMs: 60000
             connectorName: inventory-summary-branch-connector
             databaseServerName: item-etl-service
-            databaseHostname: 172.16.111.33
+            databaseHostname: 172.16.10.85
             databasePort: 5432
             databaseUser: postgres
             databasePassword: postgres
