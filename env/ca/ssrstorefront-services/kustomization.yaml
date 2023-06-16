@@ -19,4 +19,4 @@ labels:
 
 replicas:
 - name: ssrstorefront-services
-  count: 1
+  count: 2
