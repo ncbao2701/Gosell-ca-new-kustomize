@@ -2,24 +2,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: itemetl-services
-  name: itemetl-services
+    app: itemetl-load-services
+  name: itemetl-load-services
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: itemetl-services
+      app: itemetl-load-services
   strategy: {}
   template:
     metadata:
       labels:
-        app: itemetl-services
+        app: itemetl-load-services
     spec:
       containers:
-      - image: itemetl-services
-        name: itemetl-services
+      - image: itemetl-load-services
+        name: itemetl-load-services
         ports:
         - containerPort: 8086
         resources: 
@@ -60,14 +60,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: item-etl-service
-  name: item-etl-service
+    app: itemetl-load-services
+  name: itemetl-load-services
 spec:
   ports:
   - port: 8086
     protocol: TCP
     targetPort: 8086
   selector:
-    app: item-etl-service
+    app: itemetl-load-services
 status:
   loadBalancer: {}
