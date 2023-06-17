@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: affiliate-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-affiliate-services
-  newTag:                      2023.06.16.4
+  newTag:                       2023.06.17.5
 
 resources:
 - ../../../gosell/32.affiliate-services
