@@ -230,7 +230,7 @@ data:
         firebase-sender-id-ios: 978381762368
       jenkins:
         baseUrl: cloud-ci-master.mediastep.com
-        basicAuth: ZmVpZ25jbGllbnQ6MTEyY2I3YzQ5NWEwM2JjNDZmMDU4MDQzNmYwNTU2NmNjMw==
+        basicAuth: ZmVpZ25jbGllbnQ6MTEyY2I3YzQ5NWEwM2JjNDZmMDU4MDQzNmYwNTU2NmNjMwo=
         buildPath:
           web: >-
             /view/Websites/job/storefront-qa/buildWithParameters/
