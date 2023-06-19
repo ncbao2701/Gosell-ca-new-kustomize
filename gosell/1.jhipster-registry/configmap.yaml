@@ -230,7 +230,7 @@ data:
         firebase-sender-id-ios: 978381762368
       jenkins:
         baseUrl: cloud-ci-master.mediastep.com
-        basicAuth: ZmVpZ25jbGllbnQ6MTExOGQyMzI2NThkYmY3YTUwOGZmZWMwZmFhNzVhYzc1ZQo=
+        basicAuth: ZmVpZ25jbGllbnQ6MTEyY2I3YzQ5NWEwM2JjNDZmMDU4MDQzNmYwNTU2NmNjMw==
         buildPath:
           web: >-
             /view/Websites/job/storefront-qa/buildWithParameters/
@@ -1113,7 +1113,7 @@ data:
   test.yml: tes
   themeServices.yml: "jhipster:\n    cache: # Cache configuration\n        redis:
     # Redis configuration\n            server: redis://redis-0.redis.redis:6379\napplication:\n
-    \   jenkins:\n        baseUrl: cloud-ci-master.mediastep.com\n        basicAuth: ZmVpZ25jbGllbnQ6MTExOGQyMzI2NThkYmY3YTUwOGZmZWMwZmFhNzVhYzc1ZQo=\n
+    \   jenkins:\n        baseUrl: cloud-ci-master.mediastep.com\n        basicAuth: ZmVpZ25jbGllbnQ6MTEyY2I3YzQ5NWEwM2JjNDZmMDU4MDQzNmYwNTU2NmNjMw==\n
     \       domain: landingpage.mediastep.ca/\n        buildPath:\n            publishLandingPage:
     /view/Websites/job/export-html-ca/buildWithParameters/\n
     \           unPublishLandingPage: /view/Websites/job/delete-html-ca/buildWithParameters/\n
