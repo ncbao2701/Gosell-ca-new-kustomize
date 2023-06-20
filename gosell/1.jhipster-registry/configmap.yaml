@@ -1113,10 +1113,10 @@ data:
   test.yml: tes
   themeServices.yml: "jhipster:\n    cache: # Cache configuration\n        redis:
     # Redis configuration\n            server: redis://redis-0.redis.redis:6379\napplication:\n
-    \   jenkins:\n        baseUrl: ci-master.mediastep.com\n        basicAuth: ZmVpZ25jbGllbnQ6MTFlMDc3Nzk4NWFhMDk4MDZjNjNhOTNjZTAzZjQ1ZDZhZg==\n
+    \   jenkins:\n        baseUrl: cloud-ci-master.mediastep.com\n        basicAuth: ZmVpZ25jbGllbnQ6N2FlNWU5ZmI0ZjQ1Mjk0N2RjZDQ5OWIzZGNhYjA1Mjk=\n
     \       domain: landingpage.mediastep.ca/\n        buildPath:\n            publishLandingPage:
-    /view/Website/job/website-develop-qa/job/export-html-ca/buildWithParameters/\n
-    \           unPublishLandingPage: /view/Website/job/website-develop-qa/job/delete-html-ca/buildWithParameters/\n
+    /view/Websites/job/export-html-ca/buildWithParameters/\n
+    \           unPublishLandingPage: /view/Websites/job/delete-html-ca/buildWithParameters/\n
     \   baseUrl: \"https://ca-api.mediastep.ca\"\n    resourceUrl: \"https://ssr-resource-dev.gosell.vn\"\n
     \   landingPageCreateCustomerProfile: \"/beehiveservices/api/customer-profiles/landing-page/create\"\n
     \   landingPageCreateOrder: \"/orderservices2/api/bc-orders/checkout/gosell/landing-page\"\n
