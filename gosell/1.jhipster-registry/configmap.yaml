@@ -229,20 +229,20 @@ data:
         firebase-client-id-ios: 978381762368-hrphavuuogu26jkjnooskoph7mmpv6n2.apps.googleusercontent.com
         firebase-sender-id-ios: 978381762368
       jenkins:
-        baseUrl: ci-master.mediastep.com
-        basicAuth: ZmVpZ25jbGllbnQ6MTFlMDc3Nzk4NWFhMDk4MDZjNjNhOTNjZTAzZjQ1ZDZhZg==
+        baseUrl: cloud-ci-master.mediastep.com
+        basicAuth: ZmVpZ25jbGllbnQ6N2FlNWU5ZmI0ZjQ1Mjk0N2RjZDQ5OWIzZGNhYjA1Mjk=
         buildPath:
           web: >-
-            /view/Website/job/website-develop-qa/job/storefront-qa/buildWithParameters/
+            /view/Websites/job/storefront-qa/buildWithParameters/
           android: /view/Android/job/android-gosell-qa/buildWithParameters/
           ios: /view/IOS/job/ios-gosell-auto-qa/buildWithParameters/
-          updateSubDomain: /view/Website/job/websites/job/update-subdomain-qa/buildWithParameters
+          updateSubDomain: /view/Websites/job/update-subdomain-qa/buildWithParameters
           updateCustomDomain: >-
             /view/Website/job/websites/job/update-custom-domain-qa/buildWithParameters
           removeCustomDomain: >-
             /view/Website/job/websites/job/delete-custom-domain-qa/buildWithParameters
           ssr: >-
-            /view/Website/job/website-develop-qa/job/storefront-qa/buildWithParameters
+            /view/Websites/job/storefront-qa/buildWithParameters
       trial:
         time: 15
         unit: DAYS
