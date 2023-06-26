@@ -1191,7 +1191,7 @@ data:
             registerWithEureka: true
             fetchRegistry: true
             serviceUrl:
-                defaultZone: http://admin:admin@dev-registry.dev.svc.cluster.local:8761/eureka/
+                defaultZone: http://admin:admin@ca-registry.ca.svc.cluster.local:8761/eureka/
 
     spring:
         devtools:
