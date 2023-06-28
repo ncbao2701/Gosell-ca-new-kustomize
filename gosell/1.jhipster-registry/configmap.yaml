@@ -1218,10 +1218,10 @@ data:
                 hibernate.cache.use_minimal_puts: true
                 hibernate.cache.hazelcast.use_lite_member: true
                 hibernate.cache.auto_evict_collection_cache: true
-        data:
-            elasticsearch:
-                cluster-name:
-                cluster-nodes: 172.16.111.8:9300
+        # data:
+        #     elasticsearch:
+        #         cluster-name:
+        #         cluster-nodes: 172.16.111.8:9300
         mail:
             host: localhost
             port: 25
