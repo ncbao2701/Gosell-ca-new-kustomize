@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: gateway
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-gateway
-  newTag:                2023.06.24.18
+  newTag:                 2023.06.28.19
 
 resources:
 - ../../../gosell/2.gateway
