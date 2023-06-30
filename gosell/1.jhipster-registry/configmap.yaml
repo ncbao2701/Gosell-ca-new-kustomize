@@ -403,6 +403,16 @@ data:
                         producer:
                             header-mode: embeddedHeaders
                         group: itemServices
+        kafka:
+          consumer:
+            properties:
+              itemLotDateUpdateStockChannel:
+                topic: itemLotDateUpdateStockChannel
+                group: itemServices
+            max-poll-records: 10
+            group-id: itemServices
+          bootstrap-servers: 172.16.111.23:9092
+
         datasource:
             hikari:
                 maximum-pool-size: 1000
@@ -468,6 +478,7 @@ data:
             redis: # Redis configuration
                 server: redis://redis-0.redis.redis:6379
     application:
+        timeout: 60 #second 
         itemProgressHandlingTimeoutInMinutes: 5
         currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
         webGsDashboardDomain: https://ca-gosell.mediastep.ca
