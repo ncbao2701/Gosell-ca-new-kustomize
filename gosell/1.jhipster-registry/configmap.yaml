@@ -735,6 +735,11 @@ data:
                       filePath: https://firebase-project-ca.s3.ap-southeast-1.amazonaws.com/gs-qc-ca-016to031-firebase-adminsdk-ect50-77cddae161.json
                     - name: gosell-qc-qa-2
                       filePath: https://firebase-project-ca.s3.ap-southeast-1.amazonaws.com/gosell-qc-qa-2-firebase-adminsdk-nryxf-10cb8304a8.json
+    management:
+        health:
+          elasticsearch:
+              enabled: false         
+    
     spring:
         data:
             jest:
