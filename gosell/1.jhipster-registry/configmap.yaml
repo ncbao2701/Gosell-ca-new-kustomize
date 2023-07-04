@@ -262,12 +262,28 @@ data:
       cache: # Cache configuration
         redis: # Redis configuration
           server: 'redis://redis-0.redis.redis:6379'
-  billingInfoServices-prod.yml: "# application:\n#     useEsQuery: false\nlogging:\n
-    \   level:\n        com.mediastep.beecow.billing: DEBUG\nspring:\n    jpa:\n        show-sql:
-    true\n    # data:\n    #     elasticsearch: \n    #         cluster-name: \n    #
-    \        cluster-nodes: elasticsearch.mediastep.ca:9300\n    #         client.transport.ignore_cluster_name:
-    true\njhipster:\n    cache: # Cache configuration\n        redis: # Redis configuration\n
-    \           server: redis://redis-0.redis.redis:6379"
+  billingInfoServices-prod.yml: |-
+    # application:
+    #     useEsQuery: false
+    logging:
+      level:
+        com.mediastep.beecow.billing: DEBUG
+    spring:
+      jpa:
+          show-sql: true
+      kafka:
+        bootstrap-servers: 172.16.111.23:9092
+        group-id: billingConsumerOrder
+        auto-offset-reset: latest
+      # data:    
+      #     elasticsearch:
+      #         cluster-name: 
+      #         cluster-nodes: elasticsearch.mediastep.ca:9300
+      #         client.transport.ignore_cluster_name: true
+    jhipster:
+      cache: # Cache configuration
+          redis: # Redis configuration
+              server: redis://redis-0.redis.redis:6379
   callCenterServices-prod.yml: |-
     logging:
         level:
