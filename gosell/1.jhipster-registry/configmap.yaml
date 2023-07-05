@@ -1307,7 +1307,7 @@ data:
         prefer-ip-address: true
       client:
         service-url:
-          defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+          defaultZone: http://admin:admin@ca-registry.ca:8761/eureka/
 
     management:
       metrics:
