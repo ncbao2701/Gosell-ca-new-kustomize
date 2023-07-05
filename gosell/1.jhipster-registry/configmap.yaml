@@ -830,82 +830,158 @@ data:
         cache: # Cache configuration
             redis: # Redis configuration
                 server: redis://10.10.0.15:6379
-  orderServices2-prod.yml: "spring:\n    datasource:\n        hikari:\n            maximum-pool-size:
-    50\n    jpa:\n        show-sql: true\n    cloud:\n        stream:\n            bindings:\n
-    \               itemLanguageChannel:\n                    destination: itemLanguageChannel\n
-    \                   binder: kafka\n                    content-type: application/json\n
-    \                   group: orderServices2\n                    \nlogging:\n    level:\n
-    \       org.hibernate.SQL: INFO\n        com.mediastep.beecow.message.service.NotifyService:
-    \ DEBUG\n        com.mediastep.beecow.message.client.MessageServiceClient: DEBUG\n\nbeecow:\n
-    \   debug-mode: true\n    feign.client.logger.level: FULL\n    order:\n        sync:\n
-    \           pageSize: 20\n        orderService:\n            codMaximumPrice:
-    10000000 # 10,000,000 VND\n            orderExpirationTime: 5 # 5'\n            orderExpirationTimeUnit:
-    MINUTES\n            freeShip: true\n            orderAbandonTime: 15\n            orderAbandonTimeUnit:
-    MINUTES\n            itemWebsiteURLPrefix: https://gomua.mediastep.ca/\n            itemWebsiteURLPrefixProduct:
-    https://gomua.mediastep.ca/product/\n            itemWebsiteURLPrefixDeal: https://gomua.mediastep.ca/deal/\n
-    \           orderSalesEmail: no-reply@gosell.vn\n            orderSalesEmailReplyTo:
-    cskh@beecow.com\n            orderSalesEmailBcc: order-dev@beecow.com\n            #
-    vietnamCustomerServiceEmail: cskh@beecow.com\n            vietnamCustomerServicePhone:
-    \"02873030800\"\n            vietnamCustomerServiceEmail: hotro@gosell.vn\n        beecowDeliveryInfoId:
-    1\n        paymentService:\n            callback:\n                waitTime: 5000
-    # Wait for VNPAY callback: 5s\n                webUrl: https://gomua.mediastep.ca/shopping-cart/callback\n
-    \               mobileUrl: https://ca-api.mediastep.com/orderservices2/api/payment/result/vnpay\n
-    \               mobileSmartUrl: gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal\n
-    \               webVipDealUrl: https://debug.vipdeal.vn/shopping-cart/callback\n
-    \               webStorefrontBaseDomain: https://{0}.mediastep.ca\n                webStorefrontUrlSurfix:
-    /shopping-cart/callback\n                webStorefrontBookingUrlSurfix: /shopping-cart-service/callback\n
-    \               mobileSmartPaypalCreateOrder: gosell-smart-paypal-{0}://shopping-cart/paypal-smart-checkout/create-order/callback\n
-    \           epay:\n                callback:\n                    waitTime: 5000
-    # Wait for VNPT EPAY callback: 5s\n                    webUrl: https://gomua.mediastep.ca/shopping-cart/callback/vnpt-epay\n
-    \                   mobileUrl: gosell-buyer-{0}://orderservices2/api/payment/result/vnptepay\n
-    \                   webStorefrontBaseDomain: https://{0}.mediastep.ca\n                    webStorefrontUrlSurfix:
-    /shopping-cart/vnpt-epay/callback?shoppingCartType={0}\n                    webStorefrontBookingUrlSurfix:
-    /shopping-cart/vnpt-epay/callback?shoppingCartType={0}\n                    webVipDealUrl:
-    https://debug.vipdeal.vn/shopping-cart/vnpt-epay/callback\n            paypal:\n
-    \               callback:\n                    waitTime: 5000 # Wait for PAYPAL
-    callback: 5s\n                    webUrl: https://beecow.mediastep.ca/shopping-cart/callback/paypal\n
-    \                   mobileUrl: gosell-paypal-{0}://orderservices2/api/payment/result/paypal\n
-    \                   webStorefrontBaseDomain: https://{0}.mediastep.ca\n                    webStorefrontUrlSurfix:
-    /shopping-cart/paypal/callback?shoppingCartType={0}\n                    webStorefrontBookingUrlSurfix:
-    /shopping-cart/paypal/callback?shoppingCartType={0}\n                    webStorefrontSmartPaypalCreateOrder:
-    /shopping-cart/paypal-smart-checkout/create-order/callback\n                    webVipDealUrl:
-    https://beecow.mediastep.ca/shopping-cart/paypal/callback\n            momo:\n
-    \               callback:\n                    waitTime: 5000 # Wait for MoMo
-    callback: 5s\n                    webUrl: https://gosell.mediastep.ca/shopping-cart/callback/momo\n
-    \                   mobileUrl: gosell-momo-{0}://orderservices2/api/payment/result/momo\n
-    \                   webStorefrontBaseDomain: https://{0}.mediastep.ca\n                    webStorefrontUrlSurfix:
-    /shopping-cart/momo/callback?shoppingCartType={0}\n                    webStorefrontBookingUrlSurfix:
-    /shopping-cart/momo/callback?shoppingCartType={0}\n                    webVipDealUrl:
-    https://gosell.mediastep.ca/shopping-cart/momo/callback\n        voucherHardCopyService:\n
-    \           outputFromat: HTML\n            outputFolder: temp\n            htmlToPDFCommandTimeout:
-    30000\n            htmlToPDFCommand: /home/huyen/programs/wkhtmltox/bin/wkhtmltopdf\n
-    \           awsBucketName: beecow-voucher-development\n            awsLocation:
-    new\n    delivery:\n        deliveryPlanTimeout: 15000 # Delivery plan suggestion
-    timeout 15s\n        provider:\n            default: giaohangnhanh,giaohangtietkiem
-    # selfdelivery is activated only if selected\n            vnpost:\n                enabled:
-    false\n                userName: \"0909015765\"\n                password: 123456\n
-    \               serviceBaseUrl: https://donhang.vnpost.vn\n                loyaltyCustomerCode:\n
-    \               customerCode:\n                 services:\n                    -\n
-    \                       id: EMS\n                        deliveryTimes: 2\n                    -\n
-    \                       id: BK\n                        deliveryTimes: 3\n            giaohangnhanh:\n
-    \               enabled: true\n                tax: 0.0 #0%\n                baseURL:
-    https://testapipds.ghn.vn:9999/external/marketplace\n                clientID:
-    192900\n                password: egGdykvdVyccpbbz6\n                apiKey: gYPDgvqzT2mybhUV\n
-    \               apiSecretKey: 1E0410A33DA9B2CB342A6CCF0F912BF8\n            giaohangnhanh3:\n
-    \               enabled: true\n                tax: 0.0 #0%\n                baseURL:
-    https://dev-online-gateway.ghn.vn/apiv3-api/api/v1/apiv3\n                token:
-    BeecowTokenTest\n                paymentTypeId: 1\n            giaohangtietkiem:\n
-    \               enabled: true\n                baseURL: https://services-staging.ghtklab.com\n
-    \               token: a6db76aD46e0D1109eDD0566F1C07644Df10853c\n            ghn:\n
-    \               shiip:\n                    v2:\n                        baseURL:
-    ${GHN_API_URL}/shiip/public-api\n                        token: ${GHN_API_TOKEN}\n
-    \                       paymentTypeId: 1\n\nhystrix:\n    command:\n        default:\n
-    \           execution:\n                isolation:\n                    # See
-    https://github.com/spring-cloud/spring-cloud-netflix/issues/1330\n                    thread:\n
-    \                       timeoutInMilliseconds: 20000\njhipster:\n    cache: #
-    Cache configuration\n        redis: # Redis configuration\n            server:
-    redis://redis-0.redis.redis:6379\nredission:\n    config:\n        nettyThreads:
-    64\n"
+  orderServices2-prod.yml: |-
+    spring:
+        datasource:
+            hikari:
+                maximum-pool-size: 50
+        jpa:
+            show-sql: true
+        cloud:
+            stream:
+                bindings:
+                    itemLanguageChannel:
+                        destination: itemLanguageChannel
+                        binder: kafka
+                        content-type: application/json
+                        group: orderServices2
+                        
+    logging:
+        level:
+            org.hibernate.SQL: INFO
+            com.mediastep.beecow.message.service.NotifyService:  DEBUG
+            com.mediastep.beecow.message.client.MessageServiceClient: DEBUG
+
+    beecow:
+        debug-mode: true
+        feign.client.logger.level: FULL
+        order:
+            sync:
+                pageSize: 20
+            orderService:
+                codMaximumPrice: 10000000 # 10,000,000 VND
+                orderExpirationTime: 5 # 5'
+                orderExpirationTimeUnit: MINUTES
+                freeShip: true
+                orderAbandonTime: 15
+                orderAbandonTimeUnit: MINUTES
+                itemWebsiteURLPrefix: https://gomua.mediastep.ca/
+                itemWebsiteURLPrefixProduct: https://gomua.mediastep.ca/product/
+                itemWebsiteURLPrefixDeal: https://gomua.mediastep.ca/deal/
+                orderSalesEmail: no-reply@gosell.vn
+                orderSalesEmailReplyTo: cskh@beecow.com
+                orderSalesEmailBcc: order-dev@beecow.com
+                # vietnamCustomerServiceEmail: cskh@beecow.com
+                vietnamCustomerServicePhone: "02873030800"
+                vietnamCustomerServiceEmail: hotro@gosell.vn
+            beecowDeliveryInfoId: 1
+            paymentService:
+                callback:
+                    waitTime: 5000 # Wait for VNPAY callback: 5s
+                    webUrl: https://gomua.mediastep.ca/shopping-cart/callback
+                    mobileUrl: https://ca-api.mediastep.com/orderservices2/api/payment/result/vnpay
+                    mobileSmartUrl: gosell-smart-paypal-{0}://orderservices2/api/payment/result/paypal
+                    webVipDealUrl: https://debug.vipdeal.vn/shopping-cart/callback
+                    webStorefrontBaseDomain: https://{0}.mediastep.ca
+                    webStorefrontUrlSurfix: /shopping-cart/callback
+                    webStorefrontBookingUrlSurfix: /shopping-cart-service/callback
+                    mobileSmartPaypalCreateOrder: gosell-smart-paypal-{0}://shopping-cart/paypal-smart-checkout/create-order/callback
+                epay:
+                    callback:
+                        waitTime: 5000 # Wait for VNPT EPAY callback: 5s
+                        webUrl: https://gomua.mediastep.ca/shopping-cart/callback/vnpt-epay
+                        mobileUrl: gosell-buyer-{0}://orderservices2/api/payment/result/vnptepay
+                        webStorefrontBaseDomain: https://{0}.mediastep.ca
+                        webStorefrontUrlSurfix: /shopping-cart/vnpt-epay/callback?shoppingCartType={0}
+                        webStorefrontBookingUrlSurfix: /shopping-cart/vnpt-epay/callback?shoppingCartType={0}
+                        webVipDealUrl: https://debug.vipdeal.vn/shopping-cart/vnpt-epay/callback
+                paypal:
+                    callback:
+                        waitTime: 5000 # Wait for PAYPAL callback: 5s
+                        webUrl: https://beecow.mediastep.ca/shopping-cart/callback/paypal
+                        mobileUrl: gosell-paypal-{0}://orderservices2/api/payment/result/paypal
+                        webStorefrontBaseDomain: https://{0}.mediastep.ca
+                        webStorefrontUrlSurfix: /shopping-cart/paypal/callback?shoppingCartType={0}
+                        webStorefrontBookingUrlSurfix: /shopping-cart/paypal/callback?shoppingCartType={0}
+                        webStorefrontSmartPaypalCreateOrder: /shopping-cart/paypal-smart-checkout/create-order/callback
+                        webVipDealUrl: https://beecow.mediastep.ca/shopping-cart/paypal/callback
+                momo:
+                    callback:
+                        waitTime: 5000 # Wait for MoMo callback: 5s
+                        webUrl: https://gosell.mediastep.ca/shopping-cart/callback/momo
+                        mobileUrl: gosell-momo-{0}://orderservices2/api/payment/result/momo
+                        webStorefrontBaseDomain: https://{0}.mediastep.ca
+                        webStorefrontUrlSurfix: /shopping-cart/momo/callback?shoppingCartType={0}
+                        webStorefrontBookingUrlSurfix: /shopping-cart/momo/callback?shoppingCartType={0}
+                        webVipDealUrl: https://gosell.mediastep.ca/shopping-cart/momo/callback
+            voucherHardCopyService:
+                outputFromat: HTML
+                outputFolder: temp
+                htmlToPDFCommandTimeout: 30000
+                htmlToPDFCommand: /home/huyen/programs/wkhtmltox/bin/wkhtmltopdf
+                awsBucketName: beecow-voucher-development
+                awsLocation: new
+        delivery:
+            deliveryPlanTimeout: 15000 # Delivery plan suggestion timeout 15s
+            provider:
+                default: giaohangnhanh,giaohangtietkiem # selfdelivery is activated only if selected
+                vnpost:
+                    enabled: true
+                    userName: "0909015765"
+                    password: 123456
+                    serviceBaseUrl: https://donhang.vnpost.vn
+                    baseURL: https://my-uat.vnpost.vn/MYVNP_API
+                    token: CCBM0a0WqkVPAvIDw3ph+5SJcsBXaYOjzr2YaqZvHic29PksciyRfOMPaxUDUOHA1h7+0G2nYuwldjaS5gfourTXEA37bNK9sV+tQ08W1o8mzJDnrahqLIvUF9BQaSb9
+                    loyaltyCustomerCode:
+                    customerCode:
+                    services:
+                        -
+                            id: EMS
+                            deliveryTimes: 2
+                        -
+                            id: BK
+                            deliveryTimes: 3
+                giaohangnhanh:
+                    enabled: true
+                    tax: 0.0 #0%
+                    baseURL: https://testapipds.ghn.vn:9999/external/marketplace
+                    clientID: 192900
+                    password: egGdykvdVyccpbbz6
+                    apiKey: gYPDgvqzT2mybhUV
+                    apiSecretKey: 1E0410A33DA9B2CB342A6CCF0F912BF8
+                giaohangnhanh3:
+                    enabled: true
+                    tax: 0.0 #0%
+                    baseURL: https://dev-online-gateway.ghn.vn/apiv3-api/api/v1/apiv3
+                    token: BeecowTokenTest
+                    paymentTypeId: 1
+                giaohangtietkiem:
+                    enabled: true
+                    baseURL: https://services-staging.ghtklab.com
+                    token: a6db76aD46e0D1109eDD0566F1C07644Df10853c
+                ghn:
+                    shiip:
+                        v2:
+                            baseURL: ${GHN_API_URL}/shiip/public-api
+                            token: ${GHN_API_TOKEN}
+                            paymentTypeId: 1
+
+    hystrix:
+        command:
+            default:
+                execution:
+                    isolation:
+                        # See https://github.com/spring-cloud/spring-cloud-netflix/issues/1330
+                        thread:
+                            timeoutInMilliseconds: 20000
+    jhipster:
+        cache: # Cache configuration
+            redis: # Redis configuration
+                server: redis://redis-0.redis.redis:6379
+    redission:
+        config:
+            nettyThreads: 64
+
   paymentServices-prod.yml: |
     beecow:
       payment:
