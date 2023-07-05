@@ -1134,6 +1134,9 @@ data:
         host: redis-0.redis.redis
         port: 6379
     jhipster:
+      async:
+        core-pool-size: 100
+        max-pool-size: 1000
       logging:
         logstash:
           enabled: true
