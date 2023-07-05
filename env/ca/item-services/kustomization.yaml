@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: item-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-item-services
-  newTag:                                                             2023.07.05.60
+  newTag:                                                              2023.07.05.61
 
 resources:
 - ../../../gosell/4.item-services
