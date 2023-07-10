@@ -494,6 +494,9 @@ data:
             redis: # Redis configuration
                 server: redis://redis-0.redis.redis:6379
     application:
+        batch:
+          batchSize: 10
+          numThreads: 8
         timeout: 60 #second 
         itemProgressHandlingTimeoutInMinutes: 5
         currencyAPIKey: e73f0f00-39a7-11ec-9e08-154f6061b8a3
