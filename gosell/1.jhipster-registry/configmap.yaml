@@ -660,10 +660,10 @@ data:
 
     application:
         gosellDomain: gosell.vn
-    
-    redis:
-      host: redis-0.redis.redis
-      port: 6379
+    spring:
+      redis:
+        host: redis-0.redis.redis
+        port: 6379
       
     management:
         health:
