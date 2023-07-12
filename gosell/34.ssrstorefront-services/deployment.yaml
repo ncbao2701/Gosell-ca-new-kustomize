@@ -30,11 +30,11 @@ spec:
             protocol: UDP
         resources:
           limits:
-            cpu: '2'
+            cpu: '3'
             memory: 4Gi
           requests:
-            cpu: 500m
-            memory: 2Gi
+            cpu: 1
+            memory: 3Gi
         livenessProbe:
           httpGet:
             path: /management/health
