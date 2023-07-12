@@ -650,7 +650,7 @@ data:
         </root>
 
     </configuration>
-  mailService.yaml: |-
+  mailService-prod.yaml: |-
     logging:
         level:
             com.mediastep.gosell.callcenter: DEBUG
