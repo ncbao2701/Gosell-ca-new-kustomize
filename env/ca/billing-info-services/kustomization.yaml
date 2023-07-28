@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: billing-info-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-billing-info-services
-  newTag:                   2023.07.21.11
+  newTag:                    2023.07.28.12
 
 resources:
 - ../../../gosell/21.billing-info-services
