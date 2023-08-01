@@ -18,7 +18,7 @@ spec:
         app: registry
     spec:
       containers:
-      - image: jhipster/jhipster-registry:v3.1.2
+      - image: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/jhipster-registry:v3.1.2
         name: registry
         ports:
         - containerPort: 8761
@@ -49,13 +49,13 @@ spec:
         envFrom:
           - secretRef:
               name: registry
-        volumeMounts:
-          - name: jhipster-registry
-            mountPath: "/central-config"
-      volumes:
-        - name: jhipster-registry
-          configMap:
-            name: jhipster-registry
+      #   volumeMounts:
+      #     - name: jhipster-registry
+      #       mountPath: "/central-config"
+      # volumes:
+      #   - name: jhipster-registry
+      #     configMap:
+      #       name: jhipster-registry
       # imagePullSecrets:
       #   - name: fpt-cloud-registry
 status: {}
