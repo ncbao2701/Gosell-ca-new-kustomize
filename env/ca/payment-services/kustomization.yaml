@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: payment-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-payment-services
-  newTag:              2023.07.04.5
+  newTag:               2023.08.02.1
 
 resources:
 - ../../../gosell/18.payment-services
