@@ -6,7 +6,7 @@ namespace: ca
 
 images:
 - name: jhipster/jhipster-registry
-  newTag: v3.1.2
+  newTag: dev
 
 resources:
 - ../../../gosell/1.jhipster-registry
