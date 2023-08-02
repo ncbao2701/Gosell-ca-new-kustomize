@@ -6,7 +6,7 @@ namespace: ca
 
 images:
 - name: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/jhipster-registry
-  newTag: v3.1.3
+  newTag: ca-v3.1.3
 
 resources:
 - ../../../gosell/1.jhipster-registry
