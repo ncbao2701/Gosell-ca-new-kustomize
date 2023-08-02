@@ -29,10 +29,10 @@ spec:
           protocol: UDP
         resources:
           limits:
-            cpu: '1'
+            # cpu: '1'
             memory: 3584Mi
           requests:
-            cpu: '0.2'
+            # cpu: '0.2'
             memory: 2Gi
         livenessProbe:
           tcpSocket:
