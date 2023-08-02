@@ -30,10 +30,10 @@ spec:
             protocol: UDP
         resources:
           limits:
-            cpu: '3'
+            # cpu: '3'
             memory: 8Gi
           requests:
-            cpu: 1
+            # cpu: 1
             memory: 3Gi
         livenessProbe:
           httpGet:
