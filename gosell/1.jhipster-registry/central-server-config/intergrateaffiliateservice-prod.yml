@@ -1,8 +1,0 @@
-
-jhipster:
-    cache: # Cache configuration
-        redis: # Redis configuration
-            server: redis://redis-0.redis.redis:6379
-
-kafka:
-    bootstrapServers: 172.16.111.23:9092
