@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   labels:
     app: beehive-services
+    tags.datadoghq.com/env: "gosell-ca-new"
+    tags.datadoghq.com/service: "beehive-services"
+    tags.datadoghq.com/version: ""
   name: beehive-services
   annotations:
     argocd.argoproj.io/sync-wave: "3"
@@ -17,6 +20,9 @@ spec:
     metadata:
       labels:
         app: beehive-services
+        admission.datadoghq.com/enabled: "true"
+      annotations:
+        admission.datadoghq.com/java-lib.version: v1.19.1
     spec:
       containers:
       - image: beehive-services
