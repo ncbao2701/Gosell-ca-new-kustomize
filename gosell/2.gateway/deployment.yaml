@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   labels:
     app: gateway
+    tags.datadoghq.com/env: "gosell-ca-new"
+    tags.datadoghq.com/service: "gateway"
+    tags.datadoghq.com/version: ""
   name: gateway
   annotations:
     argocd.argoproj.io/sync-wave: "2"
@@ -15,6 +18,9 @@ spec:
     metadata:
       labels:
         app: gateway
+        admission.datadoghq.com/enabled: "true"
+      annotations:
+        admission.datadoghq.com/java-lib.version: v1.19.1
     spec:
       containers:
       - image: gateway:V.1.0.1
