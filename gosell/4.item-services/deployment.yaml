@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: item-services
-     tags.datadoghq.com/env: "gosell-ca-new"
+    app: "item-services"
+    tags.datadoghq.com/env: "gosell-ca-new"
     tags.datadoghq.com/service: "item-services"
     tags.datadoghq.com/version: ""
   name: item-services
