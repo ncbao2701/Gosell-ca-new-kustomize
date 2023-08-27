@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   labels:
     app: item-services
+     tags.datadoghq.com/env: "gosell-ca-new"
+    tags.datadoghq.com/service: "item-services"
+    tags.datadoghq.com/version: ""
   name: item-services
   annotations:
     argocd.argoproj.io/sync-wave: "3"
@@ -16,6 +19,9 @@ spec:
     metadata:
       labels:
         app: item-services
+        admission.datadoghq.com/enabled: "true"
+      annotations:
+        admission.datadoghq.com/java-lib.version: v1.19.1
     spec:
       containers:
       - image: item-services
