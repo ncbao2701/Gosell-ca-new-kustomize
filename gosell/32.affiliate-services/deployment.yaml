@@ -5,7 +5,7 @@ metadata:
     app: affiliate-services
     tags.datadoghq.com/env: "gosell-ca-new"
     tags.datadoghq.com/service: "affiliate"
-    tags.datadoghq.com/version: ""
+    tags.datadoghq.com/version: "4.1"
   name: affiliate-services
   annotations:
     argocd.argoproj.io/sync-wave: "3"
