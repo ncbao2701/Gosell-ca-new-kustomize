@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: facebook-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-new-facebook-services
-  newTag:                   2023.09.11.6
+  newTag:                    2023.09.26.7
 
 resources:
 - ../../../gosell/26.facebook-services
