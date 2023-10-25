@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: sms-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-new-sms-services
-  newTag:                                              2023.10.25.32
+  newTag:                                               2023.10.25.33
 
 resources:
 - ../../../gosell/17.sms-services
