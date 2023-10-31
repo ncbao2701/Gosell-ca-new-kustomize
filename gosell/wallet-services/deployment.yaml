@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wallet-services
+  name: wallet-services
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wallet-services
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: wallet-services
+    spec:
+      containers:
+      - image: wallet-services
+        name: wallet-services
+        ports:
+        - name: service
+          containerPort: 8012
+          protocol: TCP
+        resources:
+          limits:
+            # cpu: '2'
+            memory: 1G
+          requests:
+            # cpu: '0.5'
+            memory: 200M
+        livenessProbe:
+          tcpSocket:
+            port: 8012
+          initialDelaySeconds: 120
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        readinessProbe:
+          tcpSocket:
+            port: 8012
+          initialDelaySeconds: 120
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "prod,swagger"
+          - name:  SPRING_CLOUD_CONFIG_URI
+            value: "http://admin:msDnAyzohS7ePkMOS0CL@registry:8761/config"
+          - name: SPRING_CLOUD_CONFIG_LABEL
+            value: "gosell-dev"
+
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:postgresql://172.16.111.48:5432/postgres?currentSchema=wallet-services&gssEncMode=disable"
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "postgres"
+          - name: JHIPSTER_SLEEP
+            value: "5"
+          - name: SPRING_DATA_ELASTICSEARCH_CLUSTER_NODES
+            value: "172.16.111.8:9022"
+          - name: JAVA_OPTS
+            value: "-Xms256M -Xmx1G -Dhttp.agent=curl/7.55.1"
+      imagePullSecrets:
+        - name: fpt-cloud-registry
+status: {}
+---
