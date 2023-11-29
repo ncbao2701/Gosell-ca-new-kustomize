@@ -2,33 +2,27 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: order-service2
-    tags.datadoghq.com/env: "gosell-ca-new"
-    tags.datadoghq.com/service: "order-service2"
-    tags.datadoghq.com/version: ""
-  name: order-service2
+    app: order-service3
+  name: order-service3
   annotations:
     argocd.argoproj.io/sync-wave: "3"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: order-service2
+      app: order-service3
   strategy: {}
   template:
     metadata:
       labels:
-        app: order-service2
-        admission.datadoghq.com/enabled: "true"
-      annotations:
-        admission.datadoghq.com/java-lib.version: v1.19.1
+        app: order-service3
     spec:
       containers:
-      - image: order-service2
-        name: order-service2
+      - image: order-service3
+        name: order-service3
         ports:
         - name: service
-          containerPort: 8404
+          containerPort: 8084
           protocol: TCP
         - name: hazale
           containerPort: 5701
@@ -42,7 +36,7 @@ spec:
             memory: 2Gi
         livenessProbe:
           tcpSocket:
-            port: 8404
+            port: 8084
           initialDelaySeconds: 120
           timeoutSeconds: 1
           periodSeconds: 10
@@ -50,7 +44,7 @@ spec:
           failureThreshold: 3
         readinessProbe:
           tcpSocket:
-            port: 8404
+            port: 8084
           initialDelaySeconds: 120
           timeoutSeconds: 1
           periodSeconds: 10
@@ -58,7 +52,7 @@ spec:
           failureThreshold: 3
         envFrom:
           - secretRef:
-              name: order-service2
+              name: order-service3
       imagePullSecrets:
         - name: fpt-cloud-registry
 status: {}
