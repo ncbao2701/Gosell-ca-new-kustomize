@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: order-service3
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-new-order-service3
-  newTag:                                                                                                                                                                 2023.12.13.55
+  newTag:                                                                                                                                                                  2023.12.13.56
 
 resources:
 - ../../../gosell/order-service3
