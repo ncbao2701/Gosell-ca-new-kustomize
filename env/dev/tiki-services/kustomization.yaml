@@ -19,4 +19,4 @@ labels:
 
 replicas:
 - name: tiki-services
-  count: 10
+  count: 1
