@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: media-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-new-media-services
-  newTag:                             2023.12.19.19
+  newTag:                              2023.12.19.20
 
 resources:
 - ../../../gosell/6.media-services
