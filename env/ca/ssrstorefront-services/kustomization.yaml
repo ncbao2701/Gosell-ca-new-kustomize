@@ -7,7 +7,7 @@ namespace: ca
 images:
 - name: ssrstorefront-services
   newName: registry.fke.fptcloud.com/81afa4a1-02f9-4191-8f77-1a07e8686f7a/ca-new-ssrstorefront-services
-  newTag:                                                                                                          2023.12.25.57
+  newTag:                                                                                                           2024.01.04.58
 
 resources:
 - ../../../gosell/34.ssrstorefront-services
